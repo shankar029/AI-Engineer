@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="380" viewBox="0 0 760 380">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#226b59" stroke-width="1.5"/></marker></defs>
+  <rect width="760" height="380" rx="8" fill="#f1f2e9"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35">
+    <text x="32" y="35" font-size="13" letter-spacing="2">A TOY CONTRACT, NOT A PRODUCTION TOKENIZER</text>
+    <g fill="#fffefa" stroke="#dedfd5"><rect x="30" y="60" width="205" height="90" rx="6"/><rect x="277" y="60" width="205" height="90" rx="6"/><rect x="524" y="60" width="205" height="90" rx="6"/><rect x="277" y="211" width="452" height="105" rx="6"/></g>
+    <g font-size="14"><text x="48" y="88">Text</text><text x="295" y="88">Pieces</text><text x="542" y="88">Vocabulary lookup</text><text x="295" y="237">Embedding lookup, then Transformer</text></g>
+    <g font-family="Consolas,monospace" font-size="19"><text x="48" y="124">"maps"</text><text x="295" y="124">["map", "s"]</text><text x="542" y="124">[7, 3]</text></g>
+    <text x="295" y="269" font-size="16">Row 7: [0.2, -0.5, 0.8]</text><text x="295" y="297" font-size="16">Row 3: [0.6, 0.1, -0.2]</text>
+    <g stroke="#226b59" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M238 105H270"/><path d="M485 105H517"/><path d="M627 155V202"/><path d="M730 105H745V329H134V156" stroke-dasharray="6 4"/></g>
+    <text x="33" y="255" font-size="14">Dashed:</text><text x="33" y="277" font-size="14">decode IDs</text><text x="33" y="299" font-size="14">back to text</text>
+    <text x="32" y="352" font-size="14" fill="#606963">IDs select rows. Their numerical distance does not measure meaning.</text>
+  </g>
+</svg>

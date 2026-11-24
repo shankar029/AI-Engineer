@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="390" viewBox="0 0 760 390">
+<title>Gradients cross equal-loss contours</title>
+<defs><marker id="out" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#ab4a2d"/></marker><marker id="in" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker></defs>
+<rect width="760" height="390" fill="#f1f3ea"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#213b35"><text x="32" y="34" font-size="20">L(a,b) = a<tspan baseline-shift="super" font-size="12">2</tspan> + 2b<tspan baseline-shift="super" font-size="12">2</tspan></text><text x="32" y="60" font-size="17">Ellipses join points with equal loss.</text></g>
+<g stroke="#7b8a73" fill="none"><path d="M100 240H485M300 370V84"/></g>
+<g fill="none" stroke="#a9baa1" stroke-width="2"><ellipse cx="300" cy="240" rx="70.710678" ry="50"/><ellipse cx="300" cy="240" rx="122.474487" ry="86.60254"/><ellipse cx="300" cy="240" rx="158.113883" ry="111.803399"/></g>
+<g font-family="monospace" font-size="14" fill="#606963"><text x="288" y="259">0</text><text x="346" y="259">1</text><text x="396" y="259">2</text><text x="279" y="195">1</text><text x="279" y="145">2</text><text x="479" y="261">a</text><text x="280" y="91">b</text><text x="311" y="186">2</text><text x="311" y="150">6</text><text x="311" y="125">10</text></g>
+<path d="M400 190L440 150" stroke="#ab4a2d" stroke-width="3" marker-end="url(#out)"/><path d="M400 190L360 230" stroke="#226b59" stroke-width="3" marker-end="url(#in)"/>
+<circle cx="400" cy="190" r="5" fill="#213b35"/><circle cx="380" cy="210" r="5" fill="#226b59"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#213b35" font-size="17"><text x="446" y="145" fill="#ab4a2d">+ gradient</text><text x="411" y="191">(2,1)</text><text x="326" y="284" fill="#226b59">- gradient</text><text x="515" y="214">Gradient: [4,4]</text><text x="515" y="245">Rate 0.1 gives</text><text x="515" y="273">[1.6,0.6], loss 3.28.</text><text x="515" y="323" font-size="15" fill="#606963">Arrows show direction</text><text x="515" y="346" font-size="15" fill="#606963">at a reduced scale.</text></g>
+<path d="M387 214L501 250" fill="none" stroke="#226b59" stroke-dasharray="4 4"/>
+</svg>

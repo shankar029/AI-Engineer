@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="340" viewBox="0 0 760 340">
+<defs><marker id="g" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker><marker id="o" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#ab4a2d"/></marker></defs>
+<rect width="760" height="340" fill="#f1f3ea"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="2"><text x="35" y="38" fill="#226b59">FORWARD / COMPUTE VALUES</text><text x="35" y="305" fill="#ab4a2d">BACKWARD / COMPUTE SENSITIVITIES</text></g>
+<g stroke="#bbcab3" fill="#e1eadc"><rect x="35" y="100" width="125" height="70" rx="6"/><rect x="220" y="100" width="125" height="70" rx="6"/><rect x="405" y="100" width="125" height="70" rx="6"/><rect x="590" y="100" width="135" height="70" rx="6"/></g>
+<g stroke="#226b59" stroke-width="1.5" marker-end="url(#g)"><path d="M162 135H211"/><path d="M347 135H396"/><path d="M532 135H581"/></g>
+<g fill="#213b35" font-family="Georgia,serif" font-size="23" text-anchor="middle"><text x="97" y="131">x = 2</text><text x="282" y="131">z = 2</text><text x="467" y="131">y-hat = 3</text><text x="657" y="131">L = 4</text></g>
+<g fill="#606963" font-family="Segoe UI,Arial,sans-serif" font-size="11" text-anchor="middle"><text x="97" y="153">fixed input</text><text x="282" y="153">multiply by w = 1</text><text x="467" y="153">add b = 1</text><text x="657" y="153">square error; y = 5</text></g>
+<g stroke="#ab4a2d" stroke-width="1.5" fill="none" marker-end="url(#o)"><path d="M656 180V222H470"/><path d="M455 222H288"/><path d="M282 230V262H197"/></g>
+<g fill="#ab4a2d" font-family="Segoe UI,Arial,sans-serif" font-size="12"><text x="548" y="211">dL/dy-hat = -4</text><text x="340" y="211">dL/dz = -4</text><text x="53" y="267">dL/dw = -8</text><text x="414" y="265">dL/db = -4</text></g>
+<path d="M467 231V247" stroke="#ab4a2d" marker-end="url(#o)"/><text x="36" y="73" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#606963">Read left to right for predictions; right to left for the effect on loss.</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="365" viewBox="0 0 760 365">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#226b59" stroke-width="1.5"/></marker></defs>
+  <rect width="760" height="365" rx="8" fill="#f1f2e9"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35">
+    <text x="30" y="36" font-size="13" letter-spacing="2">MERGE THE CORPUS; GROW THE DICTIONARY</text>
+    <g font-size="14"><text x="32" y="76">Corpus entries (frequency)</text><text x="350" y="76">After rank 1</text><text x="572" y="76">After rank 2</text></g>
+    <g fill="#fffefa" stroke="#dedfd5"><rect x="30" y="94" width="220" height="132" rx="6"/><rect x="326" y="94" width="183" height="132" rx="6"/><rect x="559" y="94" width="173" height="132" rx="6"/></g>
+    <g font-family="Consolas,monospace" font-size="19"><text x="48" y="128">m a p     (4)</text><text x="48" y="164">m a p s   (2)</text><text x="48" y="200">m a p l e (1)</text><text x="345" y="128">ma p</text><text x="345" y="164">ma p s</text><text x="345" y="200">ma p l e</text><text x="578" y="128">map</text><text x="578" y="164">map s</text><text x="578" y="200">map l e</text></g>
+    <g stroke="#226b59" stroke-width="2" marker-end="url(#arrow)"><path d="M257 155H316"/><path d="M515 155H549"/></g>
+    <text x="260" y="141" font-size="12">m + a</text><text x="513" y="141" font-size="11">ma + p</text>
+    <path d="M30 252H732" stroke="#dedfd5"/>
+    <text x="32" y="283" font-size="16">Vocabulary: 6 entries</text><text x="327" y="283" font-size="16">7 entries (+ ma)</text><text x="560" y="283" font-size="16">8 entries (+ map)</text>
+    <text x="32" y="326" font-size="14" fill="#ab4a2d">Stored sequences shrink: 25 → 18 → 11 token occurrences.</text>
+    <text x="32" y="348" font-size="13" fill="#606963">Old entries remain available. Counts include each entry's frequency.</text>
+  </g>
+</svg>

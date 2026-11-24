@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="220" viewBox="0 0 580 220" fill="none">
+<defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#b9c9b2" stroke-opacity=".45"/></pattern><marker id="a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#226b59"/></marker></defs>
+<rect width="580" height="220" fill="#e8eee1"/><rect x="45" y="15" width="490" height="190" fill="url(#g)"/><path d="M119 170H304M155 194V29" stroke="#b1bfa9"/>
+<path d="M155 170L275 122L323 50L203 98Z" fill="#abc0a5" fill-opacity=".35" stroke="#6b977c"/><path d="M155 170L275 122M155 170L203 98" stroke="#226b59" stroke-width="2" marker-end="url(#a)"/><path d="M155 170L323 50" stroke="#af5635" stroke-width="2"/><circle cx="323" cy="50" r="4" fill="#af5635"/>
+<text x="371" y="97" font-family="Georgia,serif" font-size="31" fill="#226b59">[ x, y ]</text><text x="373" y="124" font-family="monospace" font-size="9" fill="#687c65" letter-spacing="2">REPRESENTATION</text>
+</svg>

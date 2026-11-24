@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330">
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker></defs>
+<rect width="760" height="330" fill="#f1f3ea"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#213b35" font-size="15">
+<text x="25" y="38">INPUT IDs</text><text x="245" y="38">E: 4 rows x 3 coordinates</text><text x="520" y="38">OUTPUT: 3 x 3</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="72" width="105" height="55" rx="5"/><rect x="25" y="143" width="105" height="55" rx="5"/><rect x="25" y="214" width="105" height="55" rx="5"/><rect x="235" y="65" width="235" height="190" rx="5"/><rect x="510" y="72" width="220" height="197" rx="5"/></g>
+<path d="M240 108H465V148H240Z" fill="#eaf1e9"/><path d="M240 198H465V250H240Z" fill="#f7e9dd"/>
+<g font-family="monospace" font-size="17"><text x="70" y="107">1</text><text x="70" y="178">3</text><text x="70" y="249">1</text><text x="250" y="96">0  [3,4,0]</text><text x="250" y="137">1  [4,3,0]</text><text x="250" y="181">2  [0,0,5]</text><text x="250" y="226">3  [2,1,2]</text><text x="535" y="110">[4,3,0]</text><text x="535" y="180">[2,1,2]</text><text x="535" y="249">[4,3,0]</text></g>
+<text x="25" y="307" font-size="13">Select rows in sequence order. The repeated address 1 selects the same values twice.</text></g>
+<g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#arrow)"><path d="M133 98L230 128"/><path d="M133 171L230 217"/><path d="M133 241L195 241L195 138L230 138"/><path d="M473 128L505 100"/><path d="M473 219L505 172"/><path d="M473 138L490 138L490 240L505 240"/></g>
+</svg>

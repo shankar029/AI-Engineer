@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="220" viewBox="0 0 580 220" fill="none">
+<defs><pattern id="g" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#d6bda8" stroke-opacity=".4"/></pattern></defs>
+<rect width="580" height="220" fill="#f1e8db"/><rect x="45" y="15" width="490" height="190" fill="url(#g)"/><path d="M90 180H348M115 190V24" stroke="#cab9a4"/>
+<path d="M126 35Q245 297 350 40" stroke="#a95737" stroke-width="2.5"/><path d="M134 125L235 185" stroke="#226b59" stroke-width="1.5"/><circle cx="171" cy="147" r="5" fill="#226b59"/><circle cx="210" cy="172" r="4" fill="#a95737"/><path d="M181 156L203 169" stroke="#226b59" stroke-dasharray="3 3"/>
+<text x="386" y="96" font-family="Georgia,serif" font-size="32" fill="#a95737" font-style="italic">dL</text><path d="M382 105H430" stroke="#a95737"/><text x="382" y="137" font-family="Georgia,serif" font-size="32" fill="#a95737" font-style="italic">dw</text>
+</svg>

@@ -6,11 +6,13 @@
   "description": "An intuition-first field guide to engineering language models.",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "pdf": "npm run build && node scripts/pdf.mjs",
+    "publish:html": "npm run build && node scripts/publish-html.mjs",
+    "html:check": "npm run build && node scripts/publish-html.mjs --check",
+    "pdf": "npm run build && node scripts/pdf.mjs && node scripts/publish-html.mjs",
     "pdf:check": "python scripts/check-pdfs.py",
     "start": "node scripts/serve.mjs",
     "dev": "npm run build && npm start",
-    "test": "npm run build && node --test tests/math.test.mjs && playwright test"
+    "test": "npm run html:check && node --test tests/math.test.mjs && playwright test"
   },
   "dependencies": {
     "katex": "^0.16.22",

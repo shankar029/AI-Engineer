@@ -369,6 +369,39 @@ Before calling a chapter finished:
 4. Inspect the home page and both a formula-heavy and a diagram-heavy section at desktop and mobile widths. Check keyboard navigation and readable local equation scrolling.
 5. Confirm that meaning survives without scripts. Generate and inspect each chapter's PDF companion according to the mandatory PDF delivery procedure below; a browser print-media preview alone does not count.
 6. Keep the chapter, this guide, implementation, and related checks in agreement. Do not add a framework merely for a new page.
+7. Generate and commit the complete ready-to-read HTML publication at `publications/html/index.html`, together with its assets and inspected PDF companions. Verify the actual publication after copying the entire `publications/` folder to a different location: no build, npm, or server is needed to read it. Check desktop/mobile navigation, math/fonts, diagrams, expanded solutions, and relative Chapter PDF downloads. File-opened reading uses the static fallback; interactive modules and the print button need HTTP.
+
+## Committed HTML publication
+
+### Maintainer setup and local reading
+
+Use Node.js 20+ from the repository root:
+
+```powershell
+npm ci
+npm run build
+```
+
+Open `dist/index.html` for the themed development build, not the unstyled `book/index.html` source fragment. Keep the whole `dist/` folder together if copying it; it includes assets and `pdfs/`. The public, already-built reading edition is committed at `publications/html/index.html`. README is reader-first: lead with the verified live website and chapter PDFs, not setup commands.
+
+For interactive experiments, run `npm start` and open its printed loopback address (default `http://127.0.0.1:4173`). If occupied, set `$env:PORT=4174` in PowerShell first. `npm run dev` builds once and serves; it does not watch files. Rebuild after edits. File-opened pages retain themed math, diagrams, navigation and native expandable answers, but browser restrictions block module-based experiments and the print button; use the Chapter PDF download.
+
+```powershell
+npm run publish:html
+npm run html:check
+npx playwright install chromium
+npm test
+```
+
+The browser suite uses its own local server at port 4175. Tests verify numerical examples, links/anchors, formula rendering, images, responsive layouts, interactions, and relocated offline publication/PDF downloads. Optional Chapter 3 Python packages/model artifacts are separate from reading or building the book.
+
+### Publication and hosting
+
+`npm run build` creates the ignored `dist/` development workspace. `npm run publish:html` builds and synchronizes only the reading pages, book assets, KaTeX stylesheet and local fonts into `publications/html/`. It rewrites Chapter PDF links to the existing companions one directory above, avoiding duplicate PDFs, recursive publication copies, KaTeX runtime dependencies, and review artifacts. Do not edit generated publication files manually. Keep all of `publications/` together when distributing or statically hosting this edition; a GitHub file link displays HTML source rather than hosting the website.
+
+`npm run html:check` rebuilds and compares the complete expected file inventory and contents without rewriting publication files. `npm test` includes this freshness check and relocated, file-opened publication checks. After changing sources or this guide, refresh with `npm run publish:html` before testing. The full `npm run pdf` workflow also refreshes the committed HTML after producing the companions; source/hash changes still require PDF regeneration and the inspection below.
+
+`.github/workflows/pages.yml` checks HTML freshness and deploys committed `publications/` with the official GitHub Pages Actions on pushes to `main` or manual dispatch. The small `publications/index.html` landing page redirects to `html/index.html`; deploying the parent folder keeps PDF links valid under the repository's Pages subpath. No private source material, dependencies, caches, screenshots, or review output belong in this artifact. Pages must use the Actions build type in repository settings; verify its returned URL, successful deployment, and actual chapter/assets/PDF HTTP responses before claiming it is live. For other hosting, either deploy all of `publications/` or the independently portable `dist/` build.
 
 ## Mandatory PDF companions and review
 
@@ -385,7 +418,7 @@ npm run pdf:check
 
 `scripts/chapters.mjs` is the shared source of chapter titles, HTML names and meaningful PDF names. Register a future chapter there, extend the home card/adjacent links, and follow the same pipeline. `npm run pdf` first builds the book, then uses local Chromium with `book/assets/print.css`, opens every solution, waits for local fonts and diagrams, and writes the A4 companions under `publications/`. No external conversion service is allowed. A shared Chapter PDF link is generated into each chapter's toolbar; `npm run build` copies the publication files into `dist/pdfs/` so downloads work in a portable, file-opened book.
 
-Commit the reasonable-sized publication PDFs and their `publications/manifest.json` beside source changes. The manifest records a source digest, each PDF's hash, expected substantive prose fragments, and answer/figure/formula counts for checks; counts are not evidence of instructional quality. `dist/`, raster page images, contact sheets and extracted audit text are reproducible, ignored output. Do not redistribute supplied source PDFs or private source-audit material. Regeneration is content/layout reproducibility, not a claim of byte identity across browser versions, fonts and metadata timestamps.
+Commit the fresh `publications/html/` edition, reasonable-sized publication PDFs, and `publications/manifest.json` beside source changes. The manifest records a source digest, each PDF's hash, expected substantive prose fragments, and answer/figure/formula counts for checks; counts are not evidence of instructional quality. `dist/`, raster page images, contact sheets and extracted audit text are reproducible, ignored output. Do not redistribute supplied source PDFs or private source-audit material. Regeneration is content/layout reproducibility, not a claim of byte identity across browser versions, fonts and metadata timestamps.
 
 The checker verifies the **actual PDF files**: source and output freshness, title/bookmarks, expected prose (including expanded answer text), A4 size, blank pages, raw TeX, and text bounding boxes inside safe paper margins. It renders every page locally at inspection resolution and creates numbered contact sheets under `dist/pdf-review/<chapter-name>/`. A passing checker is necessary but not sufficient:
 

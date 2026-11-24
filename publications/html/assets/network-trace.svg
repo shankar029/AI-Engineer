@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320">
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker></defs>
+<rect width="760" height="320" fill="#eaf1e9"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#213b35"><text x="25" y="32">FORWARD / Two inputs, two hidden values, one prediction</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="95" width="125" height="90" rx="6"/><rect x="210" y="65" width="285" height="155" rx="6"/><rect x="555" y="80" width="180" height="125" rx="6"/></g>
+<text x="44" y="125">Inputs x</text><text x="44" y="159" font-size="22">[2, 1]</text>
+<text x="228" y="96">z1 = 1(2) - 1(1) + 0 = 1</text><text x="228" y="126">z2 = 0.5(2) + 1(1) - 0.5</text><text x="228" y="151">     = 1.5</text><text x="228" y="181">ReLU on each value</text><text x="228" y="207" font-weight="600">h = [1, 1.5]</text>
+<text x="570" y="111">1(1) - 1(1.5) + 0.5</text><text x="570" y="144">Prediction = 0</text><text x="570" y="180">Identity output</text>
+<text x="25" y="268">Compare with observed target 1:</text><text x="340" y="268" font-weight="600">L = (0 - 1)(0 - 1) = 1</text><text x="25" y="301">The forward pass leaves all nine parameters unchanged.</text></g>
+<g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#a)"><path d="M150 140H202"/><path d="M495 140H547"/><path d="M646 205V240H580"/></g>
+</svg>

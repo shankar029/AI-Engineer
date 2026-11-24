@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="220" viewBox="0 0 580 220">
+<rect width="580" height="220" fill="#eaf1e9"/><g fill="none" stroke="#c9d5c4"><path d="M0 55H580M0 110H580M0 165H580M80 0V220M160 0V220M240 0V220M320 0V220M400 0V220M480 0V220"/></g>
+<g fill="#fffefa" stroke="#226b59"><rect x="50" y="72" width="125" height="75" rx="5"/><circle cx="425" cy="110" r="58"/></g><path d="M205 110H335M425 110L466 69" stroke="#226b59" stroke-width="3"/><path d="M425 110L448 161" stroke="#ab4a2d" stroke-width="2" stroke-dasharray="5 4"/>
+<g font-family="monospace" fill="#213b35" font-size="17"><text x="65" y="104">[1,3,1]</text><text x="65" y="130">row IDs</text><text x="230" y="94">lookup</text></g><g fill="#226b59"><circle cx="466" cy="69" r="5"/><circle cx="448" cy="161" r="5"/></g>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="220" viewBox="0 0 580 220">
+<rect width="580" height="220" fill="#eaf1e9"/>
+<g fill="none" stroke="#226b59" stroke-width="2"><path d="M100 70L250 60L410 110M100 70L250 150L410 110M100 150L250 60M100 150L250 150"/></g>
+<g fill="#fffefa" stroke="#226b59" stroke-width="2"><circle cx="100" cy="70" r="19"/><circle cx="100" cy="150" r="19"/><circle cx="250" cy="60" r="23"/><circle cx="250" cy="150" r="23"/><circle cx="410" cy="110" r="28"/></g>
+<path d="M410 155V195H100V179" fill="none" stroke="#ab4a2d" stroke-width="2" stroke-dasharray="5 4"/><path d="M94 183L100 175L106 183" fill="none" stroke="#ab4a2d" stroke-width="2"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="14" fill="#213b35"><text x="72" y="32">Inputs</text><text x="219" y="23">Hidden</text><text x="379" y="63">Prediction</text><text x="215" y="187" fill="#ab4a2d">Sensitivity</text></g>
+</svg>

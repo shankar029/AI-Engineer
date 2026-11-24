@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="350" viewBox="0 0 760 350">
+<title>A diagonal matrix stretches a unit square to area six</title>
+<rect width="760" height="350" fill="#f1f3ea"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#213b35"><text x="35" y="34" font-size="13" letter-spacing="2">ONE MATRIX, EVERY CORNER</text><text x="80" y="72" font-size="20">Before: unit square</text><text x="445" y="72" font-size="20">After: scale by 2 and 3</text></g>
+<g stroke="#cbd4c8" fill="none"><path d="M90 120H240M90 170H240M90 220H240M140 100V270M190 100V270M240 100V270M460 120H610M460 170H610M460 220H610M510 100V270M560 100V270M610 100V270"/></g>
+<g stroke="#7b8a73" fill="none"><path d="M70 270H280M90 290V95M440 270H650M460 290V95"/></g>
+<path d="M90 270V220H140V270Z" fill="#eaf1e9" stroke="#226b59" stroke-width="3"/>
+<path d="M460 270V120H560V270Z" fill="#f7e9dd" stroke="#ab4a2d" stroke-width="3"/>
+<g font-family="monospace" font-size="14" fill="#606963"><text x="75" y="289">0</text><text x="136" y="291">1</text><text x="72" y="225">1</text><text x="445" y="289">0</text><text x="506" y="291">1</text><text x="556" y="291">2</text><text x="440" y="225">1</text><text x="440" y="175">2</text><text x="440" y="125">3</text><text x="267" y="292">x</text><text x="70" y="102">y</text><text x="638" y="292">x</text><text x="440" y="102">y</text></g>
+<path d="M295 192H405L395 185M405 192L395 199" fill="none" stroke="#226b59" stroke-width="2"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#213b35"><text x="306" y="170" font-size="17">diag(2, 3)</text><text x="85" y="320" font-size="17">Area = 1</text><text x="458" y="320" font-size="17">Area = 2 x 3 = 6</text><text x="477" y="205" font-size="20" fill="#ab4a2d">6 units</text><text x="477" y="231" font-size="15" fill="#ab4a2d">of area</text></g>
+</svg>
