@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="350" viewBox="0 0 760 350">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#226b59" stroke-width="1.5"/></marker></defs>
+  <rect width="760" height="350" rx="8" fill="#f1f2e9"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35">
+    <text x="30" y="35" font-size="13" letter-spacing="2">THREE PATHS SPELL THE SAME TEXT: aba</text>
+    <text x="30" y="67" font-size="15">Token probabilities: a = 0.4, b = 0.3, ab = 0.2, ba = 0.1</text>
+    <g fill="#fffefa" stroke="#dedfd5"><rect x="40" y="96" width="290" height="48" rx="5"/><rect x="40" y="162" width="290" height="48" rx="5"/><rect x="40" y="228" width="290" height="48" rx="5"/></g>
+    <g font-family="Consolas,monospace" font-size="20"><text x="62" y="127">ab | a</text><text x="62" y="193">a | ba</text><text x="62" y="259">a | b | a</text></g>
+    <g stroke="#226b59" stroke-width="2" marker-end="url(#arrow)"><path d="M340 120H402"/><path d="M340 186H402"/><path d="M340 252H402"/></g>
+    <g font-size="17"><text x="420" y="126">0.2 × 0.4 = 0.080  ← best path</text><text x="420" y="192">0.4 × 0.1 = 0.040</text><text x="420" y="258">0.4 × 0.3 × 0.4 = 0.048</text></g>
+    <text x="40" y="313" font-size="16" fill="#ab4a2d">Text likelihood adds the paths: 0.080 + 0.040 + 0.048 = 0.168.</text>
+    <text x="40" y="336" font-size="13" fill="#606963">A best segmentation and a sum over all segmentations answer different questions.</text>
+  </g>
+</svg>

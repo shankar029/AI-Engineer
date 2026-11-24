@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="220" viewBox="0 0 580 220">
+  <rect width="580" height="220" fill="#eaf1e9"/>
+  <g fill="none" stroke="#d3ddce"><path d="M0 55H580M0 110H580M0 165H580M58 0V220M116 0V220M174 0V220M232 0V220M290 0V220M348 0V220M406 0V220M464 0V220M522 0V220"/></g>
+  <g font-family="Consolas,monospace" font-size="24" text-anchor="middle" fill="#213b35"><text x="290" y="58">text → pieces → IDs</text></g>
+  <g fill="#fffefa" stroke="#226b59" stroke-width="1.5"><rect x="83" y="88" width="170" height="64" rx="5"/><rect x="268" y="88" width="73" height="64" rx="5"/><rect x="390" y="88" width="107" height="64" rx="5"/></g>
+  <g font-family="Consolas,monospace" font-size="26" text-anchor="middle" fill="#226b59"><text x="168" y="129">map</text><text x="304" y="129">s</text><text x="444" y="129">7, 3</text></g>
+  <path d="M353 119H379M371 111L379 119L371 127" fill="none" stroke="#ab4a2d" stroke-width="2"/>
+  <text x="290" y="191" font-family="Segoe UI,Arial,sans-serif" font-size="13" text-anchor="middle" fill="#606963">A small vocabulary. Many possible messages.</text>
+</svg>

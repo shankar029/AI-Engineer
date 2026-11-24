@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="360" viewBox="0 0 430 360" fill="none">
+<defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" stroke="#71947d" stroke-opacity=".23"/></pattern><marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#e9b38a"/></marker></defs>
+<rect x="32" y="26" width="360" height="300" fill="url(#grid)"/>
+<path d="M60 282H391M92 310V42" stroke="#8bab91" stroke-opacity=".55"/>
+<path d="M92 282L241 230L343 78L194 130Z" fill="#97b195" fill-opacity=".08" stroke="#9ebb9b"/>
+<path d="M126 231L275 179M160 180L309 128M142 265L244 113M192 247L294 96" stroke="#9ebb9b" stroke-opacity=".5"/>
+<path d="M92 282L343 78" stroke="#e9b38a" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M92 282L241 230M92 282L194 130" stroke="#c4d8b8" stroke-width="2"/>
+<circle cx="92" cy="282" r="5" fill="#e9b38a"/><circle cx="241" cy="230" r="4" fill="#bad0ae"/><circle cx="194" cy="130" r="4" fill="#bad0ae"/><circle cx="343" cy="78" r="5" fill="#e9b38a"/>
+<path d="M248 114C267 102 282 102 297 108" stroke="#e9b38a" stroke-dasharray="3 5"/>
+<text x="245" y="254" fill="#b9cead" font-family="Georgia,serif" font-size="20" font-style="italic">u</text><text x="169" y="121" fill="#b9cead" font-family="Georgia,serif" font-size="20" font-style="italic">v</text><text x="350" y="68" fill="#e9b38a" font-family="Georgia,serif" font-size="21" font-style="italic">u + v</text><text x="64" y="308" fill="#8fab92" font-family="monospace" font-size="11">0</text>
+<text x="278" y="314" fill="#8fab92" font-family="monospace" font-size="9" letter-spacing="2">IDEAS INTO VECTORS</text>
+</svg>

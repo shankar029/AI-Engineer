@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360">
+<defs><marker id="g" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker></defs><rect width="760" height="360" fill="#f1f3ea"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#213b35" font-size="15">
+<text x="25" y="30">PREPARE THE INDEX</text><text x="25" y="165">ANSWER A QUESTION</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="55" width="170" height="65" rx="5"/><rect x="260" y="55" width="180" height="65" rx="5"/><rect x="510" y="55" width="225" height="65" rx="5"/><rect x="25" y="190" width="170" height="65" rx="5"/><rect x="260" y="190" width="180" height="65" rx="5"/><rect x="510" y="190" width="225" height="65" rx="5"/></g>
+<text x="45" y="82">Documents</text><text x="45" y="106">Choose chunks</text><text x="280" y="82">Passage encoder</text><text x="280" y="106">Produce vectors</text><text x="530" y="82">Store vectors + metadata</text><text x="530" y="106">Version, source, access</text>
+<text x="45" y="218">Question</text><text x="45" y="243">Compatible encoding</text><text x="280" y="218">Rank candidates</text><text x="280" y="243">Filter permissions</text><text x="530" y="218">Selected passage text</text><text x="530" y="243">Context for answering LLM</text>
+<text x="25" y="310">Similarity retrieves candidates. Metadata governs access and applicability.</text><text x="25" y="336">The answering model consumes selected text; vector scores do not certify truth.</text></g>
+<g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#g)"><path d="M198 88H252"/><path d="M443 88H503"/><path d="M198 223H252"/><path d="M443 223H503"/><path d="M623 123V144H350V182"/></g>
+</svg>

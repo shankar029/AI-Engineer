@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="350" viewBox="0 0 760 350">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#226b59" stroke-width="1.5"/></marker></defs>
+  <rect width="760" height="350" rx="8" fill="#f1f2e9"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35">
+    <text x="30" y="35" font-size="13" letter-spacing="2">GENERATING A REQUEST IS NOT EXECUTING A TOOL</text>
+    <g fill="#fffefa" stroke="#dedfd5"><rect x="30" y="65" width="200" height="90" rx="6"/><rect x="280" y="65" width="200" height="90" rx="6"/><rect x="530" y="65" width="200" height="90" rx="6"/><rect x="530" y="212" width="200" height="90" rx="6"/><rect x="280" y="212" width="200" height="90" rx="6"/><rect x="30" y="212" width="200" height="90" rx="6"/></g>
+    <g font-size="16"><text x="46" y="93">Application messages</text><text x="296" y="93">Compatible template</text><text x="546" y="93">Model generation</text><text x="546" y="240">Runtime validates</text><text x="296" y="240">Tool result message</text><text x="46" y="240">Model generation</text></g>
+    <g font-size="13" fill="#606963"><text x="46" y="122">User asks for weather</text><text x="296" y="122">Roles + content → IDs</text><text x="546" y="122">Tool request + handoff</text><text x="546" y="269">Authorizes and executes</text><text x="296" y="269">Serialized back into IDs</text><text x="46" y="269">Final answer + turn end</text></g>
+    <g stroke="#226b59" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M235 109H270"/><path d="M485 109H520"/><path d="M630 161V202"/><path d="M525 256H490"/><path d="M275 256H240"/></g>
+    <text x="30" y="331" font-size="13" fill="#ab4a2d">Markers describe structure; they do not grant permission or prevent prompt injection.</text>
+  </g>
+</svg>

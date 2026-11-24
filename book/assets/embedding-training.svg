@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320">
+<defs><marker id="g" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker><marker id="o" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#ab4a2d"/></marker></defs>
+<rect width="760" height="320" fill="#f1f3ea"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#213b35"><text x="30" y="32">FORWARD: predict the observed renewal target</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="60" width="160" height="95" rx="6"/><rect x="260" y="60" width="220" height="95" rx="6"/><rect x="550" y="60" width="185" height="95" rx="6"/></g>
+<text x="45" y="89">Selected row</text><text x="45" y="125" font-family="monospace" font-size="23">[0,0]</text><text x="280" y="89">Logits: 0 and 0</text><text x="280" y="125">Target p = 1/2</text><text x="570" y="89">L = -ln(p)</text><text x="570" y="125">0.693147</text>
+<text x="295" y="192" fill="#ab4a2d">BACKWARD: sensitivities [-0.5,-0.5]</text>
+<text x="30" y="245">Update: [0,0] - 0.2[-0.5,-0.5] = [0.1,0.1]</text><text x="30" y="284" fill="#226b59">Recompute: p = 0.549834; L = 0.598139 (rounded)</text></g>
+<g fill="none" stroke-width="2"><path d="M188 106H252" stroke="#226b59" marker-end="url(#g)"/><path d="M483 106H542" stroke="#226b59" marker-end="url(#g)"/><path d="M645 159V210H100V160" stroke="#ab4a2d" marker-end="url(#o)"/></g>
+</svg>

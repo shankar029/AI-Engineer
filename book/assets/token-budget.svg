@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="340" viewBox="0 0 760 340">
+  <rect width="760" height="340" rx="8" fill="#f1f2e9"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35">
+    <text x="30" y="35" font-size="13" letter-spacing="2">A HYPOTHETICAL 16,000-TOKEN CONTEXT</text>
+    <text x="30" y="66" font-size="15">Segment widths are proportional to token counts; allocations are labeled below.</text>
+    <g stroke="#fffefa" stroke-width="2"><rect x="40" y="94" width="42.5" height="54" fill="#226b59"/><rect x="82.5" y="94" width="85" height="54" fill="#73907a"/><rect x="167.5" y="94" width="297.5" height="54" fill="#183c35"/><rect x="465" y="94" width="42.5" height="54" fill="#ab4a2d"/><rect x="507.5" y="94" width="127.5" height="54" fill="#d2a183"/><rect x="635" y="94" width="85" height="54" fill="#d5dacd"/></g>
+    <g font-size="15"><text x="40" y="185">Instructions + template: 1,000</text><text x="40" y="215">History: 2,000</text><text x="40" y="245">Retrieved text: 7,000</text><text x="405" y="185">Tool results: 1,000</text><text x="405" y="215">Output reserve: 3,000</text><text x="405" y="245">Headroom: 2,000</text></g>
+    <g stroke="#606963" fill="none"><path d="M61 148V164H40"/><path d="M125 148V195H40"/><path d="M316 148V225H280"/><path d="M486 148V164H620"/><path d="M571 148V195H700"/><path d="M677 148V225H720"/></g>
+    <text x="40" y="292" font-size="17">11,000 input + 3,000 reserved output + 2,000 headroom = 16,000</text>
+    <text x="40" y="319" font-size="13" fill="#606963">The provider's actual context accounting and separate output limit still apply.</text>
+  </g>
+</svg>

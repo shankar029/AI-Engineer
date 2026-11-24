@@ -1,0 +1,39 @@
+@page{size:A4;margin:16mm 15mm 18mm}
+html{scroll-behavior:auto}
+body{background:#f8f6f0;color:#213b35;font:10.5pt/1.4 "Segoe UI",Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sidebar,.topbar,.on-this-page,.reading-progress,.site-footer,.chapter-pagination,.skip-link,.diagram-hint{display:none!important}
+.page{margin:0}.reading-layout{display:block;max-width:none;padding:0}
+.chapter-header{margin:0 0 7mm;padding:0 0 5mm}
+.chapter-header h1{font-size:30pt;line-height:1.12;letter-spacing:-.7pt}
+.chapter-header .dek{font-size:12pt}.chapter-meta{font-size:8pt}
+h2{font-size:21pt;line-height:1.2;margin:9mm 0 4mm}
+h3{font-size:12pt;line-height:1.4;margin:6mm 0 3mm}
+h1,h2,h3,.label{break-after:avoid}
+p,li{orphans:3;widows:3}
+p{margin:3mm 0}
+.worked,.callout,.exercise,.lab,.recap{break-inside:auto;box-decoration-break:clone}
+.worked,.callout,.lab,.recap{padding:4mm;margin:5mm 0}
+.worked{background:#fffefa}.callout{background:#eaf1e9}.callout.caution{background:#f7e9dd}
+.recap{background:#183c35;color:#e8eee1;break-inside:avoid}.recap .label{color:#c4d6aa}
+.recap li{font-size:10.5pt}
+.exercise{padding:4mm 0}.exercise h3{font-size:11pt}
+.exercise details{padding:3mm 4mm;font-size:10pt;break-inside:auto;box-decoration-break:clone}
+details>summary{display:block;font-size:8pt;color:#226b59;margin-bottom:2mm;break-after:avoid}
+details::details-content{content-visibility:visible}
+details>*:not(summary){content-visibility:visible}
+.equation{overflow:visible;padding:3mm 2mm;margin:4mm 0;break-inside:avoid}
+.math{white-space:nowrap}.katex{font-size:1em}
+figure{break-inside:avoid;margin:5mm 0}
+.figure-viewport{overflow:visible}
+figure img{width:100%;min-width:0;max-height:none;object-fit:contain}
+figcaption,.symbol-key{font-size:8.5pt;line-height:1.45}
+.table-wrap{overflow:visible;break-inside:auto;margin:4mm 0}
+table{font-size:9pt;table-layout:auto}th{font-size:8.5pt}th,td{padding:2mm}
+thead{display:table-header-group}tr{break-inside:avoid}
+code{font-size:9pt;white-space:normal;overflow-wrap:anywhere}
+pre{white-space:pre-wrap;overflow:visible;overflow-wrap:anywhere;background:#edf1e8;color:#213b35;padding:3mm}
+pre code{font-size:8pt;white-space:pre-wrap}
+.lab input,.lab button,.lab label{display:none}
+.lab noscript{display:block}.lab-result output{font-size:16pt}
+a{color:#226b59;text-decoration:none}
+.source-note{font-size:8.5pt;break-inside:avoid}

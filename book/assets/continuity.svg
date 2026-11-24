@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="340" viewBox="0 0 760 340">
+<title>A removable hole and a jump have different limit behavior</title>
+<rect width="760" height="340" fill="#f1f3ea"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#213b35"><text x="38" y="34" font-size="14" letter-spacing="2">A HOLE</text><text x="425" y="34" font-size="14" letter-spacing="2">A JUMP</text></g>
+<g stroke="#7b8a73" fill="none"><path d="M50 260H325M70 280V55M425 260H710M545 280V65"/></g>
+<path d="M70 100H200V260" fill="none" stroke="#7b8a73" stroke-dasharray="5 5"/>
+<path d="M70 180L265 60" fill="none" stroke="#226b59" stroke-width="3"/>
+<circle cx="200" cy="100" r="7" fill="#f1f3ea" stroke="#226b59" stroke-width="3"/>
+<path d="M440 260H545M545 160H690" fill="none" stroke="#ab4a2d" stroke-width="3"/>
+<circle cx="545" cy="260" r="7" fill="#f1f3ea" stroke="#ab4a2d" stroke-width="3"/><circle cx="545" cy="160" r="7" fill="#ab4a2d"/>
+<g font-family="monospace" font-size="15" fill="#606963"><text x="51" y="282">0</text><text x="195" y="282">2</text><text x="47" y="105">4</text><text x="47" y="185">2</text><text x="309" y="282">x</text><text x="50" y="65">h(x)</text><text x="539" y="284">0</text><text x="491" y="284">-1</text><text x="586" y="284">1</text><text x="520" y="165">1</text><text x="694" y="284">x</text><text x="510" y="66">j(x)</text></g>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#213b35"><text x="113" y="170">h(x) = x + 2</text><text x="109" y="195">except at x = 2</text><text x="575" y="132">right limit: 1</text><text x="428" y="233">left limit: 0</text><text x="38" y="318">Limit 4; value at 2 is missing.</text><text x="425" y="318">No common two-sided limit.</text></g>
+</svg>

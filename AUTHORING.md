@@ -1,0 +1,337 @@
+# The AI Engineer: authoring and design system
+
+This is the house style for the whole book, not a one-off mood board. Apply it when adding a chapter, revising a worked example, or drawing a figure. The built guide at `authoring.html` is generated from this file.
+
+## Reader and promise
+
+Write for a software engineer who is comfortable with arithmetic and code but **does not know linear algebra or calculus**. Do not treat engineering familiarity as mathematical familiarity. Refresh algebraic manipulations when first needed, including substitution, powers, factoring, fractions, and rearranging equations. Explain mathematical function notation rather than assuming it follows from coding experience. Never equate unfamiliar notation with lack of ability. The promise is **an accurate mental model that survives contact with implementation**, not mastery through memorization.
+
+Voice: calm, direct, curious, and precise. Address the reader as "you." Use short paragraphs, concrete verbs, and one main idea per paragraph. Explain what a mathematical object does before naming its formal properties. Do not write conversational transcripts, congratulatory filler, or unexplained walls of formulas.
+
+Each chapter begins with a real engineering question and ends with something the reader can now explain or calculate. Distinguish an operation's mathematical purpose from claims about intelligence or human-like understanding.
+
+## Chapter architecture
+
+Keep the same learning sequence in every chapter:
+
+1. **Orient.** Part, chapter number, meaningful title, one-sentence promise, prerequisites, and section count. Start with a question rather than a formula.
+2. **Build intuition.** Introduce a concrete situation and name the problem. A delivery displacement, a support search, or an estimator is more useful than "consider an arbitrary vector."
+3. **Make it visible.** Show an original diagram, annotated table, or computation graph. Explain what to notice in the adjoining prose and provide an equivalent text description.
+4. **Introduce notation.** State the equation, define every new symbol nearby, and make its conditions explicit. Link to an earlier definition instead of silently changing conventions.
+5. **Work an example.** Show inputs, intermediate calculation, output, and interpretation. A reader must be able to reproduce it with basic arithmetic.
+6. **Connect to an LLM.** Name the actual operation or component. State what the example omits, and where an analogy stops being literal.
+7. **Give agency.** Include a small prediction, exercise, or interactive experiment. Ask the reader to predict before acting. Supply a solution or useful guidance.
+8. **Consolidate.** A compact recap connects ideas, then a short bridge introduces the next question. End with a source note and previous/next navigation.
+
+Repeat the intuition-to-application sequence for **every mathematical concept**, not just derivatives or the first section. This is a universal requirement across all four chapters and every future chapter. A beginner-friendly introduction followed by compressed advanced formulas does not satisfy it. Assume no prior knowledge of a newly introduced mathematical concept, including trigonometry, probability, logarithms, pooling, positional rotations, or training objectives; prior-chapter links need concise prerequisite reminders at the point of use.
+
+For each concept, provide its definition, explain every new symbol and assumption, give an intuitive or geometric interpretation where helpful, show why the operation or rule makes sense, and walk through a numerical calculation with intermediate steps. Then connect it to engineering or an LLM where appropriate and give a prediction/check with an explained answer. Related concepts can share a worked example, but a name, keyword mention, analogy, or formula alone is not teaching coverage.
+
+Teach prerequisites before relying on them: entries and dimensions before matrix operations; sums and lengths before dot products; ordinary derivatives before partials; partials before gradients; the chain rule before backpropagation; and both before optimizer equations. Define operations such as exponentials, logarithms, normalization, averaging, and elementwise squaring before using them inside a model formula. Distinguish an operation's definition from a theorem or an implementation convention.
+
+It is not necessary to force a figure into every paragraph. An annotated value table or a fully written coordinate calculation can supply the visual explanation. Keep advanced side topics shorter than the main path, but still include definitions and worked calculations. If a topic is only a future pointer, label it as deferred instead of presenting it as taught. Do not imply that a short numerical illustration proves a general theorem.
+
+Do not make up a reading-time estimate. This edition uses prerequisites and section counts because people work through math at very different speeds.
+
+When a supplied source includes interview questions, retain their substantive breadth in a visibly labeled **Interview questions** section with a stable contents anchor. Adapt prompts and answers in original prose; do not substitute a few synthesis exercises for an inventory of the source interview questions. Map every source question and page to its adapted question and beginner-friendly explained answer. Consolidate genuinely duplicate prompts transparently, preserve their distinct qualifications, and identify missing or truncated questions without inventing their text. Answers should give reasoning, relevant worked steps and misconception boundaries, with concise prerequisite reminders and links to fuller lessons.
+
+## Editorial titles and navigation
+
+Use the full editorial title in the page title, chapter heading, home-page card, sidebar chapter link, and previous/next navigation. Subject labels may remain in kickers and source filenames.
+
+- Chapter 01: **The Language of LLMs: Vectors, Matrices, and Meaning**
+- Chapter 02: **How LLMs Learn: Derivatives, Gradients, and Optimization**
+- Chapter 03: **From Text to Tokens: How LLMs Read Language**
+- Chapter 04: **From Tokens to Meaning: How Embeddings Represent Language**
+
+"Meaning" in chapter 1 refers to useful learned representations and their limits. It must not imply that individual coordinates intrinsically correspond to human-interpretable concepts.
+
+Use stable descriptive anchors such as `#attention` or `#backpropagation`. In prose, "chapter 1" and "chapter 2" are acceptable compact references. Avoid renumbering anchors when a section moves.
+
+## Visual identity
+
+The theme is a **botanical engineering notebook**: warm paper, deep evergreen, precise gridded diagrams, and restrained terracotta emphasis. It should feel like a readable technical field guide rather than a dashboard or a slide deck.
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--paper` | `#f8f6f0` | Main reading canvas |
+| `--surface` | `#fffefa` | Worked example surfaces |
+| `--ink` | `#213b35` | Primary text |
+| `--muted` | `#606963` | Secondary labels and captions |
+| `--dark` | `#183c35` | Cover and recap panels |
+| `--green` | `#226b59` | Links, forward values, representations |
+| `--green-soft` | `#eaf1e9` | Intuition and experiment background |
+| `--orange` | `#ab4a2d` | Sensitivity, resultant, caution |
+| `--orange-soft` | `#f7e9dd` | Assumption and limitation notes |
+| `--line` | `#dedfd5` | Quiet separation, never meaning alone |
+
+Color supports labels, arrows, line styles, and captions; it must never be the sole way to distinguish concepts. Color is contextual: a terracotta resultant in an algebra diagram is not an error. State the legend in text whenever the interpretation is not obvious.
+
+No external font service is required. Georgia supplies editorial headings; Segoe UI and system sans-serif fallbacks carry prose and UI. KaTeX supplies locally served mathematical fonts. Use sentence case for section headings and the established editorial chapter titles.
+
+Body: 16px with 1.75 line height on desktop; 15px with 1.8 on small screens. Desktop reading columns top out around 800px, with a persistent book rail and a separate contents rail where space permits. Large chapter headings use a serif face, close tracking, and generous surrounding whitespace. Avoid centered body text.
+
+Spacing uses a small family: approximately 8px for inline relationships, 12-16px for related labels, 20-30px within components, 32-40px between groups, and 50-65px before major sections. Borders are thin and corners modest (4-9px). Do not add gradients, generic stock photography, or decorative illustrations that compete with the explanation.
+
+## Reusable components
+
+Source components are ordinary semantic HTML styled in `book/assets/style.css`. No framework or runtime templating is required.
+
+| Component | Source pattern | Use |
+| --- | --- | --- |
+| Chapter opening | `header.chapter-header` | Promise, prerequisites, section count |
+| Kicker | `p.eyebrow` | Part or volume orientation |
+| Intuition note | `div.callout` with `p.label` | Key interpretation or prediction |
+| Assumption note | `div.callout.caution` | Caveat, scope boundary, false inference |
+| Numerical walk-through | `div.worked` with `p.label` | Reproducible calculation |
+| Display equation | `div.equation` containing TeX | Build-time accessible math |
+| Inline equation | `span.math` containing TeX | Math within a sentence |
+| Symbol key | `p.symbol-key` | Define symbols immediately |
+| Diagram | `figure`, `img`, `figcaption` | Original visual plus text equivalent |
+| Experiment | `section.lab` | Labeled controls, textual outputs, fallback |
+| Practice | `div.exercise` and `details` | Prediction followed by solution |
+| Recap | `div.recap` | A few durable connections |
+| Navigation | `nav.chapter-pagination` | Previous/next chapter |
+
+Use real headings in logical order: one h1 per page, h2 for sections, h3 for subsections. A component label is a paragraph, not a heading. Do not use manual line breaks to wrap prose; a deliberate break on a cover or card is acceptable.
+
+## Mathematical conventions
+
+Use bold lowercase for individual vectors, uppercase for matrices, ordinary lowercase for scalar entries, and a bold theta for the full parameter collection. Use real-valued examples unless discussing another domain explicitly. Define indices, dimensions, and constraints adjacent to each equation.
+
+An individual vector is a column. Write `[1, 2]` as an inline list for readability, and include a transpose when explicitly defining a column from a row list. Token batches use **rows**: X is token count by representation width, and `Y = XW`. Explain the orientation switch from `y = Wx`; these equations require transposed weight layouts. Omit batch/head axes only with a note.
+
+Use a superscript transpose, not a matrix inverse, to change orientation. Use the Euclidean norm unless stated otherwise. Cosine requires nonzero vectors. Rank is an algebraic property, not the number of semantic concepts. A map with a nonzero bias is affine, even if a framework calls it linear.
+
+Use natural logarithms for cross-entropy, a one-hot target for the introductory derivation, and a clearly stated loss reduction when batching is introduced. Squared-error examples here use `(prediction - target)^2` without a half factor. Learning rates are positive. State the coordinate metric when describing the gradient as steepest ascent.
+
+In source HTML, TeX lives inside `.math` or `.equation`, without dollar delimiters. Escape matrix ampersands as `&amp;` to keep HTML well-formed; the builder decodes entities before KaTeX renders. Formulas must parse in strict build mode. The output includes MathML for assistive technology and HTML for visual layout, so reading does not depend on client-side equation rendering.
+
+Avoid silently mixing equality and approximation. Calculate with full precision; round only reported results. Explain differences from rounding or first-order approximation. State domain conditions for logarithms, inverses, and derivatives.
+
+## Diagrams and experiments
+
+Every diagram is a separate original SVG under `book/assets/`. Use a viewBox, explicit dimensions, text labels, visible directionality, and sufficient contrast. Prefer 4-8 labeled entities to a giant flowchart. A standalone SVG need not duplicate the surrounding image alt text; the HTML image supplies its accessible description.
+
+Graphs must match their equations. Check point coordinates, axis scales, tangent slopes, arrows, and matrix entries. Declare schematic or unequal axis scales. No cropped labels. For 2D embedding drawings, explicitly say they are illustrations, not faithful projections of a real model.
+
+Experiments teach one variable at a time and begin with a prediction prompt. Every control has a persistent label; outputs include a text value, not just a graphic. Reset behavior must be deterministic. Bounds should reveal the intended behavior without allowing numerical overflow. Core exposition and worked values remain available without JavaScript; include a noscript interpretation.
+
+Do not persist learner activity or transmit it. This book has no analytics, accounts, remote font loading, or third-party requests at reading time. Print styles support offline review; use Print / save PDF for a chapter, not as a claim that a combined typeset print edition exists.
+
+## Source material and provenance
+
+The four supplied PDFs are exported instructional conversations, not peer-reviewed textbooks. They were treated as conceptual source notes, not as authoritative prose to reproduce. All four PDFs were fully text-extracted and their page-by-page topic sequences read. The first three sources' relevant mathematical and diagram-heavy pages were rendered for visual inspection; the embeddings source's 25 embedded illustrations were extracted and visually inspected, with the formula/table text checked against their surrounding lessons. The source-specific maps below distinguish what was readable, corrected, added, unavailable, or merely proposed.
+
+| Supplied source | Pages | Used in this edition |
+| --- | --- | --- |
+| *Understand Linear Algebra* | 1-20 | Foundational roadmap; vectors, dot products, transformations |
+| Same source | 21-43 | Dimension versus vector count; vector addition; dot product versus cosine |
+| Same source | 44-84 | Linear combinations, independence, transformations, multiplication and transpose; attention shapes |
+| Same source | 85-110 | Inverses, determinant, rank, information loss, low-rank adaptation |
+| Same source | 111-124 | Eigenvectors, eigenvalues, PCA; SVD as a follow-on connection |
+| *Learn Calculus For LLMs* | 1-29 | Intuition-first roadmap; training versus inference; brief integration context |
+| Same source | 30-83 | Functions, composition, limits, continuity, derivatives |
+| Same source | 84-127 | Partial derivatives, gradients, chain rule and backpropagation |
+| Same source | 128-161 | Gradient descent, optimizer overview, softmax, cross-entropy and logit gradients |
+| Same source | 162-179 | Second derivatives, saddles, Hessians, curvature and Newton's method |
+| Same source | 180-181 | Export/download wrap-up; no additional prerequisite lesson |
+| *Start LLM Tokenizers Learning* | 1-32 | Tokenization foundations, BPE, byte representation, IDs, experiments and practical implications |
+| Same source | 33-48 | WordPiece, Unigram, SentencePiece, comparison experiments and model compatibility |
+| Same source | 49-68 | Vocabulary architecture, memory, special tokens, padding, chat/tool formats, context and multilingual/code behavior |
+| Same source | 69-79 | Developed interview questions Q1-Q16 and the readable part of Q17; page 79 physically ends mid-answer |
+| *Learn Embeddings* | 1-24 | Token embeddings, table lookups, training, geometry, contextual states and retrieval |
+| Same source | 25-57 | Developed position lesson: additive vectors, sinusoidal encoding, learned positions, RoPE, causal masking, cache and engineering implications |
+| Same source | 58-60 | Future neural-network/embedding-model curriculum; sentence-encoder/pooling illustration receives a bounded bridge |
+
+The chapters reorganize the conversation topics into four coherent chapters. They do not reproduce the source's exact lessons, quizzes, UI screenshots, illustrations, or conversational turns. All explanatory prose, numerical scenarios, and SVGs in this repository are newly authored. Source PDFs and extracted source transcripts are not redistributed in the repository.
+
+### Coverage after the first-principles expansion
+
+The initial edition was not exhaustive. A subsequent audit reread the full 124-page algebra extraction and 181-page calculus extraction and inspected the large embedded source illustrations. The expansion below addresses the substantive instructional gaps with original calculations, not copies of source prose. The table maps coverage, rather than claiming that every original exercise or interface was recreated.
+
+| Source topic and pages | Chapter destination | Treatment |
+| --- | --- | --- |
+| Algebra 1-30: scalar/vector/matrix, coordinates, dimension, learned representations | Chapter 1 sections 1 and 3 | Arithmetic, length, entry/shape definitions and representation caveats |
+| Algebra 31-39: addition, subtraction, offsets, token-plus-position addition | Chapter 1 section 1 | Head-to-tail diagram and explicit componentwise calculations; fabricated offset example clearly labeled |
+| Algebra 40-48: dot/cosine, angle, projection, weighted combination | Chapter 1 sections 2 and 5 | Coordinate sums, norms, inverse-cosine calculation, geometric projection and attention-weight calculation |
+| Algebra 49-68: independence/span, linear maps and geometric actions | Chapter 1 sections 3 and 6 | Pair and three-vector dependence examples; rotation/reflection/shear/scaling/projection table |
+| Algebra 68-84: products, composition, dimensions and transpose | Chapter 1 sections 4-5 | Row-column arithmetic, valid/invalid shapes, rectangular transpose and all four transpose identities |
+| Algebra 85-100: inverse, systems, normal equation, determinant | Chapter 1 section 6 | Non-diagonal inverse, solved linear system, least-squares normal equation, area/volume and conditioning |
+| Algebra 101-110: rank calculation, information loss and low-rank adaptation | Chapter 1 section 6 | Gaussian elimination, column dependency, collapse diagram and factor-product parameter counts |
+| Algebra 111-124: eigenpairs, covariance and PCA; introductory SVD pointer | Chapter 1 section 7 | Eigenvector back-substitution, covariance from centered data, variance/projection and worked rectangular SVD bridge |
+| Calculus 30-51: functions, domains, growth and composition | Chapter 2 section 1 | Evaluations/table, exponential/logarithm, sigmoid domain/range and ordered composition |
+| Calculus 52-83: limits, continuity, derivative definition and rules | Chapter 2 sections 1-2 | Hole/jump/corner distinctions, both-sided secants, difference-quotient derivation and step-by-step rules |
+| Calculus 84-117: partials, gradient, directional change and norm | Chapter 2 section 3; vanishing/exploding in section 4 | Coordinate-wise difference checks, contour visual, directional derivative and norm scaling |
+| Calculus 117-144: chain rule, backpropagation, descent and optimizers | Chapter 2 sections 4-5 | Scalar and matrix gradients, branch sums, full/SGD/mini-batch comparison, momentum, Adam bias correction, AdamW and clipping |
+| Calculus 144-161: softmax, cross-entropy and sequence likelihood | Chapter 2 section 6 | Stable normalization, logit-gradient derivation, probability boundary behavior, conditional likelihood and sum/mean reductions |
+| Calculus 162-179: second derivatives, Hessians and Newton's method | Chapter 2 section 7 | Mixed entries, definiteness tests and their limits, local/global example, narrow-valley calculation and scalar/matrix Newton steps |
+| Calculus 23-27 and 179-181: accumulation and future roadmap | Chapter 2 section 8 | Worked rectangle-limit, definite/indefinite integral, theorem, density and expectation bridge; future-course pointers remain deferred |
+
+**Remaining scope limits:** the source's separate vector-coefficient, matrix-transform, function-switching, derivative, surface, and curvature explorers are not all recreated as controls. Their mathematical ideas have original worked replacements; the book retains three focused interactive labs. Static PDF screenshots do not supply the original widgets' code or complete behavior. Detailed numerical SVD/QR algorithms, full Jacobian/differential-equation courses, and named Bayesian/variational/diffusion applications are outside the PDFs' developed lessons and are not supplied as new chapters here. Linked downloadable HTML/glossary artifacts mentioned in the source wrap-up were not attached and are not claimed as audited or reproduced. Repeated chat turns and export UI are intentionally excluded; substantive gaps must never be relabeled as page furniture.
+
+One illustration region on algebra PDF page 43 renders blank in the supplied PDF itself, not just in text extraction. Its surrounding dot-product/cosine explanation is readable and covered; no unseen figure content is claimed as recovered. Equation-heavy material and other large embedded illustrations were readable enough to identify their instructional topics. This is a conceptual audit, not a claim of pixel-by-pixel reproduction.
+
+Editorial corrections and boundaries: do not identify linear independence with semantic dissimilarity; do not imply every embedding coordinate has a fixed human meaning; distinguish affine from linear maps; do not say a zero derivative proves a minimum; explain that reverse-mode derivatives add at branches; and distinguish a frozen-weight generation pass from a training update. The original source's broad SVD and integration pointers remain compact bridges rather than fabricated full source lessons.
+
+## Tokenization source coverage
+
+Chapter 3, **From Text to Tokens: How LLMs Read Language**, is based on the complete 79-page *Start LLM Tokenizers Learning* PDF, not on its initial roadmap alone. All pages were extracted and read, including the interview material after the lesson summaries. The three embedded raster illustrations on pages 4, 8, and 43 were inspected separately. Pages 12, 15-18, 22, 36, 39, 42, 50-52, 54, 57-58, 60, 64, and 79 were also rendered to check vector-drawn figures, tables, equations, the interactive-calculator screenshot, and the abrupt ending. This is conceptual source coverage, not reproduction of source wording, figures, exact quizzes, or hypothetical production outputs.
+
+The inventory and destination audit below distinguish developed lessons, editorial prerequisite additions, roadmap-only suggestions, and unavailable material. Chapter anchors identify actual teaching sections, not keyword mentions.
+
+| Source lesson, example type, or visual concept | Chapter 3 destination | Treatment and audit result |
+| --- | --- | --- |
+| pp. 1-3: future LLM course roadmap and teaching approach | Opening; `#recap` | Teaching sequence retained; embeddings, neural networks, Transformers, training/inference and agents remain future-course pointers, not invented source chapters |
+| pp. 4-7, 69-72 Q1-Q5: token units, word/character/subword trade-offs, reusable word variations, lexer analogy, OOV, categorical IDs | `#text-units`, `#vocabulary-contract` | Defined units and vocabulary; original maps example, comparison table, lexer limits, unseen-word exercise, ID-to-vector calculation |
+| pp. 8-10, 22-24, 31-32: text-to-ID-to-embedding pipeline and token table | `#vocabulary-contract`, `#vocabulary-memory` | Original saved pipeline SVG, reversible toy ID table, row lookup and model/tokenizer training distinctions |
+| pp. 11-18: initial alphabet, adjacency counts, ties, successive merges, vocabulary growth and visual merge history | `#bpe-training` | Complete original weighted map/maps/maple corpus; every initial pair, every recount, five intermediate states, deterministic tie rules, vocabulary and token-occurrence audit; original saved SVG |
+| pp. 18-20, 29-31: unfamiliar words, fixed merge rules, tokenizer training versus encoding | `#three-training-jobs`, `#bpe-encoding`, `#bpe-rank-conflict` | Frozen rank-2 and rank-5 encodings of a new word; exact ID decoding; explicit missing-base-unit counterexample; separate competing-ranks example proves why longest-prefix segmentation can differ |
+| pp. 20-22, 26, 30, 71-73 Q4/Q7: compression origin, bytes, 256 base values, UTF-8, multilingual coverage and regex pre-tokenization | `#text-units`, `#unknown-byte-fallback`, `#preprocessing` | Byte arithmetic, accented Unicode examples, bytes-versus-characters, coverage limits, incomplete-byte decoding, preprocessing boundaries and byte-fallback distinction |
+| pp. 24-25, 53-57, 78-79: structural tokens and message/turn/handoff distinctions | `#special-tokens`, `#chat-templates`, `#tool-handoffs` | Role table, conceptual serialization, structural token count and completed conceptual distinctions; no claim to recover the cut-off model-specific example |
+| pp. 25-26: local tiktoken exploration, per-token bytes, multilingual count comparisons | `#tiktoken-experiment` | Optional local Python experiment with exact Unicode escapes and byte round-trip assertions; no unmeasured named-model counts |
+| pp. 27-28, 45, 59-61: context, API cost, RAG chunking/overlap, external memory | `#context-budgets`, `#rag-chunking`, `#token-cost` | Original scaled budget SVG, fit/overflow calculation, inclusive chunk positions and duplicate count, invented-rate cost calculation, explicit storage-versus-context distinction |
+| pp. 29-31: BPE assessment, whiteboard explanation and recap | Section-level explained exercises; `#practice` questions 1-2 and 8 | Original questions require recounts and mechanisms rather than copying the quiz or UI |
+| pp. 33-37, 73-74 Q8: WordPiece motivation, continuation markers, greedy longest matching, unknown handling | `#wordpiece` | Likelihood motivation kept distinct from under-specified original training recipe; full greedy trace and failure, plus no-backtracking counterexample |
+| pp. 38-41, 74 Q9: alternative Unigram segmentations, product scores, probability estimation, candidate pruning and regularization | `#unigram` through `#unigram-training`; `#unigram-pruning` | Original normalized four-token vocabulary; all paths, products, sum, best-path table and backward trace, log arithmetic, one fractional-count estimation step, two-candidate frozen-score removal comparison, and sampling interpretation |
+| pp. 41-43, 74-75 Q10-Q11: comparison table and SentencePiece/raw-text/whitespace visual | `#sentencepiece` | Framework-versus-algorithm distinction, raw-text and marker example, preprocessing caveats and corrected non-universal algorithm comparisons |
+| pp. 43-45: GPT/BERT/T5 comparison code, configuration/revision pinning, model compatibility and fine-tuning | `#compare-artifacts`, `#vocabulary-memory` | Optional revision-required local comparison instructions, normalization/special-token differences, model row contract and vocabulary-change implications; no claimed downloaded measurement |
+| pp. 49-53, 63-65, 75-78 Q12-Q15: embedding row visualization, shape, parameter/memory arithmetic and vocabulary trade-off | `#vocabulary-memory`; `#practice` question 5 | Original small lookup and full 64,000-by-2,048 storage calculation, bytes/MB/MiB definitions, doubling/quadrupling exercises, tied/untied output boundary |
+| pp. 52-55, 66 Q1-Q2: memory-calculator screenshot, variable-length batch diagram and mask array | `#vocabulary-memory`, `#padding` | Static worked replacements, parameter scaling and exact padding overhead/masks; source calculator and controls not recreated |
+| pp. 55-59, 66-67 Q3-Q4: application messages, chat serialization pipeline and tool-call flow | `#chat-templates`, `#tool-handoffs` | Original saved six-stage SVG, application/runtime responsibilities, argument/permission checks and explicit limits of control markers |
+| pp. 60-61, 67 Q5: context allocation diagram, overflow behavior and memory | `#context-budgets`; `#practice` question 7 | Original proportional allocation visual and recomputed categories; reject/reduce/recount behavior, separate output limits and headroom |
+| pp. 61-63: natural language/code/JSON comparison and multilingual efficiency | `#preprocessing`, `#sentencepiece`, `#corpus-efficiency`, `#real-tokenizer-lab` | Training-coverage mechanism taught with two byte-BPE artifacts on identical accented text, exact toy counts and reversible payloads; casing, identifier, punctuation, indentation/JSON and script experiment sheet; no invented production counts or efficiency-equals-comprehension claim |
+| pp. 64-69: embedding bridge, positional-information caveat and future module | `#vocabulary-memory`, `#recap` | Row indexing and vector bridge taught; position mechanisms named as deferred, not a new positional-encoding course |
+| pp. 69-79: interview Q1-Q17, including architecture and special tokens | All relevant teaching sections; `#practice` | Q1-Q5 foundations in sections 1-2/4, Q6-Q7 BPE in 3-4, Q8 WordPiece in 5, Q9 Unigram in 6, Q10-Q11 framework/comparison in 7, Q12-Q15 architecture in 8, Q16 and readable Q17 in 9; eight original explained synthesis exercises |
+
+**Corrections and added prerequisites.** The source's Unigram illustration labels five values as token probabilities even though they sum to more than 1. Chapter 3 replaces that illustration with a complete normalized toy vocabulary and distinguishes token probabilities, path-product scores, conditional path probabilities, best-path decoding, and summed text likelihood. Fractional-count EM arithmetic, prefix dynamic programming, logarithmic scoring, overlapping-pair behavior, Unicode normalization, and byte fallback provide bounded explanatory bridges; they are original prerequisite/clarification additions, not claims that the PDF develops those algorithms in this depth. The source's unseen-word BPE illustration implicitly needs a base character absent from its listed vocabulary; the chapter explicitly distinguishes a new whole word from a missing base unit.
+
+The page 8 pipeline illustration labels a generic tokenizer as greedy longest-match; that is not universally true of rank-based BPE. The page 43 illustration contrasts SentencePiece with supposedly space-dependent "standard BPE" and implies universally meaningful boundaries. The chapter retains the useful framework/raw-text distinction but corrects those implications: SentencePiece supports BPE, BPE itself need not require spaces, and learned pieces are not guaranteed linguistic units. IDs and embedding values from source artwork are not treated as production measurements.
+
+**Unavailable, omitted, and deferred material.** The supplied PDF itself stops on page 79 in Q17, after an unfinished model-specific marker example; rendering confirms this is not merely an extraction omission. The readable distinction among sequence termination, assistant-turn completion, and tool handoff is taught, but no unseen continuation or additional interview questions are claimed. Some Devanagari examples contain replacement/missing glyphs in the source; newly specified Unicode examples replace them, without reconstructing the damaged originals. The large embedded illustrations and the vector tables/diagrams used for the audit were otherwise readable enough to identify their instructional ideas.
+
+Repeated conversational transitions, quiz selections/scores/retry controls, QR/download furniture, and export headers are intentionally not recreated. The static source does not include runnable code for its quizzes or memory slider. Original explained exercises and storage calculations replace their instructional function; the chapter adds no new interactive control. The local tiktoken and GPT/BERT/T5 comparison ideas are retained as optional reproducible instructions, not executed or bundled production-model measurements. They require separate packages/artifacts and, for the latter, explicit revisions. Token counting in .NET, a tokenizer explorer, detailed original WordPiece vocabulary-training code, advanced Unigram implementation, and the later embeddings/Transformer/agent course are undeveloped roadmap suggestions or beyond the developed source lessons; no supplied lesson is claimed for them.
+
+**Pedagogical review boundary.** Source coverage and numerical correctness are different from reader comprehension. The chapter's beginner-oriented review checks definition order, display notation versus literal whitespace, bytes versus IDs, tokenizer decoding versus model generation, complete algorithm traces, and explained predictions. It includes a BPE rank-versus-longest counterexample, a causal byte-fragmentation example, and additional Unigram backtracking, logarithm, fractional-count, and pruning explanations rather than relying on topic names alone. Section 6 remains the densest part: its implementation-oriented subsections are signposted after the core three-path example. The chapter teaches the developed source lessons and bounded explanatory bridges, not a full production tokenizer trainer. Automated checks and editorial review do not demonstrate that a human beginner understood it; no learner study is claimed.
+
+## Embeddings source coverage
+
+Chapter 4, **From Tokens to Meaning: How Embeddings Represent Language**, uses the entire 60-page *Learn Embeddings* PDF. It is not limited to the first embeddings introduction: pages 25-57 contain a second developed instructional lesson about position. All 60 pages were text-extracted and read before drafting. All 25 embedded raster illustrations were separately extracted and inspected, including pages 1, 4, 7, 9-10, 12, 15-16, 18, 26, 29-32, 34, 38, 41-42, 45, 47, 50, and 59. This records the actual inspection method; it is not a claim that every PDF page was independently rasterized.
+
+The inventory includes row-selector and one-hot visuals, distributed-vector clusters, training/update diagrams, a cosine calculation, analogy directions, ambiguous bank senses, two architecture branches, retrieval stages, reorderings, additive vector tables, waves and heatmaps, rotation matrices and paired rotations, relative-gap scores, a causal triangle, cache implications, and the sentence-encoder/pooling diagram. Original prose, numbers, tables, and six substantive saved SVGs replace these visual concepts; a seventh SVG is decorative home-card art.
+
+| Developed source lesson, algorithm mechanic, example type, or visual | Chapter 4 destination | Actual teaching treatment |
+| --- | --- | --- |
+| pp. 1-6, 21-24: IDs versus vectors, dimensions, distributed representations, illustrative model widths, introductory vector clusters | `#ids-and-lookups`, `#offsets` | Complete toy vocabulary; scalar/vector/matrix/index definitions; shape and storage calculations; coordinate-label and projection limits. No unverified named-model widths |
+| p. 1 one-hot/lookup artwork; pp. 7-9, 21 Q3-Q4: table, initialization, address-based retrieval and sequence output | `#ids-and-lookups`, `#one-hot` | Four-by-three table, repeated-ID gather, equivalent selector multiplication and inner-shape reasoning; saved lookup SVG. No full Word2Vec trainer inferred from unlabeled target nodes |
+| pp. 6-10, 20-22 Q5/Q10: learned values, prediction task, gradients, trainable parameter table | `#learning-vectors`, `#probability-and-loss`, `#embedding-gradient` | Original complete two-choice forward/loss/backward/update/recompute calculation; definitions of exponential/log/probability/derivative/partial/chain rule; repeated-row accumulation and inference distinction; saved update SVG |
+| pp. 5, 10-12, 22 Q7: dot product, magnitudes and complete three-coordinate cosine example | `#geometry`, `#normalization-and-distance` | Every product, square, sum, square root and denominator; scale counterexample; zero-vector restriction; original Euclidean/unit-normalized ranking bridge; no similarity-as-truth claim |
+| pp. 1 and 12-13: analogy offsets and vector directions | `#offsets` | Constructed displacement and candidate-distance arithmetic; original equal-scale SVG; empirical/bias caveats instead of asserting a semantic law |
+| pp. 13-16, 20, 22-23: same bank ID versus context-dependent state; text-to-model overview | `#contextual-states`, `#engineering`, `#recap` | Explicit shared input row and two fully calculated toy context mixtures; table of representation granularities; full pipeline roles, with omitted Transformer components clearly named |
+| pp. 17-19, 21-22 Q8: chunking, compatible query/passage encoding, storage/metadata, compare/rank/select, context for RAG | `#text-vectors-and-search`, `#retrieval`, `#practical-contract` | Original three-passage cosine ranking, top-k trace, stored-text versus vectors, permission/currentness checks and saved two-path retrieval SVG; bounded hybrid/approximation/evaluation reminders |
+| p. 59 sentence-encoder illustration; pp. 58-60 distinction between token layers and separate text encoders | `#pooling`, `#text-vectors-and-search` | Editorial prerequisite bridge: explicit hidden-state mean, padding exclusion and normalization arithmetic; no claim that arbitrary pooling creates a trained retrieval model or that diagram module labels specify actual layers |
+| pp. 25-27, 29-30, 47, 52-53 Q1/Q12: reordered words/events and full-attention symmetry | `#order` | Original symmetric mixer trace; define permutation, equivariance versus invariance; explain moved query/key/value relationships and causal-mask exception. Source's identical-output shorthand corrected |
+| pp. 27-29, 38-39, 47-48: token and position lookups, componentwise addition and pseudocode branches | `#additive-position`, `#learned-position`, `#rotary` | Same token at two positions, every coordinate sum and unchanged width; two distinct row addresses; additive versus query/key rotation location |
+| pp. 30-36, 52 Q3-Q5: sine/cosine waves, frequencies, indexed original formula, four-coordinate position-2 calculation and heatmaps | `#angles`, `#sinusoidal` | Unit circle, degrees/radians, function values, period/phase, pair indices, fractional powers, every rate/angle/coordinate; numerical position table replaces heatmap; original circle SVG |
+| p. 36: systematic relative-position transformation and calculable positions beyond training | `#sinusoidal-offset` | Derived offset-coordinate rules and complete p=1 to p=2 check; calculability distinguished from learned longer-context performance |
+| pp. 36-39, 46, 52: learned position table, backpropagation, support length, extension/interpolation | `#learned-position` | Independent table shape/address, two-input addition sensitivities and row updates; valid index range, storage, midpoint interpolation illustration rather than an unverified extension recipe |
+| pp. 40-45, 48-49, 52-53 Q6-Q8: Q/K/V roles, two-dimensional rotation, RoPE pairwise implementation and placement | `#queries-keys-values`, `#rotation-matrix`, `#rope-pairs` | Original three explicit projection products, axis-based rotation derivation, quarter-turn arithmetic, all four query coordinates at two rates, row/column and pairing conventions; values bypass rotation in saved SVG |
+| pp. 31, 43-45: rotated query/key dot and signed relative gap; longer-context caveat | `#relative-rotation`, `#engineering` | Transpose/rotation-composition reasoning plus exact same-gap and changed-gap calculations with clearly nondefault toy rate; distinguish content contribution from relative rotation factor |
+| pp. 49-50, 53-55 Q9: position versus causal masking, allowed-prefix triangle | `#causal-mask`, `#masked-attention` | Query/key access table, complete scaled-dot/masked-softmax/value mixture, blocked-score limit interpretation, padding distinction and all-blocked failure condition |
+| pp. 50-53 Q10-Q11: context window, fine-tuning/inference configuration, KV cache and context extension | `#engineering`, `#cache`, `#practical-contract` | Cache reuse and double-rotation/reset counterexamples; hypothetical cache storage arithmetic; phase-scaling illustration, checkpoint contract and bounded extension caveats |
+| pp. 19-24 and 52-57: two quizzes, interviews, whiteboard flows and recaps | Section-level predictions; `#practice`, `#interview-questions`, `#recap` | Original synthesis exercises remain; an explicit interview section maps every numbered interview question as inventoried below. Explained answers replace copied UI selections or interview wording |
+
+**Interview-question correspondence.** The actual PDF interview pages were re-extracted and re-read for this revision: p. 21 contains embedding Q1-Q4; p. 22 contains Q5-Q10; p. 52 contains position Q1-Q6; p. 53 contains Q7-Q12 and the continuation of Q6's answer. That is **22 numbered source questions**, adapted into **21 explained chapter questions**. Position Q1 and Q12 overlap on the need for an order mechanism and share adapted question 11; their full-attention/causal-mask qualifications are explicitly preserved and corrected. Embedding Q3/Q4 (stored table versus lookup operation), Q5/Q10 (learning versus parameter status), and position Q2/Q5 (terminology versus mechanism comparison) remain separate because their requested explanations differ. The counts exclude separate quizzes, whiteboard prompts, repeated transitions, and export furniture.
+
+| Source question and page | Substantive intent, paraphrased | Adapted question and answer anchor |
+| --- | --- | --- |
+| Embedding Q1, p. 21 | Define embeddings | 01: `#interview-representation` |
+| Embedding Q2, p. 21 | Why IDs alone are not meaning vectors | 02: `#interview-token-ids` |
+| Embedding Q3, p. 21 | Embedding matrix and dimensions | 03: `#interview-table` |
+| Embedding Q4, p. 21 | Embedding-layer lookup mechanics | 04: `#interview-lookup` |
+| Embedding Q5, p. 22 | Initialization and learning | 05: `#interview-training` |
+| Embedding Q6, p. 22 | Token versus contextual representations | 06: `#interview-context` |
+| Embedding Q7, p. 22 | Cosine similarity and its use | 07: `#interview-cosine` |
+| Embedding Q8, p. 22 | Embeddings in RAG | 08: `#interview-rag` |
+| Embedding Q9, p. 22 | Width and engineering tradeoffs | 09: `#interview-width` |
+| Embedding Q10, p. 22 | Embeddings versus model weights | 10: `#interview-weights` |
+| Position Q1, p. 52 | Why position information is needed | 11: `#interview-order` (combined with Q12) |
+| Position Q2, p. 52 | Encoding versus embedding terminology | 12: `#interview-position-terms` |
+| Position Q3, p. 52 | Sinusoidal generation | 13: `#interview-sinusoidal` |
+| Position Q4, p. 52 | Why use both sine and cosine | 14: `#interview-sine-cosine` |
+| Position Q5, p. 52 | Learned versus sinusoidal positions | 15: `#interview-position-learning` |
+| Position Q6, pp. 52-53 | Define RoPE | 16: `#interview-rope` |
+| Position Q7, p. 53 | RoPE's placement, not direct token-table rotation | 17: `#interview-rope-placement` |
+| Position Q8, p. 53 | Relative-position benefit | 18: `#interview-relative-position` |
+| Position Q9, p. 53 | Position handling versus causal masking | 19: `#interview-mask` |
+| Position Q10, p. 53 | Limits of context extension | 20: `#interview-context-limit` |
+| Position Q11, p. 53 | Position-dependent keys and KV reuse | 21: `#interview-cache` |
+| Position Q12, p. 53 | Order without position/order mechanisms | 11: `#interview-order` (combined with Q1) |
+
+All 22 numbered interview prompts and their answers are readable; none is inferred from missing or truncated text. Q6's page break is a continuation, not an absent answer. The p. 21 table-shape formula has flattened extraction layout, but its V/d definitions and the developed lookup lesson supply the shape unambiguously. The figure-label recovery limitations below remain unchanged. The adapted answers use original examples and local lesson links, retain the existing synthesis exercises, and explicitly distinguish parameters from activations, cosine from confidence, full-attention equivariance from causal connectivity, and calculable positions from tested context quality. A separate answer-by-answer review checked those boundaries and numerical steps; this is not evidence of a human learning outcome.
+
+**Illustration corrections and recovery limits.** All developed text lessons were readable; the PDF ends with a complete planning discussion, not an abruptly cut-off lesson. Some equation layout was flattened during extraction, but the surrounding definitions and calculations identified the intended formulas. The p. 30 small wave graphic has clipped/right-edge labels, and the p. 34 heatmap has malformed axis labels and reversed fast/slow dimension captions. Exact missing labels are not claimed recovered; surrounding pp. 33-36 supply the readable formula and frequency lesson. The chapter replaces these with indexed numerical values and explicit rate definitions.
+
+The p. 9 lookup picture's IDs, padding row, and copied output values do not consistently agree. The p. 15 bank artwork suggests separate sense-specific vocabulary entries despite the text's shared initial row. The p. 45 overview labels its input as a token vector even though the developed RoPE text applies rotations to Q/K. The p. 47 position-free panel implies identical rather than correspondingly permuted outputs; a causal decoder also needs a narrower statement than unmasked full-attention equivariance. These images are not treated as implementation specifications. Corrected original examples preserve their instructional intent without copying the contradictions. The sentence-encoder illustration's fixed 768 width and module-as-layer labels are not universal architecture facts.
+
+**Added prerequisites, omissions, and deferred topics.** One-hot selector arithmetic, the fully traced tiny prediction objective/gradient, unit normalization and distance equivalence, mean pooling with padding, attention projection/normalization arithmetic, explicit relative-rotation reasoning, and cache failure examples are original bounded scaffolding. The PDF often mentions these mechanisms without those intermediate steps; their added depth is not falsely attributed to source demonstrations. Training this toy predictor does not teach standalone semantic-embedding training.
+
+The developed lessons are mapped above. Static quiz, row-highlighter, wave/heatmap, and architecture screenshots supply no executable widget implementation; original static diagrams, complete calculations, and native explained solutions replace their teaching function. Repeated conversation transitions, QR/download/promotional and export furniture, quiz scores/retry controls, and source numbering are excluded. No separately linked artifacts or runnable widget resources were attached or audited; source-only graphics remain outside the repository.
+
+Pages 57-60 propose neural-network/activation/Transformer-block courses and a dedicated embedding-model course (Word2Vec CBOW/Skip-gram, GloVe, BERT/Sentence Transformers, contrastive objectives and positive/negative pairs, bi-/cross-encoders, model quality/training, recommendations, and .NET/API/vector-database implementation). They are roadmap-only, not developed lessons to fabricate. The p. 59 pooling visual gets the limited explanatory bridge described above. Detailed RoPE scaling/interpolation algorithms, production KV-cache code, and authenticated semantic-search implementations are likewise future work; the developed placement, arithmetic, and engineering caveats are taught here.
+
+**Pedagogical review boundary.** A separate full-chapter beginner pass followed drafting, checking each definition and dependency rather than merely searching keywords or counting formulas. It checked token/position indices, dense versus one-hot shape, objective-driven updates, shared-row gradients, nonsemantic coordinate labels, normalization domains, context versus stored weights, pooling versus a trained encoder, equivariance versus identical output, angle units/pair order, relative-gap signs, mask timing, and cached rotations. Repairs added an explicit coordinate definition, a two-sided numerical loss-slope check, shared-gradient and loss-reduction arithmetic, causal-compatible bank contexts, radius/arc prerequisites, the axis decomposition before sinusoidal shift equations, zero/half-power reasoning, rotation-square cancellation, and a transpose/composition calculation. Sections 9 and 11 remain demanding and should be worked with the preceding circle lesson rather than skimmed. Source coverage, arithmetic tests, layout checks, and editorial reasoning cannot prove human comprehension; no learner study or production embedding benchmark is claimed.
+
+The destination-book visual pass also moved long calculations into locally scrollable display blocks, added wrap opportunities between long vector coordinates, stacked the central sinusoidal definitions, and checked every original diagram's labels and direction arrows. Those changes preserve readable 320px layouts and expanded solutions without shrinking all mathematical content or hiding horizontal overflow. The four-chapter edition remains portable under `dist/`; no new chapter-specific JavaScript or server-dependent lesson is required.
+
+## Accessibility and responsive behavior
+
+Provide a skip link, visible keyboard focus, semantic landmarks, clear link names, meaningful image alt text, native expandable solutions, and labeled range inputs. Use aria-live sparingly for changing results. Decorative card art has empty alt text; substantive figures have descriptions of the relationships and values.
+
+Keep the `no-js` class on the document until the application module initializes. Directly opening the built `dist/index.html` uses the no-JavaScript reading layout because browsers block local module imports; the theme, pre-rendered math, diagrams, and chapter navigation must still work, including on mobile. Source fragments under `book/` are not standalone reading pages.
+
+The contents rail disappears before it squeezes the reading column. Below 640px, the sidebar becomes a button-controlled disclosure; Escape closes it and restores focus. Long equations and tables scroll locally, never the entire page. Respect reduced-motion preferences. Do not hide essential definitions behind hover. A print stylesheet removes navigation and keeps worked examples together where practical.
+
+## Adding a chapter and reviewing it
+
+Create `book/topic-name.html`, add the page metadata in `scripts/build.mjs`, add the home card and adjacent chapter links, and place original assets in `book/assets/`. The builder creates sidebar links, table-of-contents anchors, document titles, local KaTeX assets, and the guide page. Do not hand-edit `dist/`.
+
+Before calling a chapter finished:
+
+1. Audit coverage against the actual source notes. Record deliberate omissions or additions in its source note.
+   Read the complete supplied extraction, inspect figures whose meaning is absent from text, and distinguish taught, partial, missing, and roadmap-only topics. Passing build/math checks is not evidence of exhaustive source coverage.
+2. Recalculate every numerical example independently. Trace matrix shapes and distinguish toy illustrations from model behavior.
+   Review every section for unexplained prerequisites, not only the derivative derivation. Check definitions, symbol keys, domain/shape conditions, intermediate steps, worked results, and explained practice for every introduced concept.
+3. Run `npm test`. A build must reject malformed math; browser checks cover links, image loading, responsive overflow, navigation, and the interactive experiments.
+4. Inspect the home page and both a formula-heavy and a diagram-heavy section at desktop and mobile widths. Check keyboard navigation and readable local equation scrolling.
+5. Confirm that meaning survives without scripts. Generate and inspect each chapter's PDF companion according to the mandatory PDF delivery procedure below; a browser print-media preview alone does not count.
+6. Keep the chapter, this guide, implementation, and related checks in agreement. Do not add a framework merely for a new page.
+
+## Mandatory PDF companions and review
+
+Every chapter delivery or substantive revision must include an **up-to-date, generated and inspected PDF companion**. This applies to all four current chapters and every future chapter. Keep the web reading edition and PDF substantively aligned, including every exercise and interview answer; collapsed `<details>` must not hide answers in the delivered PDF. Do not treat successful HTML rendering, a print button, or an aspirational checklist as evidence that the actual PDF is correct.
+
+Use the existing local workflow:
+
+```powershell
+npx playwright install chromium
+python -m pip install -r requirements-pdf.txt
+npm run pdf
+npm run pdf:check
+```
+
+`scripts/chapters.mjs` is the shared source of chapter titles, HTML names and meaningful PDF names. Register a future chapter there, extend the home card/adjacent links, and follow the same pipeline. `npm run pdf` first builds the book, then uses local Chromium with `book/assets/print.css`, opens every solution, waits for local fonts and diagrams, and writes the A4 companions under `publications/`. No external conversion service is allowed. A shared Chapter PDF link is generated into each chapter's toolbar; `npm run build` copies the publication files into `dist/pdfs/` so downloads work in a portable, file-opened book.
+
+Commit the reasonable-sized publication PDFs and their `publications/manifest.json` beside source changes. The manifest records a source digest, each PDF's hash, expected substantive prose fragments, and answer/figure/formula counts for checks; counts are not evidence of instructional quality. `dist/`, raster page images, contact sheets and extracted audit text are reproducible, ignored output. Do not redistribute supplied source PDFs or private source-audit material. Regeneration is content/layout reproducibility, not a claim of byte identity across browser versions, fonts and metadata timestamps.
+
+The checker verifies the **actual PDF files**: source and output freshness, title/bookmarks, expected prose (including expanded answer text), A4 size, blank pages, raw TeX, and text bounding boxes inside safe paper margins. It renders every page locally at inspection resolution and creates numbered contact sheets under `dist/pdf-review/<chapter-name>/`. A passing checker is necessary but not sufficient:
+
+1. Inspect every contact sheet for overall completeness, consistent botanical-notebook theme, page numbering, excessive blank space, awkward page breaks and missing/oversized diagrams. Reopen suspicious pages at full resolution, rather than approving only thumbnails.
+2. Read formula-heavy pages at full resolution: confirm symbols, fractions, matrices, indices and signs are rendered, legible and unclipped. Reflow an overwide derivation into steps; do not silently shrink an entire chapter or crop overflow. The generator rejects detected overwide equation/table/code blocks.
+3. Check original diagrams, table headers/rows, multiline code, source notes and the beginning/end of each chapter. Verify captions stay with diagrams and headings do not become orphaned at page bottoms. Long worked examples and answers may continue across pages; they must not lose lines or become giant unbreakable boxes.
+4. Inspect expanded exercise and interview answers in the PDF, not only their HTML disclosure controls. The checker compares substantive prose fragments against extracted PDF text; manually inspect mathematical answers and diagrams that text extraction cannot fully certify.
+5. Run `npm test` for the associated web behavior and download links. Regenerate and repeat checks after any content or print-layout repair. Record genuine remaining limitations; automated geometry/text checks do not prove semantic math correctness, full accessibility or human comprehension.
+
+Ad-hoc HTTP printing temporarily expands solutions and restores their prior disclosure state afterward. File-opened readers can always use the prechecked companion download. Static PDF experiments show default/fallback explanations and results rather than promising live controls. A PDF delivery should name the actual generated files and summarize inspection findings, not claim that a test count proves readability.
+
+PDF links must not retain `file:` URLs into the author's checkout. The generator preserves same-chapter destinations and maps cross-chapter/guide links to the repository's published PDF companions and guide. Those cross-document links need Internet access; named-destination behavior varies by PDF viewer, so retain useful chapter bookmarks as a fallback. Update the canonical repository URL in `scripts/chapters.mjs` if the publication moves.
