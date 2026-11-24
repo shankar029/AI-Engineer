@@ -5,6 +5,104 @@ import { dot, cosine, softmax, descentStep } from '../book/assets/math.mjs';
 const near = (actual, expected, tolerance = 1e-8) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} != ${expected}`);
 const multiply = (a, b) => a.map(row => b[0].map((_, j) => dot(row, b.map(r => r[j]))));
 
+test('chapter 5: all nine backward derivatives match finite differences and the full update', () => {
+  // Parameter order: W11, W12, W21, W22, b1, b2, v1, v2, c.
+  const forward = (p, x = [2, 1]) => {
+    const z = [p[0] * x[0] + p[1] * x[1] + p[4], p[2] * x[0] + p[3] * x[1] + p[5]];
+    const h = z.map(value => Math.max(0, value));
+    const prediction = p[6] * h[0] + p[7] * h[1] + p[8];
+    return { z, h, prediction, loss: (prediction - 1) ** 2 };
+  };
+  const old = [1, -1, 0.5, 1, 0, -0.5, 1, -1, 0.5];
+  const before = forward(old);
+  assert.deepEqual(before.z, [1, 1.5]);
+  assert.equal(before.prediction, 0);
+  assert.equal(before.loss, 1);
+  const upstream = 2 * (before.prediction - 1);
+  const dz = before.z.map((z, j) => upstream * old[6 + j] * (z > 0 ? 1 : 0));
+  const gradient = [dz[0] * 2, dz[0], dz[1] * 2, dz[1], ...dz,
+    upstream * before.h[0], upstream * before.h[1], upstream];
+  assert.deepEqual(gradient, [-4, -2, 4, 2, -2, 2, -2, -3, -2]);
+  for (let j = 0; j < old.length; j++) {
+    const plus = [...old], minus = [...old], epsilon = 1e-5;
+    plus[j] += epsilon;
+    minus[j] -= epsilon;
+    near((forward(plus).loss - forward(minus).loss) / (2 * epsilon), gradient[j], 1e-7);
+  }
+  near(dz[0] * old[0] + dz[1] * old[2], -1);
+  near(dz[0] * old[1] + dz[1] * old[3], 4);
+  const next = old.map((value, j) => value - 0.05 * gradient[j]);
+  [1.2, -0.9, 0.3, 0.9, 0.1, -0.6, 1.1, -0.85, 0.6].forEach((value, j) => near(next[j], value));
+  const after = forward(next);
+  near(after.z[0], 1.6);
+  near(after.z[1], 0.9);
+  near(after.prediction, 1.595);
+  near(after.loss, 0.354025);
+  assert.ok(after.loss < before.loss);
+  const perturbWeight = [...old]; perturbWeight[0] += 0.001;
+  near(forward(perturbWeight).loss, 0.996004);
+  const perturbOutput = [...old]; perturbOutput[7] += 0.001;
+  near(forward(perturbOutput).loss, 0.99700225);
+  assert.deepEqual(forward(old, [1, 2]).h, [0, 2]);
+});
+
+test('chapter 5: activation, probability, and negative/zero-weight exercises', () => {
+  const sigmoid = z => 1 / (1 + Math.exp(-z));
+  near(sigmoid(-1), 0.268941, 1e-6);
+  near(sigmoid(1), 0.731059, 1e-6);
+  near(Math.tanh(-1), -0.761594, 1e-6);
+  near(Math.tanh(1), 0.761594, 1e-6);
+  near(sigmoid(2.5), 0.924142, 1e-6);
+  near(Math.tanh(2.5), 0.986614, 1e-6);
+  const count = 200, step = 1 / count;
+  const density = x => Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI);
+  let sum = density(0) + density(1);
+  for (let i = 1; i < count; i++) sum += (i % 2 ? 4 : 2) * density(i * step);
+  const phi = 0.5 + sum * step / 3;
+  near(phi, 0.841345, 1e-6);
+  near(-(1 - phi), -0.158655, 1e-6);
+  const probabilities = softmax([Math.log(2), 0, 0]);
+  assert.deepEqual(probabilities, [0.5, 0.25, 0.25]);
+  near(-Math.log(probabilities[0]), 0.693147, 1e-6);
+  near(-Math.log(probabilities[1]), 1.386294, 1e-6);
+  near(-Math.log(softmax([Math.log(3), 0])[0]), 0.287682, 1e-6);
+  softmax([0, -Math.log(2), -Math.log(2)]).forEach((value, j) => near(value, probabilities[j]));
+});
+
+test('chapter 5: shared FFN, masked mixture, concatenation, and residual values', () => {
+  const w1 = [[1, 0], [0, 1], [1, -1]], w2 = [[1, 0, 1], [0, 1, -1]];
+  const ffn = x => w2.map(row => dot(row, w1.map(weights => Math.max(0, dot(weights, x)))));
+  assert.deepEqual(ffn([2, 1]), [3, 0]);
+  assert.deepEqual(ffn([1, 2]), [1, 2]);
+  assert.deepEqual(ffn([0, 2]), [0, 2]);
+  const weights = softmax([0, Math.log(3)]);
+  const mixture = [2 * weights[0], 4 * weights[1]];
+  mixture.forEach((value, j) => near(value, [0.5, 3][j]));
+  const joined = [...mixture, 2, 0];
+  near(dot([1, 0, 1, 0], joined), 2.5);
+  near(dot([0, 1, 0, 1], joined), 3);
+  assert.deepEqual([2, 1].map((x, j) => x + ffn([2, 1])[j]), [5, 1]);
+  const recurrent = [2, 0, 1, 0].reduce((states, x) => [...states, x + 0.5 * states.at(-1)], [0]);
+  assert.deepEqual(recurrent, [0, 2, 1, 1.5, 0.75]);
+});
+
+test('chapter 5: feature-wise normalization, constant row, and pre/post order', () => {
+  const normalize = (x, gamma = [2, 0.5], beta = [0.1, -0.2]) => {
+    const mean = x.reduce((a, b) => a + b) / x.length;
+    const variance = x.reduce((sum, value) => sum + (value - mean) ** 2, 0) / x.length;
+    return x.map((value, j) => gamma[j] * (value - mean) / Math.sqrt(variance + 0.00001) + beta[j]);
+  };
+  const original = normalize([1, 3]);
+  near(original[0], -1.899990, 1e-6);
+  near(original[1], 0.299998, 1e-6);
+  assert.deepEqual(normalize([11, 13]), original);
+  assert.deepEqual(normalize([5, 5]), [0.1, -0.2]);
+  const post = normalize([2, 3], [1, 1], [0, 0]);
+  near(post[0], -0.999980, 1e-6);
+  near(post[1], 0.999980, 1e-6);
+  assert.notDeepEqual(post, [2, 3]);
+});
+
 test('chapter 4: lookup selectors, repeated IDs, and masked mean pooling', () => {
   const table = [[3, 4, 0], [4, 3, 0], [0, 0, 5], [2, 1, 2]];
   assert.deepEqual([1, 3, 1].map(id => table[id]), [[4, 3, 0], [2, 1, 2], [4, 3, 0]]);

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="320" viewBox="0 0 760 320">
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#ab4a2d"/></marker></defs>
+<rect width="760" height="320" fill="#f7e9dd"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#213b35"><text x="25" y="32">BACKWARD / Read from right to left; labels are sensitivities</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="70" width="215" height="155" rx="6"/><rect x="295" y="70" width="215" height="155" rx="6"/><rect x="560" y="70" width="175" height="155" rx="6"/></g>
+<text x="580" y="99">Prediction 0</text><text x="580" y="130">Target 1</text><text x="580" y="166">Loss sensitivity:</text><text x="580" y="199" fill="#ab4a2d">2(0 - 1) = -2</text>
+<text x="315" y="99">To h1: -2(1) = -2</text><text x="315" y="130">To h2: -2(-1) = 2</text><text x="315" y="167">Both ReLU slopes: 1</text><text x="315" y="198">To z: [-2, 2]</text>
+<text x="44" y="99">Multiply by inputs [2,1]</text><text x="44" y="134">W row 1: [-4, -2]</text><text x="44" y="164">W row 2: [4, 2]</text><text x="44" y="198">Bias gradient: [-2, 2]</text>
+<text x="25" y="270">Also: output-weight gradient [-2, -3]; output-bias gradient -2.</text><text x="25" y="301">All derivatives use the saved, unchanged forward network.</text></g>
+<g fill="none" stroke="#ab4a2d" stroke-width="2" marker-end="url(#a)"><path d="M560 150H518"/><path d="M295 150H248"/></g>
+</svg>

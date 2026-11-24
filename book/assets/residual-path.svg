@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="270" viewBox="0 0 760 270">
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker></defs>
+<rect width="760" height="270" fill="#eaf1e9"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#213b35"><text x="25" y="32">RESIDUAL / Direct path plus a learned branch</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="90" width="125" height="75" rx="6"/><rect x="265" y="90" width="180" height="75" rx="6"/><rect x="605" y="90" width="130" height="75" rx="6"/></g>
+<circle cx="525" cy="127" r="25" fill="#fffefa" stroke="#226b59" stroke-width="2"/>
+<text x="42" y="119">Input x</text><text x="42" y="148">[2,1]</text><text x="284" y="119">Branch F(x)</text><text x="284" y="148">[3,0]</text><text x="518" y="134" font-size="24">+</text><text x="620" y="119">Output y</text><text x="620" y="148">[5,1]</text>
+<text x="230" y="70">Skip: the same [2,1], no transformation</text><text x="25" y="215">Scalar gradient illustration: F(x) = 0.1x</text><text x="25" y="247">Direct sensitivity 1 + branch sensitivity 0.1 = total 1.1</text></g>
+<g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#a)"><path d="M150 127H257"/><path d="M445 127H492"/><path d="M550 127H597"/><path d="M184 127V48H525V94"/></g>
+</svg>

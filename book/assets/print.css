@@ -18,6 +18,7 @@ p{margin:3mm 0}
 .recap li{font-size:10.5pt}
 .exercise{padding:4mm 0}.exercise h3{font-size:11pt}
 .exercise details{padding:3mm 4mm;font-size:10pt;break-inside:auto;box-decoration-break:clone}
+body:has(#learned-functions) .exercise,body:has(#learned-functions) .worked,body:has(#learned-functions) .table-wrap{break-inside:avoid}
 details>summary{display:block;font-size:8pt;color:#226b59;margin-bottom:2mm;break-after:avoid}
 details::details-content{content-visibility:visible}
 details>*:not(summary){content-visibility:visible}

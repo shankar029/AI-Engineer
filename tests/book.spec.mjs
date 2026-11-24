@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { chapters as chapterInventory } from '../scripts/chapters.mjs';
 
 const base = 'http://127.0.0.1:4175';
-const chapters = ['linear-algebra.html', 'calculus.html', 'tokenization.html', 'embeddings.html'];
+const chapters = chapterInventory.map(chapter => chapter.file);
 const pages = ['index.html', ...chapters, 'authoring.html'];
 
 test('chapter PDF companions are downloadable locally and served as PDFs', async ({ page, request }) => {
@@ -10,7 +11,7 @@ test('chapter PDF companions are downloadable locally and served as PDFs', async
     const link = page.getByRole('link', { name: 'Chapter PDF' });
     await expect(link).toBeVisible();
     const href = await link.getAttribute('href');
-    expect(href).toMatch(/^pdfs\/0[1-4]-.+\.pdf$/);
+    expect(href).toMatch(/^pdfs\/0[1-5]-.+\.pdf$/);
     const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
     expect(await download.failure()).toBeNull();
     const response = await request.get(`${base}/${href}`);
@@ -110,12 +111,7 @@ for (const width of [320, 375, 768, 1440]) {
 }
 
 test('meaningful chapter titles are consistent across entry points', async ({ page }) => {
-  const titles = [
-    'The Language of LLMs: Vectors, Matrices, and Meaning',
-    'How LLMs Learn: Derivatives, Gradients, and Optimization',
-    'From Text to Tokens: How LLMs Read Language',
-    'From Tokens to Meaning: How Embeddings Represent Language'
-  ];
+  const titles = chapterInventory.map(chapter => chapter.title);
   await page.goto(base);
   for (let i = 0; i < titles.length; i++) {
     await expect(page.locator('.chapter-card h3').nth(i)).toHaveText(titles[i]);
@@ -235,6 +231,60 @@ test('chapter 4 interviews retain every source question and file-opened explaine
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
   await context.close();
 });
+
+test('chapter 5 integrates its complete coverage map and bidirectional navigation', async ({ page, request }) => {
+  await page.goto(`${base}/embeddings.html`);
+  await page.locator('.chapter-pagination a[href="neural-networks.html"]').click();
+  await expect(page.locator('h1')).toHaveText('From Inputs to Predictions: How Neural Networks Learn');
+  await expect(page.locator('h2')).toHaveCount(15);
+  await expect(page.locator('.chapter-meta')).toContainText('15 sections');
+  await expect(page.locator('.on-this-page nav a')).toHaveCount(15);
+  await expect(page.locator('main figure')).toHaveCount(6);
+  const guide = await (await request.get(`${base}/authoring.html`)).text();
+  const html = await (await request.get(`${base}/neural-networks.html`)).text();
+  const coverage = guide.split('id="neural-networks-source-coverage"')[1].split('<h2')[0];
+  const anchors = [...coverage.matchAll(/<code>#([a-z0-9-]+)<\/code>/g)].map(match => match[1]);
+  expect(new Set(anchors).size).toBeGreaterThan(30);
+  for (const anchor of new Set(anchors)) expect(html, anchor).toContain(`id="${anchor}"`);
+  await page.locator('.chapter-pagination a[href="embeddings.html"]').click();
+  await expect(page.locator('h1')).toContainText('From Tokens to Meaning');
+});
+
+for (const width of [320, 1440]) {
+  test(`chapter 5 file-opened answers, figures, and calculations at ${width}px`, async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(new URL('../dist/neural-networks.html', import.meta.url).href);
+    await page.locator('main a[href="#interview-questions"]').click();
+    await expect(page.locator('#interview-questions')).toBeInViewport();
+    const questions = page.locator('[data-source-questions]');
+    await expect(questions).toHaveCount(14);
+    expect(await questions.evaluateAll(nodes => nodes.map(node => node.dataset.sourceQuestions))).toEqual(
+      Array.from({ length: 14 }, (_, i) => `neural-Q${i + 1}`));
+    for (const details of await page.locator('main details').all()) {
+      await details.locator('summary').click();
+      await expect(details).toHaveAttribute('open', '');
+      await expect(details.locator('p').first()).toBeVisible();
+    }
+    for (const question of await questions.all()) {
+      expect(await question.locator('details a[href^="#"]').count()).toBeGreaterThan(0);
+    }
+    for (const anchor of ['forward-pass', 'backpropagation', 'parameter-update', 'layer-normalization', 'llm-pipeline']) {
+      await page.locator(`#${anchor}`).scrollIntoViewIfNeeded();
+      await expect(page.locator(`#${anchor}`)).toBeInViewport();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    }
+    for (const image of await page.locator('main figure img').all()) {
+      expect(await image.evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+      await expect(image.locator('..')).toHaveAttribute('tabindex', '0');
+    }
+    await expect(page.locator('main')).toContainText('0.354025');
+    await expect(page.locator('.katex-error')).toHaveCount(0);
+    await page.evaluate(() => document.fonts.ready);
+    expect(await page.evaluate(() => document.fonts.check('16px KaTeX_Main'))).toBe(true);
+    await context.close();
+  });
+}
 
 test('mobile menu, Escape, chapter navigation, and solution disclosure', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });

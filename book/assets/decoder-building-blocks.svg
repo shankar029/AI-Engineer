@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="550" viewBox="0 0 760 550">
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker></defs>
+<rect width="760" height="550" fill="#eaf1e9"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#213b35"><text x="25" y="30">ILLUSTRATIVE DECODER / Pre-normalization, RoPE-style positions</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="55" width="170" height="55" rx="6"/><rect x="260" y="55" width="200" height="55" rx="6"/><rect x="525" y="55" width="210" height="55" rx="6"/></g>
+<text x="48" y="88">Input text</text><text x="278" y="88">Tokenizer: token IDs</text><text x="541" y="88">Embedding rows: X</text>
+<rect x="25" y="145" width="710" height="255" rx="6" fill="none" stroke="#606963" stroke-dasharray="6 4"/>
+<text x="65" y="172">REPEAT BLOCK / Width unchanged; layers have their own parameters</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="65" y="200" width="100" height="55" rx="6"/><rect x="225" y="200" width="240" height="55" rx="6"/><rect x="65" y="300" width="100" height="55" rx="6"/><rect x="225" y="300" width="240" height="55" rx="6"/></g>
+<circle cx="580" cy="228" r="25" fill="#fffefa" stroke="#226b59"/><circle cx="580" cy="328" r="25" fill="#fffefa" stroke="#226b59"/>
+<text x="82" y="234">LN</text><text x="245" y="234">Causal attention + positions</text><text x="572" y="235" font-size="24">+</text><text x="626" y="216">r</text>
+<text x="82" y="334">LN</text><text x="245" y="334">Token-wise FFN</text><text x="572" y="335" font-size="24">+</text><text x="626" y="316">y</text><text x="43" y="385">Skip paths carry the input of each sublayer to its addition.</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="440" width="160" height="55" rx="6"/><rect x="235" y="440" width="230" height="55" rx="6"/><rect x="525" y="440" width="210" height="55" rx="6"/></g>
+<text x="40" y="473">Final normalization</text><text x="251" y="473">Output projection: logits</text><text x="541" y="473">Softmax + selection</text><text x="25" y="532">Select one next token, append it to the prefix, and predict again.</text></g>
+<g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#a)"><path d="M195 83H252"/><path d="M460 83H517"/><path d="M631 110V130H44V228H57"/><path d="M165 228H217"/><path d="M465 228H547"/><path d="M605 228H675V280H44V328H57"/><path d="M165 328H217"/><path d="M465 328H547"/><path d="M605 328H690V421H105V432"/><path d="M185 468H227"/><path d="M465 468H517"/><path d="M44 194H580V195"/><path d="M44 294H580V295"/></g>
+<path d="M44 194V228M44 294V328" fill="none" stroke="#226b59" stroke-width="2"/>
+</svg>

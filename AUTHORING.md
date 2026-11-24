@@ -23,7 +23,7 @@ Keep the same learning sequence in every chapter:
 7. **Give agency.** Include a small prediction, exercise, or interactive experiment. Ask the reader to predict before acting. Supply a solution or useful guidance.
 8. **Consolidate.** A compact recap connects ideas, then a short bridge introduces the next question. End with a source note and previous/next navigation.
 
-Repeat the intuition-to-application sequence for **every mathematical concept**, not just derivatives or the first section. This is a universal requirement across all four chapters and every future chapter. A beginner-friendly introduction followed by compressed advanced formulas does not satisfy it. Assume no prior knowledge of a newly introduced mathematical concept, including trigonometry, probability, logarithms, pooling, positional rotations, or training objectives; prior-chapter links need concise prerequisite reminders at the point of use.
+Repeat the intuition-to-application sequence for **every mathematical concept**, not just derivatives or the first section. This is a universal requirement across all five chapters and every future chapter. A beginner-friendly introduction followed by compressed advanced formulas does not satisfy it. Assume no prior knowledge of a newly introduced mathematical concept, including trigonometry, probability, logarithms, pooling, positional rotations, or training objectives; prior-chapter links need concise prerequisite reminders at the point of use.
 
 For each concept, provide its definition, explain every new symbol and assumption, give an intuitive or geometric interpretation where helpful, show why the operation or rule makes sense, and walk through a numerical calculation with intermediate steps. Then connect it to engineering or an LLM where appropriate and give a prediction/check with an explained answer. Related concepts can share a worked example, but a name, keyword mention, analogy, or formula alone is not teaching coverage.
 
@@ -43,6 +43,7 @@ Use the full editorial title in the page title, chapter heading, home-page card,
 - Chapter 02: **How LLMs Learn: Derivatives, Gradients, and Optimization**
 - Chapter 03: **From Text to Tokens: How LLMs Read Language**
 - Chapter 04: **From Tokens to Meaning: How Embeddings Represent Language**
+- Chapter 05: **From Inputs to Predictions: How Neural Networks Learn**
 
 "Meaning" in chapter 1 refers to useful learned representations and their limits. It must not imply that individual coordinates intrinsically correspond to human-interpretable concepts.
 
@@ -121,7 +122,7 @@ Do not persist learner activity or transmit it. This book has no analytics, acco
 
 ## Source material and provenance
 
-The four supplied PDFs are exported instructional conversations, not peer-reviewed textbooks. They were treated as conceptual source notes, not as authoritative prose to reproduce. All four PDFs were fully text-extracted and their page-by-page topic sequences read. The first three sources' relevant mathematical and diagram-heavy pages were rendered for visual inspection; the embeddings source's 25 embedded illustrations were extracted and visually inspected, with the formula/table text checked against their surrounding lessons. The source-specific maps below distinguish what was readable, corrected, added, unavailable, or merely proposed.
+The five supplied PDFs are exported instructional conversations, not peer-reviewed textbooks. They were treated as conceptual source notes, not as authoritative prose to reproduce. All five PDFs were fully text-extracted and their page-by-page topic sequences read. The first three sources' relevant mathematical and diagram-heavy pages were rendered for visual inspection; the embeddings source's 25 embedded illustrations were extracted and visually inspected, with the formula/table text checked against their surrounding lessons. All 49 neural-network source pages were also rendered, and its 13 embedded images inspected. The source-specific maps below distinguish what was readable, corrected, added, unavailable, or merely proposed.
 
 | Supplied source | Pages | Used in this edition |
 | --- | --- | --- |
@@ -143,8 +144,11 @@ The four supplied PDFs are exported instructional conversations, not peer-review
 | *Learn Embeddings* | 1-24 | Token embeddings, table lookups, training, geometry, contextual states and retrieval |
 | Same source | 25-57 | Developed position lesson: additive vectors, sinusoidal encoding, learned positions, RoPE, causal masking, cache and engineering implications |
 | Same source | 58-60 | Future neural-network/embedding-model curriculum; sentence-encoder/pooling illustration receives a bounded bridge |
+| *Chapter 4 Neural Networks* | 1-21 | Neural-network motivation, neuron arithmetic, activations, layers and complete forward pass |
+| Same source | 22-40 | Losses, conceptual backpropagation, gradient descent, MLPs, Transformer building blocks and training/inference |
+| Same source | 41-49 | Static calculator, 14 readable interview questions, seven knowledge checks, recap and future-course roadmap |
 
-The chapters reorganize the conversation topics into four coherent chapters. They do not reproduce the source's exact lessons, quizzes, UI screenshots, illustrations, or conversational turns. All explanatory prose, numerical scenarios, and SVGs in this repository are newly authored. Source PDFs and extracted source transcripts are not redistributed in the repository.
+The chapters reorganize the conversation topics into five coherent chapters. They do not reproduce the source's exact lessons, quizzes, UI screenshots, illustrations, or conversational turns. All explanatory prose, numerical scenarios, and SVGs in this repository are newly authored. Source PDFs and extracted source transcripts are not redistributed in the repository.
 
 ### Coverage after the first-principles expansion
 
@@ -284,6 +288,65 @@ Pages 57-60 propose neural-network/activation/Transformer-block courses and a de
 
 The destination-book visual pass also moved long calculations into locally scrollable display blocks, added wrap opportunities between long vector coordinates, stacked the central sinusoidal definitions, and checked every original diagram's labels and direction arrows. Those changes preserve readable 320px layouts and expanded solutions without shrinking all mathematical content or hiding horizontal overflow. The four-chapter edition remains portable under `dist/`; no new chapter-specific JavaScript or server-dependent lesson is required.
 
+## Neural networks source coverage
+
+Chapter 5, **From Inputs to Predictions: How Neural Networks Learn**, uses the entire 49-page *Chapter 4 Neural Networks* PDF. The filename's source numbering is not our book numbering. Every page was text-extracted and read, all 49 pages rendered and reviewed in numbered contact sheets, and all 13 embedded images inspected separately. Full-size source pages 21, 37, and 42-44 additionally verified the output calculation, normalization formula, and interview boundaries. The readable PDF ends with a complete roadmap on page 49, not a truncated lesson.
+
+The visual inventory includes a layered network, a weighted-neuron schematic, sigmoid and tanh curves, a dense-layer diagram, a stylized loss valley, a backward-network picture, a descent plot, an MLP diagram, an unrolled RNN, a paper-header image, a decoder-block overview, and a residual comparison. ReLU, layer-stage and training-loop diagrams, arithmetic tables, and the calculator/assessment are also present as vector/text layout. Six original substantive SVGs and one decorative card replace their instructional/entry-point roles; no source image or screenshot is redistributed.
+
+| Developed lesson, algorithm/calculation type, or visual | Actual Chapter 5 destination | Teaching treatment |
+| --- | --- | --- |
+| pp. 1-4: prerequisites, rules versus example-driven learning, neural-network function and neuron stages | `#learned-functions`, `#neuron` | Original support-effort scenario; evaluate an explicit function; define parameters/activations/hyperparameters; compare rule selection with training |
+| pp. 5-9, 13-15: connected units, numeric inputs, dot product, weights, bias and full neuron arithmetic | `#neuron`, `#forward-pass` | Original products/sum/bias/activation trace and saved neuron SVG; negative-weight and zero-input examples; affine-versus-linear distinction |
+| pp. 9-13: need for nonlinearity, ReLU threshold/curve/table, sigmoid and tanh formulas/ranges, GELU gate, softmax comparison | `#activations`, `#relu`, `#sigmoid-tanh`, `#gelu`, `#softmax-loss` | Collapse two affine layers algebraically; non-affine hinge counterexample; reproduce all four activation table rows; exponential/reciprocal prerequisites; normal-CDF gate definition and numerical table values; vector softmax distinguished from scalar activations |
+| pp. 14-18: input/hidden/output layers, three-input/two-neuron weight matrix, elementwise activation and shapes | `#forward-pass`, `#row-batches` | Define row/column/index/transpose conventions before products; compute a full original two-by-two layer and a rectangular two-by-three exercise; count weights/biases; two-row broadcasting trace |
+| pp. 19-21: complete two-layer forward calculation and prediction-before-output-activation boundary | `#forward-pass` | Original nine-parameter network with every intermediate value; identity output and unconstrained-score warning; saved network SVG. Source's printed result 1.98 is arithmetically correct and is not falsely labeled an error |
+| pp. 22-25: MSE, one-example square, categorical next-token probabilities and cross-entropy | `#losses`, `#squared-error`, `#softmax-loss` | Error/square/mean/sum definitions; full loss ledger; original three-choice exponentiate/sum/divide/log example; target dependence and stable shifted scores; valid-position reduction caveat |
+| pp. 25-27: chain rule, backward sensitivities, gradient signs and gradient-versus-update distinction | `#backpropagation`, `#local-rules`, `#branch-sums` | Original complete nine-parameter reverse pass, square-derivative reasoning, local product/sum rules, branch sums and finite-difference checks; saved backward SVG. Source supplies the concept, not this fully traced algorithm |
+| pp. 27-29: scalar gradient descent update, four-stage training loop, Adam/AdamW pointer | `#parameter-update` | All nine simultaneous old-gradient updates and full new forward/loss calculation; oversized-step counterexample; batch mean/sum arithmetic; clear-gradient/recompute pseudocode; link to previously developed Adam/AdamW lesson |
+| pp. 30-31: multi-layer perceptron and feed-forward composition | `#mlp-ffn` | Define depth/counting and stage notation; complete width-two-to-three-to-two FFN on two token rows; shared-weight parameter count and separate row exercise; saved token-wise SVG |
+| pp. 31-32: sequence relationships, RNN/LSTM limits, Transformer training parallelism and 2017 paper | `#sequence-attention`, `#recurrence` | Original three-step scalar recurrence and fourth-step exercise expose dependence/fading without claiming a full RNN/LSTM lesson; link original paper; distinguish within-layer training parallelism from autoregressive generation |
+| pp. 33-35: embedding/position role, attention context mixtures and head-specific projections | `#attention-mixture`, `#multiple-heads`, `#llm-pipeline` | Refresh prior embedding/QKV/position lessons at point of use; original scalar scores, masked renormalization, weighted values, two-head concatenation and output product; head-role and causal/full-attention symmetry caveats |
+| p. 36: FFN expansion, nonlinearity, contraction and position-wise parameter sharing | `#mlp-ffn`, `#interview-ffn` | Full matrix entries/products/output shapes, parameter count, two complete row traces and original figure; no unsupported fixed production expansion ratio |
+| pp. 36-37: residual addition and gradient-flow purpose | `#residuals`, `#interview-residual` | Coordinate addition, shape condition, direct/branch sensitivity sum, cancellation counterexample; original skip-path SVG |
+| pp. 37-38: LayerNorm expression, mean, variance, learned scale/shift and epsilon | `#layer-normalization`, `#interview-normalization` | Define statistics before formula; every deviation/square/division/square root/scale/shift calculation; constant-row stability and shifted-row exercise; within-token axis and learned parameter count |
+| pp. 38-40: vocabulary-sized logits, softmax, next-token choice, decoder pipeline and implementation variation | `#output-projection`, `#llm-pipeline`, `#training-inference` | Original two-to-three output projection; greedy/sampling interval example; N-by-V row shapes; explicitly pre-normalized block diagram and pre/post order counterexample; fixed parameters versus changing context/cache |
+| pp. 41-42: static neuron calculator and four experiments (negative sum, bias, activation choice, zero weights) | `#practice-neuron`; section 2 and 3 exercises | Complete original negative/positive/constant calculation with ReLU/sigmoid/tanh answers, not copied controls or an unprovided executable widget |
+| pp. 42-44: 14 numbered interviews | `#interview-questions` and the one-to-one table below | All prompts readable; original explained answers preserve every intent and include arithmetic, boundaries and links to fuller lessons |
+| pp. 44-46: seven knowledge checks on weights, nonlinearity, forward, backward, optimizer, FFN and fixed inference weights | `#practice-block`, section-level predictions; interview 01-03, 05-08, 10, 13 | Mechanism-based explanations replace multiple-choice selections/scores; no claim that the exported 7/7 score demonstrates this edition's reader comprehension |
+| pp. 47-49: recap and future sequence | `#recap`, `#llm-pipeline` scope boundary | Recap ties representations, forward/loss/backward/update and block components together; subsequent architecture families, full attention/head algebra and modern block internals remain deferred |
+
+**Interview correspondence: 14 source questions, 14 adapted questions.** Source Q1-Q3 appear on p. 42; Q4-Q11 on p. 43; Q12-Q14 on p. 44. All question text and answers are readable. No duplicate consolidation or unreadable-question reconstruction was needed.
+
+| Source question / page | Substantive intent, paraphrased | Adapted question / answer anchor |
+| --- | --- | --- |
+| Q1 / p. 42 | Artificial-neuron definition | 01 / `#interview-neuron` |
+| Q2 / p. 42 | Weight versus bias | 02 / `#interview-weight-bias` |
+| Q3 / p. 42 | Need for nonlinear activation | 03 / `#interview-nonlinearity` |
+| Q4 / p. 43 | Parameter versus hyperparameter | 04 / `#interview-configuration` |
+| Q5 / p. 43 | Forward propagation | 05 / `#interview-forward` |
+| Q6 / p. 43 | Backpropagation | 06 / `#interview-backward` |
+| Q7 / p. 43 | Gradient descent | 07 / `#interview-descent` |
+| Q8 / p. 43 | Backpropagation versus descent | 08 / `#interview-backprop-optimizer` |
+| Q9 / p. 43 | MLP definition | 09 / `#interview-mlp` |
+| Q10 / p. 43 | MLP/FFN role in Transformers | 10 / `#interview-ffn` |
+| Q11 / p. 43 | Residual connection | 11 / `#interview-residual` |
+| Q12 / p. 44 | Layer normalization | 12 / `#interview-normalization` |
+| Q13 / p. 44 | Training versus inference | 13 / `#interview-training-inference` |
+| Q14 / p. 44 | Transformer versus RNN position parallelism | 14 / `#interview-parallelism` |
+
+**Recovery, corrections and caveats.** The source's extracted matrices lose row layout; actual rendered rows on pp. 17 and 19-21 identify the column-vector convention. The string resembling "1.982" in extraction is the correct displayed 1.98 followed by the subscript 2, not an arithmetic error. The residual image on p. 37 is vertically cropped in the page layout; the separately inspected embedded image reveals the skip path, though its lower line also meets its image boundary. The adjoining formula and explanation are readable. Sigmoid/tanh graph images are readable; endpoint range labels are interpreted as limiting values, not finite-input attainments. No invisible continuation of a clipped figure is claimed recovered.
+
+We correct the source's "all linear layers" shorthand to affine composition when biases are nonzero; distinguish a raw score from a pass probability; avoid reading weight magnitude as context-free importance; state GELU's bounded negative side rather than an indiscriminately unbounded range; and interpret a zero gradient as no first-order change, not a neighborhood or minimum claim. The source's decoder image uses a specific illustrative layer count and tied output embedding; neither is universal. Its pre/post-normalization and modern-model caveats become an explicit convention with an order calculation. Source chapter references are replaced by our actual prerequisite links. LayerNorm's gamma/beta are feature-wise vectors, not unspecified global scalars; its variance reduction and epsilon placement are explicit.
+
+**Original prerequisite depth and deferred material.** The complete reverse pass, all-parameter update/re-evaluation, finite differences, shared-input sums, vanishing/exploding product examples, row-batch transpose, zero-gradient/ReLU-corner caveats, stable softmax, masked mixture, head concatenation, residual sensitivity/cancellation and full LayerNorm ledger are editorial additions serving the source's developed concepts. The source does not provide these intermediate demonstrations. GELU uses a defined standard-normal gate with table/library values; a numerical normal-CDF integration algorithm and GELU derivative are not claimed taught. Full recurrent/LSTM gates, a complete attention implementation, LayerNorm backward algebra, AdamW rederivation and production benchmarks are not fabricated.
+
+The source explicitly proposes future architecture-family, attention, multi-head and modern-block courses on pp. 48-49. Its RMSNorm, gated FFN and alternative placement references on p. 40 are brief architecture-variation pointers, not completed algorithms. They stay labeled deferred, while its developed FFN/residual/LayerNorm lessons receive numerical teaching here. No additional chapter, runnable source calculator, quiz code, authenticated API experiment, or linked download was attached. Repeated chat turns, headers, QR/app promotion, score/retry controls and roadmap numbering are export furniture, not missing scientific content.
+
+**Separate pedagogical review boundary.** After the complete draft, a separate opening-to-recap pass reread every lesson and all 14 answers as a beginner's dependency sequence, rather than only searching for topic names. It traced pre-activation versus output, function application versus multiplication, feature versus token indices, row/column weight orientation, elementwise versus vector-coupled activations, probability domains, old-state derivative consistency, branch sums, parameter sharing versus occurrences, normalization axes and pre/post ordering. Concrete repairs expanded the negative-input sigmoid/tanh calculations, reciprocal-log reasoning, all four square-expansion terms before the derivative limit, the CDF gate's visible probability table and prerequisite link, the nonnegative-square-root definition, and sampling's uniform/endpoint/interval-length explanation. Sections 6 and 11 remain deliberate pencil-and-paper lessons, not skim-friendly introductions. Source/arithmetic/layout checks and editorial reasoning do not demonstrate learner comprehension or production model quality; no learner study is claimed.
+
+**Destination and print repairs.** The actual file-opened book was exercised at 320, 375 and 1440 pixels with all 29 solutions/answers open and locally rendered math. Five long inline calculations initially caused 320px page overflow; they were reflowed into stepped display equations, not hidden or globally shrunk. The PDF pass renders every actual page and checks expanded prose against the generation manifest. Visual review moved two decoder-diagram labels off their arrows. This chapter's exercises, interview prompt/answer groups, calculation boxes, and short tables stay together in print where they fit a page; this prevents stranded captions and a backward-step explanation separating from all its equations. Longer surrounding lessons can still continue across pages. These are concrete layout improvements, not evidence that every beginner will understand the mathematics. The companion and manifest are generated by the existing local pipeline; all five named publication files remain available.
+
 ## Accessibility and responsive behavior
 
 Provide a skip link, visible keyboard focus, semantic landmarks, clear link names, meaningful image alt text, native expandable solutions, and labeled range inputs. Use aria-live sparingly for changing results. Decorative card art has empty alt text; substantive figures have descriptions of the relationships and values.
@@ -294,7 +357,7 @@ The contents rail disappears before it squeezes the reading column. Below 640px,
 
 ## Adding a chapter and reviewing it
 
-Create `book/topic-name.html`, add the page metadata in `scripts/build.mjs`, add the home card and adjacent chapter links, and place original assets in `book/assets/`. The builder creates sidebar links, table-of-contents anchors, document titles, local KaTeX assets, and the guide page. Do not hand-edit `dist/`.
+Create `book/topic-name.html`, add the page metadata in `scripts/chapters.mjs`, add the home card and adjacent chapter links, and place original assets in `book/assets/`. The builder creates sidebar links, table-of-contents anchors, document titles, local KaTeX assets, and the guide page. Do not hand-edit `dist/`.
 
 Before calling a chapter finished:
 
@@ -309,7 +372,7 @@ Before calling a chapter finished:
 
 ## Mandatory PDF companions and review
 
-Every chapter delivery or substantive revision must include an **up-to-date, generated and inspected PDF companion**. This applies to all four current chapters and every future chapter. Keep the web reading edition and PDF substantively aligned, including every exercise and interview answer; collapsed `<details>` must not hide answers in the delivered PDF. Do not treat successful HTML rendering, a print button, or an aspirational checklist as evidence that the actual PDF is correct.
+Every chapter delivery or substantive revision must include an **up-to-date, generated and inspected PDF companion**. This applies to all five current chapters and every future chapter. Keep the web reading edition and PDF substantively aligned, including every exercise and interview answer; collapsed `<details>` must not hide answers in the delivered PDF. Do not treat successful HTML rendering, a print button, or an aspirational checklist as evidence that the actual PDF is correct.
 
 Use the existing local workflow:
 

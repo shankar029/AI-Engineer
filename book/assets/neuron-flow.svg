@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="270" viewBox="0 0 760 270">
+<defs><marker id="a" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0L7 3L0 6Z" fill="#226b59"/></marker></defs>
+<rect width="760" height="270" fill="#eaf1e9"/>
+<g font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#213b35"><text x="25" y="32">ONE NEURON / Fixed parameters, input-dependent values</text>
+<g fill="#fffefa" stroke="#dedfd5"><rect x="25" y="60" width="185" height="65" rx="6"/><rect x="25" y="145" width="185" height="65" rx="6"/><rect x="265" y="90" width="220" height="110" rx="6"/><rect x="540" y="90" width="190" height="110" rx="6"/></g>
+<text x="40" y="85">x1 = 2; w1 = 0.75</text><text x="40" y="111">Product = 1.5</text><text x="40" y="172">x2 = 1; w2 = -0.5</text><text x="40" y="198">Product = -0.5</text>
+<text x="285" y="119">Sum = 1.5 - 0.5 = 1</text><text x="285" y="150">Add bias b = -0.25</text><text x="285" y="181" font-weight="600">z = 0.75</text><text x="559" y="121">Apply ReLU</text><text x="559" y="153">max(0, 0.75)</text><text x="559" y="183" font-weight="600">Output a = 0.75</text><text x="25" y="248">Weights scale contributions. Bias shifts the sum. Activation transforms it.</text></g>
+<g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#a)"><path d="M210 95H238V126H258"/><path d="M210 177H238V164H258"/><path d="M485 145H532"/></g>
+</svg>
