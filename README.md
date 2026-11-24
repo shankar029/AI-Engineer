@@ -4,6 +4,8 @@ An illustrated, intuition-first book for engineers learning the mathematics behi
 
 ## Read the book
 
+**[Read online](https://shankar029.github.io/AI-Engineer/)** - the complete five-chapter website, with diagrams, worked examples, and interactive experiments.
+
 **Read offline:** download or clone this repository and open [publications/html/index.html](publications/html/index.html). No setup, npm, or server is needed. Keep the whole `publications/` folder together for local fonts, diagrams, chapter links, and PDFs. GitHub's HTML file view shows source; open the downloaded file instead.
 
 ## Download chapter PDFs
