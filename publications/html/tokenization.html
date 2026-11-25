@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An illustrated, intuition-first guide to the mathematics behind language models. Learn through worked examples, interactive experiments, and engineering connections.">
+  <meta name="description" content="An intuition-first journey toward becoming an AI engineer. Begin with mathematical and model foundations through illustrated explanations, worked examples, and engineering connections.">
   <meta name="theme-color" content="#183c35">
-  <title>From Text to Tokens: How LLMs Read Language | The AI Engineer</title>
+  <title>From Text to Tokens: How LLMs Read Language | Becoming an AI Engineer</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/katex/katex.min.css">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/cover.css">
   <link rel="stylesheet" href="assets/print.css" media="print">
   <script type="module" src="assets/app.js"></script>
 </head>
 <body class="chapter">
   <a class="skip-link" href="#main">Skip to content</a>
   <aside class="sidebar" id="book-navigation" aria-label="Book navigation">
-    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>The AI Engineer<small>A FIELD GUIDE</small></span></a>
+    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>Becoming an<br>AI Engineer<small>A FIELD GUIDE</small></span></a>
     <div class="sidebar-body">
-      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The learning path</a>
+      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The book cover</a>
+      <a class="overview-link" href="foundations.html"><span aria-hidden="true">&#8594;</span> Part I / Foundations</a>
       <p class="nav-label">PART I <span>THE FOUNDATIONS</span></p>
       <nav aria-label="Chapters"><a class="chapter-link" href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning<small>Represent & transform</small></span></a><a class="chapter-link" href="calculus.html"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization<small>Change & learn</small></span></a><a class="chapter-link selected" href="tokenization.html" aria-current="page"><span>03</span><span>From Text to Tokens: How LLMs Read Language<small>Segment & encode</small></span><span class="current-dot" aria-hidden="true"></span></a><a class="chapter-link" href="embeddings.html"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language<small>Represent & locate</small></span></a><a class="chapter-link" href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn<small>Predict & learn</small></span></a></nav>
       <div class="future-note"><span class="tiny-line"></span>Build intuition.<br>Then build systems.</div>
@@ -25,7 +27,7 @@
     </div>
   </aside>
   <div class="page">
-    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">The AI Engineer</a><span aria-hidden="true">/</span><span>Foundations / 03 From Text to Tokens: How LLMs Read Language</span></div><div class="reading-actions"><a class="pdf-download" href="../03-from-text-to-tokens.pdf" download>Chapter PDF <span aria-hidden="true">&#8595;</span></a><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
+    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">Becoming an AI Engineer</a><span aria-hidden="true">/</span><span>Foundations / 03 From Text to Tokens: How LLMs Read Language</span></div><div class="reading-actions"><a class="pdf-download" href="../03-from-text-to-tokens.pdf" download>Chapter PDF <span aria-hidden="true">&#8595;</span></a><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
     <div class="reading-progress" aria-hidden="true"><div></div></div>
     <div class="reading-layout">
       <main id="main" tabindex="-1"><header class="chapter-header">
@@ -316,7 +318,7 @@ for name, revision in specs:
 </main>
       <aside class="on-this-page" aria-label="On this page"><p class="nav-label">IN THIS CHAPTER</p><nav><a href="#text-units"><span>01</span>Text, characters, bytes, and tokens are different units</a><a href="#vocabulary-contract"><span>02</span>A vocabulary is a contract, not a dictionary of meanings</a><a href="#bpe-training"><span>03</span>BPE training: count, merge, recount</a><a href="#bpe-encoding"><span>04</span>BPE encoding, byte coverage, and decoding</a><a href="#wordpiece"><span>05</span>WordPiece: a vocabulary and a greedy search</a><a href="#unigram"><span>06</span>Unigram: compare complete segmentation paths</a><a href="#sentencepiece"><span>07</span>SentencePiece is a framework, not a fourth algorithm</a><a href="#vocabulary-memory"><span>08</span>Vocabulary choices become model dimensions</a><a href="#special-tokens"><span>09</span>Special tokens, padding, chat, and tool handoffs</a><a href="#context-budgets"><span>10</span>Budget tokens, not words or permanent memory</a><a href="#real-tokenizer-lab"><span>11</span>Inspect real tokenizers without guessing the answer</a><a href="#practice"><span>12</span>Work it through and explain it aloud</a><a href="#recap"><span>13</span>The boundary between strings and numerical models</a></nav><a class="back-top" href="#main">Back to top &#8593;</a></aside>
     </div>
-    <footer class="site-footer"><span>The AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
+    <footer class="site-footer"><span>Becoming an AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
   </div>
 </body>
 </html>

@@ -44,6 +44,7 @@ def audit(chapter):
     pages = []
     prose = []
     for page in reader.pages:
+        check(list(page.cropbox) == list(page.mediabox), f"{path.name}: cropped page box")
         for annotation in page.get("/Annots", []):
             uri = str(annotation.get_object().get("/A", {}).get("/URI", ""))
             check(not uri.startswith("file:"), f"{path.name}: machine-local PDF link")
@@ -52,7 +53,7 @@ def audit(chapter):
                 prose.append(text)
         pages.append(page.extract_text(visitor_text=visitor))
     text = "\n".join(pages)
-    footer = r"The AI Engineer / Chapter \d+\s+\d+ / \d+"
+    footer = r"Becoming an AI Engineer / Chapter \d+\s+\d+ / \d+"
     searchable = normalized(re.sub(footer, "", text))
     prose_searchable = normalized(re.sub(footer, "", "".join(prose)))
     missing = [fragment for fragment in chapter["text"]
@@ -76,15 +77,19 @@ def audit(chapter):
         page_text = text_page.get_text_bounded()
         check(len(normalized(page_text)) > 40, f"{path.name} p{index + 1}: blank/nearly blank page")
         outside = []
+        leftmost, rightmost = width, 0
         for char_index in range(text_page.count_chars()):
             char = text_page.get_text_range(char_index, 1)
             if not char.strip():
                 continue
             left, bottom, right, top = text_page.get_charbox(char_index)
-            if left < 25 or right > width - 25 or bottom < 12 or top > height - 25:
+            leftmost, rightmost = min(leftmost, left), max(rightmost, right)
+            side_margin = 18 * 72 / 25.4
+            if left < side_margin - 1 or right > width - side_margin + 1 or bottom < 12 or top > height - 25:
                 outside.append(char)
         check(not outside, f"{path.name} p{index + 1}: text outside safe page bounds: {''.join(outside)[:80]}")
-        bounds.append({"page": index + 1, "characters": text_page.count_chars()})
+        bounds.append({"page": index + 1, "characters": text_page.count_chars(),
+                       "leftmost": round(leftmost, 2), "rightmost": round(rightmost, 2)})
         image = page.render(scale=1.5).to_pil().convert("RGB")
         image.save(output / f"page-{index + 1:03}.png")
         image.thumbnail((248, 351))

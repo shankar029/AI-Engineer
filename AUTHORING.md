@@ -1,4 +1,4 @@
-# The AI Engineer: authoring and design system
+# Becoming an AI Engineer: authoring and design system
 
 This is the house style for the whole book, not a one-off mood board. Apply it when adding a chapter, revising a worked example, or drawing a figure. The built guide at `authoring.html` is generated from this file.
 
@@ -36,6 +36,8 @@ Do not make up a reading-time estimate. This edition uses prerequisites and sect
 When a supplied source includes interview questions, retain their substantive breadth in a visibly labeled **Interview questions** section with a stable contents anchor. Adapt prompts and answers in original prose; do not substitute a few synthesis exercises for an inventory of the source interview questions. Map every source question and page to its adapted question and beginner-friendly explained answer. Consolidate genuinely duplicate prompts transparently, preserve their distinct qualifications, and identify missing or truncated questions without inventing their text. Answers should give reasoning, relevant worked steps and misconception boundaries, with concise prerequisite reminders and links to fuller lessons.
 
 ## Editorial titles and navigation
+
+The book is **Becoming an AI Engineer**. Its distinct opening cover is `book/index.html`, with original portable artwork in `book/assets/engineering-cover.svg`; the mathematics-focused introduction and chapter cards live separately in `book/foundations.html`. Mathematics is Part I of the engineering journey, not the entire book identity. Keep the broader systems direction aspirational until those chapters exist. Preserve the cover's `#foundations` bookmark and direct chapter routes.
 
 Use the full editorial title in the page title, chapter heading, home-page card, sidebar chapter link, and previous/next navigation. Subject labels may remain in kickers and source filenames.
 
@@ -421,6 +423,8 @@ npm run pdf:check
 Commit the fresh `publications/html/` edition, reasonable-sized publication PDFs, and `publications/manifest.json` beside source changes. The manifest records a source digest, each PDF's hash, expected substantive prose fragments, and answer/figure/formula counts for checks; counts are not evidence of instructional quality. `dist/`, raster page images, contact sheets and extracted audit text are reproducible, ignored output. Do not redistribute supplied source PDFs or private source-audit material. Regeneration is content/layout reproducibility, not a claim of byte identity across browser versions, fonts and metadata timestamps.
 
 The checker verifies the **actual PDF files**: source and output freshness, title/bookmarks, expected prose (including expanded answer text), A4 size, blank pages, raw TeX, and text bounding boxes inside safe paper margins. It renders every page locally at inspection resolution and creates numbered contact sheets under `dist/pdf-review/<chapter-name>/`. A passing checker is necessary but not sufficient:
+
+Print uses a white page canvas rather than a tinted body column ending abruptly at the printable edges. Horizontal margins are 18 mm, with unchanged body type size and individually reflowed equations where necessary. The generator checks the actual 174 mm A4 content width, including inline mathematical spans, tables, code and diagram bounds; the PDF checker verifies uncropped page boxes and glyph clearance against those side margins. The edge investigation of the preceding PDFs found roughly 15 mm physical clearance and did not reproduce missing side content. A viewer-specific cropping report still needs an example screenshot; do not claim the visual-edge repair diagnoses every viewer.
 
 1. Inspect every contact sheet for overall completeness, consistent botanical-notebook theme, page numbering, excessive blank space, awkward page breaks and missing/oversized diagrams. Reopen suspicious pages at full resolution, rather than approving only thumbnails.
 2. Read formula-heavy pages at full resolution: confirm symbols, fractions, matrices, indices and signs are rendered, legible and unclipped. Reflow an overwide derivation into steps; do not silently shrink an entire chapter or crop overflow. The generator rejects detected overwide equation/table/code blocks.

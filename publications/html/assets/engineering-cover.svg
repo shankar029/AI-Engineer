@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">An engineering landscape</title>
+  <desc id="desc">Four connected islands show a foundation grid, numerical representations, a model network, and an illustrative question-evidence-answer system. A branching path connects them. These are the direction of the learning journey, not a list of completed chapters.</desc>
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#bed1b3" stroke-width=".7" opacity=".16"/></pattern>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0 0 7 3.5 0 7" fill="#e9b38a"/></marker>
+  </defs>
+  <rect width="960" height="480" fill="#183c35"/>
+  <rect x="24" y="24" width="912" height="432" fill="url(#grid)"/>
+  <g fill="none" stroke="#638575" stroke-width="1">
+    <path d="M30 351C138 220 258 352 398 176S679 158 933 65"/>
+    <path d="M30 373C177 221 278 385 424 196S719 189 933 91"/>
+    <path d="M30 394C194 252 297 397 451 222S743 217 933 115"/>
+  </g>
+  <path d="M130 305C197 305 215 236 329 236S441 154 559 154S671 237 813 237" fill="none" stroke="#e9b38a" stroke-width="3" marker-end="url(#arrow)"/>
+  <g stroke="#bed1b3" stroke-width="1.5">
+    <path d="m56 306 76-46 89 46-76 48z" fill="#254b40"/>
+    <path d="m56 306 76-46 89 46M82 291l88 47m-63-62 88 46m-108 2 75-46m-49 62 75-46" fill="none"/>
+    <path d="M103 304v-65m0 65 55-32" fill="none" stroke="#e9b38a" stroke-width="2"/>
+    <circle cx="103" cy="304" r="5" fill="#e9b38a" stroke="none"/>
+    <path d="m260 237 77-45 88 45-77 46z" fill="#254b40"/>
+    <path d="M291 237v-37m36 16v-59m38 81v-87m34 61v-36" fill="none" stroke="#bed1b3" stroke-width="9"/>
+    <path d="m479 156 76-46 91 46-76 48z" fill="#254b40"/>
+    <g fill="none" stroke="#91b39b"><path d="m506 146 47-34 42 37m-89-3 47 20 42-17m-89-3 47-34 42-15m-42 69 42-69m-42 15 42 37"/></g>
+    <g fill="#bed1b3"><circle cx="506" cy="146" r="6"/><circle cx="553" cy="112" r="6"/><circle cx="553" cy="166" r="6"/><circle cx="595" cy="97" r="6"/><circle cx="595" cy="149" r="6"/></g>
+    <path d="m721 237 86-49 96 49-87 49z" fill="#254b40"/>
+    <g fill="#183c35"><rect x="735" y="160" width="66" height="35" rx="5"/><rect x="833" y="163" width="66" height="35" rx="5"/><rect x="788" y="222" width="66" height="35" rx="5"/></g>
+    <g stroke="#e9b38a" fill="none" marker-end="url(#arrow)"><path d="M801 177h25"/><path d="M866 198v40h-6"/></g>
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="13" fill="#f5f2e7" text-anchor="middle">
+    <text x="768" y="182">Question</text><text x="866" y="185">Evidence</text><text x="821" y="244">Answer</text>
+  </g>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#bed1b3" font-size="12" letter-spacing="2" text-anchor="middle">
+    <text x="140" y="384">FOUNDATIONS</text><text x="343" y="315">REPRESENTATIONS</text><text x="563" y="237">MODELS</text><text x="815" y="319">USEFUL SYSTEMS</text>
+  </g>
+  <g fill="#e9b38a"><circle cx="35" cy="67" r="3"/><circle cx="76" cy="102" r="2"/><circle cx="703" cy="54" r="3"/><circle cx="918" cy="398" r="3"/></g>
+  <path d="M33 67h36m-18-18v36M918 380v36m-18-18h36" stroke="#e9b38a" stroke-width="1" opacity=".6"/>
+</svg>

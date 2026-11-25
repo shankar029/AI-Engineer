@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An illustrated, intuition-first guide to the mathematics behind language models. Learn through worked examples, interactive experiments, and engineering connections.">
+  <meta name="description" content="An intuition-first journey toward becoming an AI engineer. Begin with mathematical and model foundations through illustrated explanations, worked examples, and engineering connections.">
   <meta name="theme-color" content="#183c35">
-  <title>From Tokens to Meaning: How Embeddings Represent Language | The AI Engineer</title>
+  <title>From Tokens to Meaning: How Embeddings Represent Language | Becoming an AI Engineer</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/katex/katex.min.css">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/cover.css">
   <link rel="stylesheet" href="assets/print.css" media="print">
   <script type="module" src="assets/app.js"></script>
 </head>
 <body class="chapter">
   <a class="skip-link" href="#main">Skip to content</a>
   <aside class="sidebar" id="book-navigation" aria-label="Book navigation">
-    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>The AI Engineer<small>A FIELD GUIDE</small></span></a>
+    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>Becoming an<br>AI Engineer<small>A FIELD GUIDE</small></span></a>
     <div class="sidebar-body">
-      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The learning path</a>
+      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The book cover</a>
+      <a class="overview-link" href="foundations.html"><span aria-hidden="true">&#8594;</span> Part I / Foundations</a>
       <p class="nav-label">PART I <span>THE FOUNDATIONS</span></p>
       <nav aria-label="Chapters"><a class="chapter-link" href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning<small>Represent & transform</small></span></a><a class="chapter-link" href="calculus.html"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization<small>Change & learn</small></span></a><a class="chapter-link" href="tokenization.html"><span>03</span><span>From Text to Tokens: How LLMs Read Language<small>Segment & encode</small></span></a><a class="chapter-link selected" href="embeddings.html" aria-current="page"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language<small>Represent & locate</small></span><span class="current-dot" aria-hidden="true"></span></a><a class="chapter-link" href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn<small>Predict & learn</small></span></a></nav>
       <div class="future-note"><span class="tiny-line"></span>Build intuition.<br>Then build systems.</div>
@@ -25,7 +27,7 @@
     </div>
   </aside>
   <div class="page">
-    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">The AI Engineer</a><span aria-hidden="true">/</span><span>Foundations / 04 From Tokens to Meaning: How Embeddings Represent Language</span></div><div class="reading-actions"><a class="pdf-download" href="../04-from-tokens-to-meaning.pdf" download>Chapter PDF <span aria-hidden="true">&#8595;</span></a><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
+    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">Becoming an AI Engineer</a><span aria-hidden="true">/</span><span>Foundations / 04 From Tokens to Meaning: How Embeddings Represent Language</span></div><div class="reading-actions"><a class="pdf-download" href="../04-from-tokens-to-meaning.pdf" download>Chapter PDF <span aria-hidden="true">&#8595;</span></a><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
     <div class="reading-progress" aria-hidden="true"><div></div></div>
     <div class="reading-layout">
       <main id="main" tabindex="-1"><header class="chapter-header">
@@ -694,7 +696,7 @@ M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">â€
 </main>
       <aside class="on-this-page" aria-label="On this page"><p class="nav-label">IN THIS CHAPTER</p><nav><a href="#ids-and-lookups"><span>01</span>An ID chooses a row; a vector supplies values</a><a href="#learning-vectors"><span>02</span>Training changes values, not token addresses</a><a href="#geometry"><span>03</span>Similarity compares vectors, not truth</a><a href="#offsets"><span>04</span>Vector offsets are hypotheses, not semantic laws</a><a href="#contextual-states"><span>05</span>The same lookup can lead to different contextual states</a><a href="#text-vectors-and-search"><span>06</span>A whole-text embedding supports a retrieval pipeline</a><a href="#order"><span>07</span>Identity is not position</a><a href="#angles"><span>08</span>Learn a circle before a positional wave</a><a href="#sinusoidal"><span>09</span>Sinusoidal encoding gives each pair a different clock</a><a href="#learned-position"><span>10</span>Learned position embeddings are a second table</a><a href="#rotary"><span>11</span>RoPE changes attention's queries and keys</a><a href="#causal-mask"><span>12</span>Position says where; masking says what is visible</a><a href="#engineering"><span>13</span>Preserve the representation contract in an application</a><a href="#practice"><span>14</span>Work it through without hiding behind a label</a><a href="#interview-questions"><span>15</span>Interview questions</a><a href="#recap"><span>16</span>Numbers become useful through objectives and contracts</a></nav><a class="back-top" href="#main">Back to top &#8593;</a></aside>
     </div>
-    <footer class="site-footer"><span>The AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
+    <footer class="site-footer"><span>Becoming an AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
   </div>
 </body>
 </html>

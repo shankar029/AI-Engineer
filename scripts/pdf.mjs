@@ -46,7 +46,7 @@ try {
           link.href = `${repositoryUrl}/raw/refs/heads/main/publications/${target.pdf}${url.hash ? `#nameddest=${url.hash.slice(1)}` : ''}`;
         } else if (file === 'authoring.html') {
           link.href = `${repositoryUrl}/blob/main/AUTHORING.md${url.hash}`;
-        } else if (file === 'index.html') {
+        } else if (file === 'index.html' || file === 'foundations.html') {
           link.href = repositoryUrl;
         } else {
           throw new Error(`Unmapped local PDF link: ${link.getAttribute('href')}`);
@@ -59,11 +59,18 @@ try {
       const badImages = [...main.querySelectorAll('img')].filter(img => !img.complete || !img.naturalWidth);
       if (badImages.length) throw new Error('Unloaded PDF diagram');
       if (document.querySelector('.katex-error')) throw new Error('Unrendered PDF formula');
-      const fitWidth = 180 * 96 / 25.4;
+      const fitWidth = 174 * 96 / 25.4;
       main.style.width = `${fitWidth}px`;
-      for (const block of main.querySelectorAll('.equation, .table-wrap, pre')) {
+      const bounds = main.getBoundingClientRect();
+      for (const block of main.querySelectorAll('.equation, .table-wrap, pre, .figure-viewport')) {
         if (block.scrollWidth > block.clientWidth + 1) {
           throw new Error(`Print block needs manual reflow: ${block.textContent.slice(0, 100)}`);
+        }
+      }
+      for (const element of main.querySelectorAll('.math .katex-html, .equation .katex-html, figure img, table, pre')) {
+        const box = element.getBoundingClientRect();
+        if (box.left < bounds.left - 1 || box.right > bounds.right + 1) {
+          throw new Error(`Print content crosses side margins: ${element.textContent.slice(0, 100) || element.getAttribute('src')}`);
         }
       }
       const text = [];
@@ -86,7 +93,7 @@ try {
     await page.pdf({
       path, format: 'A4', preferCSSPageSize: true, printBackground: true,
       displayHeaderFooter: true, headerTemplate: '<span></span>',
-      footerTemplate: `<div style="width:100%;margin:0 15mm;font:8px Arial;color:#606963;display:flex;justify-content:space-between"><span>The AI Engineer / Chapter ${chapter.number}</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
+      footerTemplate: `<div style="width:100%;margin:0 18mm;font:8px Arial;color:#606963;display:flex;justify-content:space-between"><span>Becoming an AI Engineer / Chapter ${chapter.number}</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
       tagged: true, outline: true
     });
     const bytes = await readFile(path);

@@ -1,6 +1,8 @@
-# The AI Engineer
+# Becoming an AI Engineer
 
-An illustrated, intuition-first book for engineers learning the mathematics behind language models. Start with vectors and work toward a complete neural-network learning step, with original diagrams, worked calculations, exercises, and explained interview answers.
+An illustrated, intuition-first journey toward building AI with understanding and intention. The first part starts with vectors and works toward a complete neural-network learning step, with original diagrams, worked calculations, exercises, and explained interview answers.
+
+This edition is Part I: mathematical and model foundations. Practical systems are the wider direction of the book, not additional chapters already published.
 
 ## Read the book
 

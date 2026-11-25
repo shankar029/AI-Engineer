@@ -1,46 +1,28 @@
-<section class="hero" aria-labelledby="book-title">
-  <p class="eyebrow">An intuition-first field guide &nbsp; / &nbsp; Volume 01</p>
-  <div class="hero-grid">
-    <div>
-      <h1 id="book-title">Understand the math.<br><em>Build the intuition.</em></h1>
-      <p class="intro">Your path to becoming an AI engineer starts beneath the model. Explore the ideas that turn numbers into representations, predictions, and learning.</p>
-      <a class="hero-link" href="linear-algebra.html">Start with chapter 01 <span aria-hidden="true">&#8594;</span></a>
-    </div>
-    <img class="hero-art" src="assets/cover.svg" alt="An original geometric study: vectors become a transformed grid, connecting representation to change." width="430" height="360">
+<section class="book-cover" aria-labelledby="book-title">
+  <div class="cover-heading">
+    <p class="eyebrow">An intuition-first field guide</p>
+    <h1 id="book-title">Becoming an <br><em>AI Engineer</em></h1>
+    <p class="cover-subtitle">From first principles to models.<br>From models to useful systems.</p>
   </div>
-  <div class="hero-bottom"><span>05 foundational chapters</span><span>Visuals + worked examples</span><span>Made for curious builders</span></div>
-</section>
-<section class="intro-strip" aria-label="How this book teaches">
-  <div><span class="mini-icon" aria-hidden="true">&#8599;</span><div><h3>Intuition before notation</h3><p>Start with a question.<br>Give the symbols a reason to exist.</p></div></div>
-  <div><span class="mini-icon" aria-hidden="true">&#9639;</span><div><h3>See what changes</h3><p>Original diagrams and small<br>experiments make ideas tangible.</p></div></div>
-  <div><span class="mini-icon" aria-hidden="true">&#8644;</span><div><h3>Connect it to the model</h3><p>From one calculation to the<br>operations inside an LLM.</p></div></div>
-</section>
-<section aria-labelledby="foundations">
-  <div class="section-heading"><h2 id="foundations">First, a foundation.</h2><p>Part I &nbsp; / &nbsp; The language of learning</p></div>
-  <div class="chapter-cards">
-    <a class="chapter-card" href="linear-algebra.html">
-      <img class="card-art" src="assets/algebra-card.svg" alt="" width="580" height="220">
-      <div class="card-content"><span class="card-number">Chapter 01 &nbsp; / &nbsp; Linear algebra</span><h3>The Language of LLMs: <br>Vectors, Matrices, and Meaning</h3><p>How vectors hold information, matrices transform it, and attention combines it.</p><div class="card-footer"><span>Vectors &middot; Matrices &middot; Attention &middot; Rank</span><span class="card-arrow" aria-hidden="true">&#8594;</span></div></div>
-    </a>
-    <a class="chapter-card" href="calculus.html">
-      <img class="card-art" src="assets/calculus-card.svg" alt="" width="580" height="220">
-      <div class="card-content"><span class="card-number">Chapter 02 &nbsp; / &nbsp; Calculus</span><h3>How LLMs Learn: <br>Derivatives, Gradients, and Optimization</h3><p>How small changes become gradients, and gradients become better predictions.</p><div class="card-footer"><span>Derivatives &middot; Backprop &middot; Optimization</span><span class="card-arrow" aria-hidden="true">&#8594;</span></div></div>
-    </a>
-    <a class="chapter-card" href="tokenization.html">
-      <img class="card-art" src="assets/tokenization-card.svg" alt="" width="580" height="220">
-      <div class="card-content"><span class="card-number">Chapter 03 &nbsp; / &nbsp; Tokenization</span><h3>From Text to Tokens: How LLMs Read Language</h3><p>How text becomes vocabulary IDs, and how those choices shape context, memory, and model compatibility.</p><div class="card-footer"><span>BPE &middot; WordPiece &middot; Unigram &middot; Budgets</span><span class="card-arrow" aria-hidden="true">&#8594;</span></div></div>
-    </a>
-    <a class="chapter-card" href="embeddings.html">
-      <img class="card-art" src="assets/embeddings-card.svg" alt="" width="580" height="220">
-      <div class="card-content"><span class="card-number">Chapter 04 &nbsp; / &nbsp; Embeddings &amp; position</span><h3>From Tokens to Meaning: How Embeddings Represent Language</h3><p>How token rows learn useful representations, and how similarity, context, and position shape their use.</p><div class="card-footer"><span>Lookup &middot; Learning &middot; Retrieval &middot; RoPE</span><span class="card-arrow" aria-hidden="true">&#8594;</span></div></div>
-    </a>
-    <a class="chapter-card" href="neural-networks.html">
-      <img class="card-art" src="assets/neural-networks-card.svg" alt="" width="580" height="220">
-      <div class="card-content"><span class="card-number">Chapter 05 &nbsp; / &nbsp; Neural networks</span><h3>From Inputs to Predictions: How Neural Networks Learn</h3><p>How a network predicts, computes sensitivities, updates parameters, and supplies the building blocks of a Transformer.</p><div class="card-footer"><span>Activations &middot; Learning &middot; MLPs &middot; Blocks</span><span class="card-arrow" aria-hidden="true">&#8594;</span></div></div>
-    </a>
+  <img class="cover-journey" src="assets/engineering-cover.svg" alt="An original engineering landscape: a foundation grid becomes connected representations, a model network, and a system that links a question, retrieved evidence, and an answer. The final system is an illustration of the broader journey, not an additional published chapter." width="960" height="480">
+  <div class="cover-bottom">
+    <div><p>Learn to explain what a model does,<br>then build with intention.</p><span>Current edition: Part I / Five foundation chapters</span></div>
+    <nav class="cover-actions" aria-label="Begin the book">
+      <a class="hero-link" href="foundations.html">Start reading <span aria-hidden="true">&#8594;</span></a>
+      <a class="cover-contents" href="#foundations">Browse chapters <span aria-hidden="true">&#8595;</span></a>
+    </nav>
   </div>
 </section>
-<section class="learning-note">
-  <h2>Not a formula collection.<br>A way of thinking.</h2>
-  <div><p>Start with arithmetic and a willingness to work through small examples. No prior linear algebra or calculus is assumed: we explain the notation, operations, and mathematical steps as they appear. Read in order, keep a notebook, and pause at the explained checks. You don't need a GPU or a machine-learning framework. Each chapter builds toward an LLM operation you can calculate and explain.</p><a href="authoring.html">Explore the book's teaching & design system &#8594;</a></div>
+<section class="cover-orientation" aria-labelledby="foundations">
+  <p class="eyebrow">The first part of a wider journey</p>
+  <h2 id="foundations">Start with the foundations.</h2>
+  <p>Becoming an AI engineer involves more than mathematics: useful systems also need sound design, evaluation, and operational care. This edition develops the mathematical and model foundations first. Later systems topics are a direction for the book, not chapters already written.</p>
+  <ol class="cover-chapters">
+    <li><a href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning</span></a></li>
+    <li><a href="calculus.html"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization</span></a></li>
+    <li><a href="tokenization.html"><span>03</span><span>From Text to Tokens: How LLMs Read Language</span></a></li>
+    <li><a href="embeddings.html"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language</span></a></li>
+    <li><a href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn</span></a></li>
+  </ol>
+  <p><a href="foundations.html">How to use Part I: intuition, calculations, and explained practice &#8594;</a></p>
 </section>

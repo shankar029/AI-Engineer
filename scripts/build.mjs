@@ -4,7 +4,8 @@ import katex from 'katex';
 import MarkdownIt from 'markdown-it';
 
 const pages = [
-  { file: 'index.html', title: 'A practical path into language models', type: 'home' },
+  { file: 'index.html', title: 'Becoming an AI Engineer', type: 'cover' },
+  { file: 'foundations.html', title: 'Part I: Mathematical and model foundations', type: 'home' },
   ...chapters,
   { file: 'authoring.html', title: 'Authoring guide', type: 'guide' }
 ];
@@ -48,7 +49,7 @@ for (const page of pages) {
   let html = template.replaceAll('{{TITLE}}', escape(page.title)).replace('{{TYPE}}', page.type)
     .replace('{{NAV}}', nav).replace('{{CONTENT}}', content)
     .replace('{{TOC}}', toc).replace('{{PDF_LINK}}', page.pdf ? `<a class="pdf-download" href="pdfs/${page.pdf}" download>Chapter PDF <span aria-hidden="true">&#8595;</span></a>` : '')
-    .replace('{{BREADCRUMB}}', page.type === 'home' ? 'The learning path' : page.type === 'guide' ? 'Authoring guide' : `Foundations / ${page.number} ${page.title}`);
+    .replace('{{BREADCRUMB}}', page.type === 'cover' ? 'The book cover' : page.type === 'home' ? 'Part I / The foundations' : page.type === 'guide' ? 'Authoring guide' : `Foundations / ${page.number} ${page.title}`);
   await writeFile(`dist/${page.file}`, html);
 }
 console.log(`Built ${pages.length} pages. All formulas rendered locally with KaTeX.`);

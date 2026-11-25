@@ -17,6 +17,13 @@ for (const width of [320, 1440]) {
     });
     await page.goto(entry);
     await expect(page).toHaveURL(pathToFileURL(resolve(root, 'html', 'index.html')).href);
+    await expect(page.locator('h1')).toHaveText('Becoming an AI Engineer');
+    await expect(page.locator('.cover-journey')).toBeVisible();
+    const subtitle = await page.locator('.cover-subtitle').boundingBox();
+    const artwork = await page.locator('.cover-journey').boundingBox();
+    expect(artwork.y).toBeGreaterThanOrEqual(subtitle.y + subtitle.height);
+    await page.getByRole('link', { name: 'Start reading', exact: false }).click();
+    await expect(page).toHaveURL(pathToFileURL(resolve(root, 'html', 'foundations.html')).href);
     await expect(page.locator('.chapter-card')).toHaveCount(chapters.length);
     for (const chapter of chapters) {
       await page.locator(`.chapter-link[href="${chapter.file}"]`).click();
@@ -42,7 +49,7 @@ for (const width of [320, 1440]) {
     await expect(page.locator('h1')).toHaveText('The authoring system');
     expect(remoteRequests).toEqual([]);
 
-    for (const file of ['index.html', ...chapters.map(chapter => chapter.file), 'authoring.html']) {
+    for (const file of ['index.html', 'foundations.html', ...chapters.map(chapter => chapter.file), 'authoring.html']) {
       await page.goto(pathToFileURL(resolve(root, 'html', file)).href);
       const references = await page.locator('[href], [src]').evaluateAll(nodes =>
         nodes.map(node => node.getAttribute('href') || node.getAttribute('src')));

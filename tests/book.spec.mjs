@@ -3,7 +3,7 @@ import { chapters as chapterInventory } from '../scripts/chapters.mjs';
 
 const base = 'http://127.0.0.1:4175';
 const chapters = chapterInventory.map(chapter => chapter.file);
-const pages = ['index.html', ...chapters, 'authoring.html'];
+const pages = ['index.html', 'foundations.html', ...chapters, 'authoring.html'];
 
 test('chapter PDF companions are downloadable locally and served as PDFs', async ({ page, request }) => {
   for (const chapter of chapters) {
@@ -41,7 +41,7 @@ for (const width of [375, 1440]) {
     await page.goto(new URL('../dist/index.html', import.meta.url).href);
     await expect(page.locator('html')).toHaveClass('no-js');
     await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(248, 246, 240)');
-    await expect(page.locator('.hero')).toHaveCSS('background-color', 'rgb(24, 60, 53)');
+    await expect(page.locator('.book-cover')).toHaveCSS('background-color', 'rgb(24, 60, 53)');
     await expect(page.locator('.print-button')).toBeHidden();
 
     for (const file of chapters) {
@@ -112,14 +112,14 @@ for (const width of [320, 375, 768, 1440]) {
 
 test('meaningful chapter titles are consistent across entry points', async ({ page }) => {
   const titles = chapterInventory.map(chapter => chapter.title);
-  await page.goto(base);
+  await page.goto(`${base}/foundations.html`);
   for (let i = 0; i < titles.length; i++) {
     await expect(page.locator('.chapter-card h3').nth(i)).toHaveText(titles[i]);
-    await page.goto(`${base}/${pages[i + 1]}`);
+    await page.goto(`${base}/${chapters[i]}`);
     await expect(page.locator('h1')).toHaveText(titles[i]);
-    await expect(page).toHaveTitle(`${titles[i]} | The AI Engineer`);
+    await expect(page).toHaveTitle(`${titles[i]} | Becoming an AI Engineer`);
     await expect(page.locator('.chapter-link[aria-current=page]')).toContainText(titles[i]);
-    await page.goto(base);
+    await page.goto(`${base}/foundations.html`);
   }
 });
 

@@ -1,5 +1,5 @@
 {
-  "sourceDigest": "d640b90b527cafd97b6a458abd01da733b57677e3374524640d13b42f5b32222",
+  "sourceDigest": "fb9002f9318b9e64a9d28925d1b283c541e66beb12b0876392e5da2722008150",
   "paper": "A4",
   "chapters": [
     {
@@ -9,8 +9,8 @@
       "number": "01",
       "subtitle": "Represent & transform",
       "type": "chapter",
-      "sha256": "3403421252c3264496cab30fde6153ffbd1c847bcdebfb68ff44752a5c572564",
-      "bytes": 440455,
+      "sha256": "3a259b0266db962a79f03996a409235ec9ea6550acd25ee005bd3c2e600f8f66",
+      "bytes": 441543,
       "text": [
         "Part I / Mathematical foundations / 01",
         "The Language of LLMs: Vectors, Matrices, and Meaning",
@@ -341,8 +341,8 @@
       "number": "02",
       "subtitle": "Change & learn",
       "type": "chapter",
-      "sha256": "5194ccfc45b4ba8d67ddaf6d93a77707b4175b271206b57584230f40aa2f0266",
-      "bytes": 560812,
+      "sha256": "b3c571419a83eda0efd77baad6e2594b9981edaa02a4f8ef1bd32a5824a012bd",
+      "bytes": 562192,
       "text": [
         "Part I / Mathematical foundations / 02",
         "How LLMs Learn: Derivatives, Gradients, and Optimization",
@@ -779,8 +779,8 @@
       "number": "03",
       "subtitle": "Segment & encode",
       "type": "chapter",
-      "sha256": "a52b9d9e9633817e45f89d91d6889efbc68a98c767ee1abc07ca83c72be57b3b",
-      "bytes": 692708,
+      "sha256": "cda9731a2e316c695b4c8b43eb4c8cc9d435dd638aacd0c72cb82dd86bc14bca",
+      "bytes": 691462,
       "text": [
         "Part I / From mathematics to models / 03",
         "From Text to Tokens: How LLMs Read Language",
@@ -1260,8 +1260,8 @@
       "number": "04",
       "subtitle": "Represent & locate",
       "type": "chapter",
-      "sha256": "6b8b9900df3b1bd0a04da214600854e1971881c89bdfaea52272cc1caeaa1248",
-      "bytes": 859549,
+      "sha256": "d9888687da61559d6ffc98b3a62f563a3d1820aaea4c96b7834f7c3b30fcf10e",
+      "bytes": 850847,
       "text": [
         "Part I / From mathematics to models / 04",
         "From Tokens to Meaning: How Embeddings Represent Language",
@@ -1947,8 +1947,8 @@
       "number": "05",
       "subtitle": "Predict & learn",
       "type": "chapter",
-      "sha256": "0541f807231e6a8b87aaf0f4c654be3eda063b827a03d658fc1b2bedf1665eca",
-      "bytes": 627805,
+      "sha256": "14368adfff5df85df8fc7241c6fecabbef4ab4d81aa59b8f8d5b17361a9a3984",
+      "bytes": 621730,
       "text": [
         "Part I / From mathematics to models / 05",
         "From Inputs to Predictions: How Neural Networks Learn",

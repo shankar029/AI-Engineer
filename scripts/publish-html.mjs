@@ -19,7 +19,7 @@ async function files(directory, prefix = '') {
   return result.sort();
 }
 
-for (const file of ['index.html', ...chapters.map(chapter => chapter.file), 'authoring.html']) {
+for (const file of ['index.html', 'foundations.html', ...chapters.map(chapter => chapter.file), 'authoring.html']) {
   let html = await readFile(join('dist', file), 'utf8');
   for (const chapter of chapters) {
     const pdf = await readFile(join('publications', chapter.pdf));

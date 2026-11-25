@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An illustrated, intuition-first guide to the mathematics behind language models. Learn through worked examples, interactive experiments, and engineering connections.">
+  <meta name="description" content="An intuition-first journey toward becoming an AI engineer. Begin with mathematical and model foundations through illustrated explanations, worked examples, and engineering connections.">
   <meta name="theme-color" content="#183c35">
-  <title>Authoring guide | The AI Engineer</title>
+  <title>Authoring guide | Becoming an AI Engineer</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/katex/katex.min.css">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/cover.css">
   <link rel="stylesheet" href="assets/print.css" media="print">
   <script type="module" src="assets/app.js"></script>
 </head>
 <body class="guide">
   <a class="skip-link" href="#main">Skip to content</a>
   <aside class="sidebar" id="book-navigation" aria-label="Book navigation">
-    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>The AI Engineer<small>A FIELD GUIDE</small></span></a>
+    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>Becoming an<br>AI Engineer<small>A FIELD GUIDE</small></span></a>
     <div class="sidebar-body">
-      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The learning path</a>
+      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The book cover</a>
+      <a class="overview-link" href="foundations.html"><span aria-hidden="true">&#8594;</span> Part I / Foundations</a>
       <p class="nav-label">PART I <span>THE FOUNDATIONS</span></p>
       <nav aria-label="Chapters"><a class="chapter-link" href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning<small>Represent & transform</small></span></a><a class="chapter-link" href="calculus.html"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization<small>Change & learn</small></span></a><a class="chapter-link" href="tokenization.html"><span>03</span><span>From Text to Tokens: How LLMs Read Language<small>Segment & encode</small></span></a><a class="chapter-link" href="embeddings.html"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language<small>Represent & locate</small></span></a><a class="chapter-link" href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn<small>Predict & learn</small></span></a></nav>
       <div class="future-note"><span class="tiny-line"></span>Build intuition.<br>Then build systems.</div>
@@ -25,7 +27,7 @@
     </div>
   </aside>
   <div class="page">
-    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">The AI Engineer</a><span aria-hidden="true">/</span><span>Authoring guide</span></div><div class="reading-actions"><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
+    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">Becoming an AI Engineer</a><span aria-hidden="true">/</span><span>Authoring guide</span></div><div class="reading-actions"><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
     <div class="reading-progress" aria-hidden="true"><div></div></div>
     <div class="reading-layout">
       <main id="main" tabindex="-1"><header class="chapter-header"><p class="eyebrow">Behind the book</p><h1>The authoring system</h1><p class="dek">One visual language. One teaching promise. A reference for every chapter that follows.</p></header><p>This is the house style for the whole book, not a one-off mood board. Apply it when adding a chapter, revising a worked example, or drawing a figure. The built guide at <code>authoring.html</code> is generated from this file.</p>
@@ -52,6 +54,7 @@
 <p>Do not make up a reading-time estimate. This edition uses prerequisites and section counts because people work through math at very different speeds.</p>
 <p>When a supplied source includes interview questions, retain their substantive breadth in a visibly labeled <strong>Interview questions</strong> section with a stable contents anchor. Adapt prompts and answers in original prose; do not substitute a few synthesis exercises for an inventory of the source interview questions. Map every source question and page to its adapted question and beginner-friendly explained answer. Consolidate genuinely duplicate prompts transparently, preserve their distinct qualifications, and identify missing or truncated questions without inventing their text. Answers should give reasoning, relevant worked steps and misconception boundaries, with concise prerequisite reminders and links to fuller lessons.</p>
 <h2 id="editorial-titles-and-navigation">Editorial titles and navigation</h2>
+<p>The book is <strong>Becoming an AI Engineer</strong>. Its distinct opening cover is <code>book/index.html</code>, with original portable artwork in <code>book/assets/engineering-cover.svg</code>; the mathematics-focused introduction and chapter cards live separately in <code>book/foundations.html</code>. Mathematics is Part I of the engineering journey, not the entire book identity. Keep the broader systems direction aspirational until those chapters exist. Preserve the cover's <code>#foundations</code> bookmark and direct chapter routes.</p>
 <p>Use the full editorial title in the page title, chapter heading, home-page card, sidebar chapter link, and previous/next navigation. Subject labels may remain in kickers and source filenames.</p>
 <ul>
 <li>Chapter 01: <strong>The Language of LLMs: Vectors, Matrices, and Meaning</strong></li>
@@ -1032,6 +1035,7 @@ npm run pdf:check
 <p><code>scripts/chapters.mjs</code> is the shared source of chapter titles, HTML names and meaningful PDF names. Register a future chapter there, extend the home card/adjacent links, and follow the same pipeline. <code>npm run pdf</code> first builds the book, then uses local Chromium with <code>book/assets/print.css</code>, opens every solution, waits for local fonts and diagrams, and writes the A4 companions under <code>publications/</code>. No external conversion service is allowed. A shared Chapter PDF link is generated into each chapter's toolbar; <code>npm run build</code> copies the publication files into <code>dist/pdfs/</code> so downloads work in a portable, file-opened book.</p>
 <p>Commit the fresh <code>publications/html/</code> edition, reasonable-sized publication PDFs, and <code>publications/manifest.json</code> beside source changes. The manifest records a source digest, each PDF's hash, expected substantive prose fragments, and answer/figure/formula counts for checks; counts are not evidence of instructional quality. <code>dist/</code>, raster page images, contact sheets and extracted audit text are reproducible, ignored output. Do not redistribute supplied source PDFs or private source-audit material. Regeneration is content/layout reproducibility, not a claim of byte identity across browser versions, fonts and metadata timestamps.</p>
 <p>The checker verifies the <strong>actual PDF files</strong>: source and output freshness, title/bookmarks, expected prose (including expanded answer text), A4 size, blank pages, raw TeX, and text bounding boxes inside safe paper margins. It renders every page locally at inspection resolution and creates numbered contact sheets under <code>dist/pdf-review/&lt;chapter-name&gt;/</code>. A passing checker is necessary but not sufficient:</p>
+<p>Print uses a white page canvas rather than a tinted body column ending abruptly at the printable edges. Horizontal margins are 18 mm, with unchanged body type size and individually reflowed equations where necessary. The generator checks the actual 174 mm A4 content width, including inline mathematical spans, tables, code and diagram bounds; the PDF checker verifies uncropped page boxes and glyph clearance against those side margins. The edge investigation of the preceding PDFs found roughly 15 mm physical clearance and did not reproduce missing side content. A viewer-specific cropping report still needs an example screenshot; do not claim the visual-edge repair diagnoses every viewer.</p>
 <ol>
 <li>Inspect every contact sheet for overall completeness, consistent botanical-notebook theme, page numbering, excessive blank space, awkward page breaks and missing/oversized diagrams. Reopen suspicious pages at full resolution, rather than approving only thumbnails.</li>
 <li>Read formula-heavy pages at full resolution: confirm symbols, fractions, matrices, indices and signs are rendered, legible and unclipped. Reflow an overwide derivation into steps; do not silently shrink an entire chapter or crop overflow. The generator rejects detected overwide equation/table/code blocks.</li>
@@ -1044,7 +1048,7 @@ npm run pdf:check
 </main>
       <aside class="on-this-page" aria-label="On this page"><p class="nav-label">IN THIS CHAPTER</p><nav><a href="#reader-and-promise"><span>01</span>Reader and promise</a><a href="#chapter-architecture"><span>02</span>Chapter architecture</a><a href="#editorial-titles-and-navigation"><span>03</span>Editorial titles and navigation</a><a href="#visual-identity"><span>04</span>Visual identity</a><a href="#reusable-components"><span>05</span>Reusable components</a><a href="#mathematical-conventions"><span>06</span>Mathematical conventions</a><a href="#diagrams-and-experiments"><span>07</span>Diagrams and experiments</a><a href="#source-material-and-provenance"><span>08</span>Source material and provenance</a><a href="#tokenization-source-coverage"><span>09</span>Tokenization source coverage</a><a href="#embeddings-source-coverage"><span>10</span>Embeddings source coverage</a><a href="#neural-networks-source-coverage"><span>11</span>Neural networks source coverage</a><a href="#accessibility-and-responsive-behavior"><span>12</span>Accessibility and responsive behavior</a><a href="#adding-a-chapter-and-reviewing-it"><span>13</span>Adding a chapter and reviewing it</a><a href="#committed-html-publication"><span>14</span>Committed HTML publication</a><a href="#mandatory-pdf-companions-and-review"><span>15</span>Mandatory PDF companions and review</a></nav><a class="back-top" href="#main">Back to top &#8593;</a></aside>
     </div>
-    <footer class="site-footer"><span>The AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
+    <footer class="site-footer"><span>Becoming an AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
   </div>
 </body>
 </html>

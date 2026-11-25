@@ -3,21 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An illustrated, intuition-first guide to the mathematics behind language models. Learn through worked examples, interactive experiments, and engineering connections.">
+  <meta name="description" content="An intuition-first journey toward becoming an AI engineer. Begin with mathematical and model foundations through illustrated explanations, worked examples, and engineering connections.">
   <meta name="theme-color" content="#183c35">
-  <title>How LLMs Learn: Derivatives, Gradients, and Optimization | The AI Engineer</title>
+  <title>How LLMs Learn: Derivatives, Gradients, and Optimization | Becoming an AI Engineer</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/katex/katex.min.css">
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/cover.css">
   <link rel="stylesheet" href="assets/print.css" media="print">
   <script type="module" src="assets/app.js"></script>
 </head>
 <body class="chapter">
   <a class="skip-link" href="#main">Skip to content</a>
   <aside class="sidebar" id="book-navigation" aria-label="Book navigation">
-    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>The AI Engineer<small>A FIELD GUIDE</small></span></a>
+    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>Becoming an<br>AI Engineer<small>A FIELD GUIDE</small></span></a>
     <div class="sidebar-body">
-      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The learning path</a>
+      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The book cover</a>
+      <a class="overview-link" href="foundations.html"><span aria-hidden="true">&#8594;</span> Part I / Foundations</a>
       <p class="nav-label">PART I <span>THE FOUNDATIONS</span></p>
       <nav aria-label="Chapters"><a class="chapter-link" href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning<small>Represent & transform</small></span></a><a class="chapter-link selected" href="calculus.html" aria-current="page"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization<small>Change & learn</small></span><span class="current-dot" aria-hidden="true"></span></a><a class="chapter-link" href="tokenization.html"><span>03</span><span>From Text to Tokens: How LLMs Read Language<small>Segment & encode</small></span></a><a class="chapter-link" href="embeddings.html"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language<small>Represent & locate</small></span></a><a class="chapter-link" href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn<small>Predict & learn</small></span></a></nav>
       <div class="future-note"><span class="tiny-line"></span>Build intuition.<br>Then build systems.</div>
@@ -25,7 +27,7 @@
     </div>
   </aside>
   <div class="page">
-    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">The AI Engineer</a><span aria-hidden="true">/</span><span>Foundations / 02 How LLMs Learn: Derivatives, Gradients, and Optimization</span></div><div class="reading-actions"><a class="pdf-download" href="../02-how-llms-learn.pdf" download>Chapter PDF <span aria-hidden="true">&#8595;</span></a><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
+    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">Becoming an AI Engineer</a><span aria-hidden="true">/</span><span>Foundations / 02 How LLMs Learn: Derivatives, Gradients, and Optimization</span></div><div class="reading-actions"><a class="pdf-download" href="../02-how-llms-learn.pdf" download>Chapter PDF <span aria-hidden="true">&#8595;</span></a><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
     <div class="reading-progress" aria-hidden="true"><div></div></div>
     <div class="reading-layout">
       <main id="main" tabindex="-1"><header class="chapter-header">
@@ -490,7 +492,7 @@ optimizer.step()              # Apply the optimizer's update.
 </main>
       <aside class="on-this-page" aria-label="On this page"><p class="nav-label">IN THIS CHAPTER</p><nav><a href="#functions"><span>01</span>Functions, composition, and limits</a><a href="#derivatives"><span>02</span>A derivative is local sensitivity</a><a href="#gradients"><span>03</span>Many inputs, one gradient</a><a href="#backpropagation"><span>04</span>Backpropagation connects local effects</a><a href="#optimization"><span>05</span>An optimizer turns gradients into updates</a><a href="#softmax"><span>06</span>From logits to a training signal</a><a href="#curvature"><span>07</span>Curvature explains why steps can fail</a><a href="#integration"><span>08</span>The other half: accumulation</a><a href="#practice"><span>09</span>Work it through yourself</a><a href="#recap"><span>10</span>From arithmetic to learning</a></nav><a class="back-top" href="#main">Back to top &#8593;</a></aside>
     </div>
-    <footer class="site-footer"><span>The AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
+    <footer class="site-footer"><span>Becoming an AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
   </div>
 </body>
 </html>
