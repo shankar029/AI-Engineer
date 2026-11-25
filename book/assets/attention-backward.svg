@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300">
+  <defs><marker id="f" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#226b59"/></marker><marker id="b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#ab4a2d"/></marker></defs>
+  <rect width="760" height="300" fill="#fffefa"/>
+  <g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#f)"><path d="M155 87H210"/><path d="M350 87H410"/><path d="M350 206H377V122H410"/><path d="M530 104H595"/><path d="M655 206V138"/></g>
+  <g fill="#eaf1e9" stroke="#226b59"><rect x="20" y="54" width="135" height="68" rx="5"/><rect x="210" y="54" width="140" height="68" rx="5"/><rect x="210" y="176" width="140" height="60" rx="5"/><rect x="410" y="70" width="120" height="68" rx="5"/><rect x="595" y="70" width="120" height="68" rx="5"/><rect x="595" y="176" width="120" height="60" rx="5"/></g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#213b35" text-anchor="middle"><text x="88" y="80">Scores</text><text x="88" y="103">[0, ln3]</text><text x="280" y="80">Weights</text><text x="280" y="103">[1/4, 3/4]</text><text x="280" y="200">Values</text><text x="280" y="223">[2, 4]</text><text x="470" y="98">Output 3.5</text><text x="470" y="121">Weighted sum</text><text x="655" y="98">Loss 0.25</text><text x="655" y="121">(3.5 - 3) squared</text><text x="655" y="211">Target 3</text></g>
+  <g fill="none" stroke="#ab4a2d" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#b)"><path d="M650 54V22H470V65"/><path d="M440 143V158H90V126"/><path d="M470 143V262H280V240"/></g>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#ab4a2d"><text x="506" y="18">Loss sensitivity: 1</text><text x="32" y="150">Score gradients: [-0.375, +0.375]</text><text x="355" y="287">Value gradients: [1/4, 3/4]</text></g>
+</svg>

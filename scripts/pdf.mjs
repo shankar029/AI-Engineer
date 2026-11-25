@@ -91,7 +91,7 @@ try {
       return {
         text: [...new Set(text)],
         answers: main.querySelectorAll('details').length,
-        interviews: main.querySelectorAll('[data-source-questions]').length,
+        interviews: main.querySelectorAll('[data-interview-question]').length,
         figures: main.querySelectorAll('figure').length,
         formulas: main.querySelectorAll('.math,.equation').length
       };

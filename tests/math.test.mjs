@@ -5,6 +5,119 @@ import { dot, cosine, softmax, descentStep } from '../book/assets/math.mjs';
 const near = (actual, expected, tolerance = 1e-8) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} != ${expected}`);
 const multiply = (a, b) => a.map(row => b[0].map((_, j) => dot(row, b.map(r => r[j]))));
 
+const attentionFixture = () => {
+  const x = [[1, 0], [0, 1], [1, 1]];
+  return {
+    q: multiply(x, [[Math.sqrt(2), 0], [0, Math.sqrt(2)]]),
+    k: multiply(x, [[Math.log(2), 0], [0, Math.log(3)]]),
+    v: multiply(x, [[2, 0], [0, 4]])
+  };
+};
+const attentionRow = (query, keys, values, permitted, divisor = Math.sqrt(query.length)) => {
+  const indices = keys.map((_, j) => j).filter(permitted);
+  assert.ok(indices.length, 'A row must permit at least one key');
+  const weights = softmax(indices.map(j => dot(query, keys[j]) / divisor));
+  return values[0].map((_, c) => weights.reduce((sum, weight, i) => sum + weight * values[indices[i]][c], 0));
+};
+
+test('chapter 7: every projected row, per-query denominator, and combined masks', () => {
+  const { q, k, v } = attentionFixture();
+  const full = q.map(query => attentionRow(query, k, v, () => true));
+  const causal = q.map((query, i) => attentionRow(query, k, v, j => j <= i));
+  [[8 / 5, 12 / 5], [8 / 7, 24 / 7], [16 / 11, 36 / 11]].forEach((row, i) =>
+    row.forEach((value, c) => near(full[i][c], value)));
+  [[2, 0], [0.5, 3], [16 / 11, 36 / 11]].forEach((row, i) =>
+    row.forEach((value, c) => near(causal[i][c], value)));
+  const padded = attentionRow(q[2], k, v, j => j !== 1);
+  near(padded[0], 2); near(padded[1], 3);
+  const changed = v.map(row => [...row]); changed[1][1] = 7;
+  near(attentionRow(q[1], k, changed, () => true)[1], 33 / 7);
+  assert.throws(() => attentionRow(q[0], k, v, () => false), /permit/);
+  const scaled = attentionRow([2, 0, 0, 0], [[1, 0, 0, 0], [0, 0, 0, 0]], [[2], [6]], () => true);
+  const unscaled = attentionRow([2, 0, 0, 0], [[1, 0, 0, 0], [0, 0, 0, 0]], [[2], [6]], () => true, 1);
+  near(scaled[0], 3.0757656854799804); near(unscaled[0], 2.4768116880884703);
+});
+
+test('chapter 7: cached absolute-position masks match full causal queries', () => {
+  const { q, k, v } = attentionFixture();
+  const prefixLength = 2;
+  const cacheKeys = k.slice(0, prefixLength), cacheValues = v.slice(0, prefixLength);
+  cacheKeys.push(k[2]); cacheValues.push(v[2]);
+  const localQueryIndex = 0, absoluteIndex = prefixLength + localQueryIndex;
+  const cached = attentionRow(q[2], cacheKeys, cacheValues, j => j <= absoluteIndex);
+  const full = attentionRow(q[2], k, v, j => j <= 2);
+  cached.forEach((value, c) => near(value, full[c]));
+  assert.notDeepEqual(attentionRow(q[2], k, v, j => j <= localQueryIndex), full);
+  const cross = q.slice(0, 2).map(query => attentionRow(query, k, v, j => j < 2));
+  [[4 / 3, 4 / 3], [0.5, 3]].forEach((row, i) =>
+    row.forEach((value, c) => near(cross[i][c], value)));
+});
+
+test('chapter 7: local attention gradients match independent finite differences', () => {
+  const parameters = [1, 0, Math.log(3), 2, 4];
+  const loss = ([query, k1, k2, v1, v2]) => {
+    const weights = softmax([query * k1, query * k2]);
+    return (dot(weights, [v1, v2]) - 3) ** 2;
+  };
+  const expected = [0.375 * Math.log(3), -0.375, 0.375, 0.25, 0.75];
+  for (let j = 0; j < parameters.length; j++) {
+    const plus = [...parameters], minus = [...parameters], step = 1e-5;
+    plus[j] += step; minus[j] -= step;
+    near((loss(plus) - loss(minus)) / (2 * step), expected[j], 1e-7);
+  }
+  const projectionLoss = weight => loss([2 * weight, ...parameters.slice(1)]);
+  near((projectionLoss(0.50001) - projectionLoss(0.49999)) / 0.00002, 0.75 * Math.log(3), 1e-7);
+  const shifted = dot(softmax([0.01, Math.log(3)]), [2, 4]);
+  near(shifted, 3.4962406328513236);
+  assert.ok(Math.abs(shifted - (3.5 - 0.375 * 0.01)) < 1e-5);
+  for (const scores of [[0, 0], [2, -1], [1000, 1001]]) near(dot(softmax(scores), [4, 4]), 4);
+});
+
+test('chapter 7: vector tile merges preserve the full row across maxima and orders', () => {
+  const mergeTiles = tiles => {
+    let accumulated;
+    for (const { scores, values } of tiles) {
+      const maximum = Math.max(...scores);
+      const exponentials = scores.map(score => Math.exp(score - maximum));
+      const denominator = exponentials.reduce((sum, value) => sum + value, 0);
+      const numerator = multiply([exponentials], values)[0];
+      if (!accumulated) accumulated = { maximum, denominator, numerator };
+      else {
+        const next = Math.max(accumulated.maximum, maximum);
+        const oldScale = Math.exp(accumulated.maximum - next), tileScale = Math.exp(maximum - next);
+        accumulated = {
+          maximum: next,
+          denominator: oldScale * accumulated.denominator + tileScale * denominator,
+          numerator: numerator.map((value, c) => oldScale * accumulated.numerator[c] + tileScale * value)
+        };
+      }
+    }
+    return accumulated.numerator.map(value => value / accumulated.denominator);
+  };
+  const scores = [Math.log(2), Math.log(3), Math.log(6)], values = [[2, 0], [0, 4], [2, 4]];
+  for (const offset of [0, 1000, -1000]) {
+    const shifted = scores.map(score => score + offset);
+    const tiles = [{ scores: shifted.slice(0, 2), values: values.slice(0, 2) },
+      { scores: shifted.slice(2), values: values.slice(2) }];
+    const direct = multiply([softmax(shifted)], values)[0];
+    for (const order of [tiles, [...tiles].reverse()]) mergeTiles(order).forEach((value, c) => near(value, direct[c]));
+  }
+});
+
+test('chapter 7: local-window paths and decode counts differ from full-prefill squares', () => {
+  const allowed = (position, window) => Array.from({ length: position + 1 }, (_, j) => j)
+    .filter(j => j >= position - window + 1);
+  assert.deepEqual(Array.from({ length: 6 }, (_, i) => allowed(i, 3).length), [1, 2, 3, 3, 3, 3]);
+  const reachable = new Set(allowed(5, 3).flatMap(j => allowed(j, 3)));
+  assert.deepEqual([...reachable].sort(), [1, 2, 3, 4, 5]);
+  near(allowed(5, 3).reduce((sum, j) => sum + j + 1, 0) / 3, 5);
+  const products = (queries, keys, heads, dk, dv) => heads * queries * keys * (dk + dv);
+  assert.equal(products(8, 8, 2, 2, 2) / products(4, 4, 2, 2, 2), 4);
+  assert.equal(products(1, 8, 2, 2, 2) / products(1, 4, 2, 2, 2), 2);
+  const payload = (positions, kvHeads) => 1 * 2 * positions * kvHeads * (2 + 3) * 2;
+  assert.equal(payload(12, 2), payload(6, 4));
+});
+
 test('chapter 6: derived causal heads, cross-attention, and all block intermediates', () => {
   const x = [[1, 0], [0, 1]];
   const norm = (row, gamma = [1, 1], beta = [0, 0]) => {

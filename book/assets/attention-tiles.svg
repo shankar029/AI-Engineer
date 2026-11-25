@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330">
+  <defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#226b59"/></marker></defs>
+  <rect width="760" height="330" fill="#fffefa"/>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="17" fill="#213b35"><text x="25" y="32">One query, two value coordinates, two tiles</text></g>
+  <g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#a)"><path d="M205 120H265"/><path d="M485 120H540"/><path d="M650 192V240H485"/><path d="M375 192V240H420"/></g>
+  <g fill="#eaf1e9" stroke="#226b59"><rect x="25" y="64" width="180" height="128" rx="5"/><rect x="265" y="64" width="220" height="128" rx="5"/><rect x="540" y="64" width="190" height="128" rx="5"/></g>
+  <rect x="420" y="219" width="225" height="80" rx="5" fill="#f7e9dd" stroke="#ab4a2d"/>
+  <g font-family="Segoe UI,Arial,sans-serif" font-size="16" fill="#213b35"><text x="40" y="90">Tile 1: keys 1, 2</text><text x="40" y="119">Scores: ln2, ln3</text><text x="40" y="146">Values: [2,0], [0,4]</text><text x="40" y="175">Maximum m = ln3</text><text x="282" y="90">Scaled partial sums</text><text x="282" y="119">l = 2/3 + 1 = 5/3</text><text x="282" y="146">z = [4/3, 4]</text><text x="282" y="175">Reference: ln3</text><text x="555" y="90">Tile 2: key 3</text><text x="555" y="119">Score ln6; value [2,4]</text><text x="555" y="146">New maximum ln6</text><text x="555" y="175">Old scale factor 1/2</text><text x="435" y="244">l' = 11/6; z' = [8/3, 6]</text><text x="435" y="270">Output z'/l'</text><text x="435" y="291">[16/11, 36/11]</text></g>
+  <text x="25" y="265" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#606963">Both sums use one maximum.</text><text x="25" y="291" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#606963">No final weight table stored.</text>
+</svg>

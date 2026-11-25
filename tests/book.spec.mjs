@@ -9,6 +9,64 @@ const formulaCounts = new Map(await Promise.all(chapters.map(async file => [
   file, [...(await readFile(new URL(`../book/${file}`, import.meta.url), 'utf8'))
     .matchAll(/<(?:span|div) class="(?:math|equation)">/g)].length
 ])));
+const audit = await readFile(new URL('../MAINTAINER-AUDIT.md', import.meta.url), 'utf8');
+const auditAnchors = topic => {
+  const coverage = audit.split(`## ${topic} source coverage`)[1].split('\n## ')[0];
+  return [...coverage.matchAll(/`#([a-z0-9-]+)`/g)].map(match => match[1]);
+};
+
+test('chapter 7 is navigable and retains its complete lesson and interview correspondence', async ({ page, request }) => {
+  await page.goto(`${base}/transformer.html`);
+  await page.locator('.chapter-pagination a[href="attention.html"]').click();
+  await expect(page.locator('h1')).toHaveText('Attention in Action: How Models Select and Combine Context');
+  await expect(page.locator('h2')).toHaveCount(15);
+  await expect(page.locator('.chapter-meta')).toContainText('15 sections');
+  await expect(page.locator('.on-this-page nav a')).toHaveCount(15);
+  await expect(page.locator('main figure')).toHaveCount(7);
+  const interviews = page.locator('[data-interview-question]');
+  await expect(interviews).toHaveCount(10);
+  expect(await interviews.evaluateAll(nodes => nodes.map(node => node.dataset.interviewQuestion)))
+    .toEqual(Array.from({ length: 10 }, (_, i) => `attention-Q${i + 1}`));
+  const html = await (await request.get(`${base}/attention.html`)).text();
+  for (const anchor of new Set(auditAnchors('Attention'))) expect(html, anchor).toContain(`id="${anchor}"`);
+  await page.locator('.chapter-pagination a[href="transformer.html"]').click();
+  await expect(page.locator('h1')).toContainText('Inside the Transformer');
+});
+
+for (const width of [320, 1440]) {
+  test(`chapter 7 file-opened expanded answers remain readable at ${width}px`, async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(new URL('../publications/html/attention.html', import.meta.url).href);
+    await page.evaluate(() => document.querySelectorAll('main details').forEach(node => { node.open = true; }));
+    for (const anchor of ['attention-gradients', 'mask-contract', 'tiled-softmax', 'interview-questions']) {
+      await page.locator(`#${anchor}`).scrollIntoViewIfNeeded();
+      await expect(page.locator(`#${anchor}`)).toBeInViewport();
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    }
+    await expect(page.locator('main details:not([open])')).toHaveCount(0);
+    await expect(page.getByRole('link', { name: 'Chapter PDF' })).toHaveAttribute('href', '../07-attention-in-action.pdf');
+    await context.close();
+  });
+}
+
+test('reading edition excludes input provenance and internal audit records', async ({ page, request }) => {
+  const provenance = /Understand Linear Algebra|Learn Calculus For LLMs|Start LLM Tokenizers Learning|Learn Embeddings|Chapter 4 Neural Networks|Transformer Architecture Deep Dive|supplied(?: \w+){0,3} PDF|conversation PDF|source basis|source and scope|readable source|source(?:'s)? (?:questions?|page \d+|illustration)|the source(?:'s)? (?:proposes|names|only|develops|introduces)|source Q\d+|data-source-questions|source-coverage|source-material-and-provenance|MAINTAINER-AUDIT/i;
+  for (const file of pages) {
+    await page.goto(`${base}/${file}`);
+    expect(await page.locator('body').innerText(), file).not.toMatch(provenance);
+    expect(await page.content(), file).not.toMatch(provenance);
+    await expect(page.locator('.site-footer a')).toHaveText('Teaching & editorial standards');
+    await expect(page.locator('a[href*="source-coverage"],a[href*="MAINTAINER-AUDIT"]')).toHaveCount(0);
+  }
+  expect(await readFile(new URL('../README.md', import.meta.url), 'utf8')).not.toMatch(provenance);
+  const internal = await request.get(`${base}/MAINTAINER-AUDIT.md`);
+  expect(internal.status()).toBe(404);
+  for (const chapter of chapterInventory) {
+    await page.goto(`${base}/${chapter.file}`);
+    await expect(page.getByRole('link', { name: 'Chapter PDF' })).toHaveAttribute('href', `pdfs/${chapter.pdf}`);
+  }
+});
 
 test('chapter PDF companions are downloadable locally and served as PDFs', async ({ page, request }) => {
   for (const chapter of chapters) {
@@ -34,7 +92,7 @@ test('printing expands all answers and restores the reading disclosure state', a
   await expect(page.locator('main details:not([open])')).toHaveCount(0);
   await page.emulateMedia({ media: 'print' });
   await expect(page.locator('.pdf-download')).toBeHidden();
-  await expect(page.locator('[data-source-questions]').last().locator('details p').first()).toBeVisible();
+  await expect(page.locator('[data-interview-question]').last().locator('details p').first()).toBeVisible();
   await page.evaluate(() => dispatchEvent(new Event('afterprint')));
   await expect(page.locator('main details[open]')).toHaveCount(1);
   await expect(answers.first()).toHaveAttribute('open', '');
@@ -66,7 +124,7 @@ for (const width of [375, 1440]) {
       await expect(page.locator('.exercise details').first()).toHaveAttribute('open', '');
     }
     await page.locator('.site-footer a').click();
-    await expect(page).toHaveURL(new URL('../dist/authoring.html#source-material-and-provenance', import.meta.url).href);
+    await expect(page).toHaveURL(new URL('../dist/authoring.html#reader-facing-editorial-boundary', import.meta.url).href);
   });
 }
 
@@ -128,7 +186,7 @@ test('meaningful chapter titles are consistent across entry points', async ({ pa
   }
 });
 
-test('chapter 3 follows calculus in both directions and exposes all source-map anchors', async ({ page, request }) => {
+test('chapter 3 follows calculus and retains internally audited lesson anchors', async ({ page, request }) => {
   await page.goto(`${base}/calculus.html`);
   await page.locator('.chapter-pagination a[href="tokenization.html"]').click();
   await expect(page.locator('h1')).toHaveText('From Text to Tokens: How LLMs Read Language');
@@ -138,10 +196,8 @@ test('chapter 3 follows calculus in both directions and exposes all source-map a
   await expect(page.locator('main figure')).toHaveCount(5);
   await page.locator('.chapter-pagination a[href="calculus.html"]').click();
   await expect(page.locator('h1')).toContainText('How LLMs Learn');
-  const guide = await (await request.get(`${base}/authoring.html`)).text();
   const html = await (await request.get(`${base}/tokenization.html`)).text();
-  const coverage = guide.split('id="tokenization-source-coverage"')[1].split('<h2')[0];
-  const anchors = [...coverage.matchAll(/<code>#([a-z0-9-]+)<\/code>/g)].map(match => match[1]);
+  const anchors = auditAnchors('Tokenization');
   expect(anchors.length).toBeGreaterThan(20);
   for (const anchor of new Set(anchors)) expect(html, anchor).toContain(`id="${anchor}"`);
 });
@@ -162,7 +218,7 @@ test('chapter 3 remains readable without JavaScript and in print', async ({ brow
   await context.close();
 });
 
-test('chapter 4 navigation and developed-source anchors are integrated', async ({ page, request }) => {
+test('chapter 4 navigation and internally audited lesson anchors are integrated', async ({ page, request }) => {
   await page.goto(`${base}/tokenization.html`);
   await page.locator('.chapter-pagination a[href="embeddings.html"]').click();
   await expect(page.locator('h1')).toHaveText('From Tokens to Meaning: How Embeddings Represent Language');
@@ -170,10 +226,8 @@ test('chapter 4 navigation and developed-source anchors are integrated', async (
   await expect(page.locator('.on-this-page nav a')).toHaveCount(16);
   await expect(page.locator('.chapter-meta')).toContainText('16 sections');
   await expect(page.locator('main figure')).toHaveCount(6);
-  const guide = await (await request.get(`${base}/authoring.html`)).text();
   const html = await (await request.get(`${base}/embeddings.html`)).text();
-  const coverage = guide.split('id="embeddings-source-coverage"')[1].split('<h2')[0];
-  const anchors = [...coverage.matchAll(/<code>#([a-z0-9-]+)<\/code>/g)].map(match => match[1]);
+  const anchors = auditAnchors('Embeddings');
   expect(new Set(anchors).size).toBeGreaterThan(25);
   for (const anchor of new Set(anchors)) expect(html, anchor).toContain(`id="${anchor}"`);
   await page.locator('.chapter-pagination a[href="tokenization.html"]').click();
@@ -207,7 +261,7 @@ test('chapter 4 diagrams, equations, and solutions survive file opening without 
   await context.close();
 });
 
-test('chapter 4 interviews retain every source question and file-opened explained answers', async ({ browser }) => {
+test('chapter 4 interviews retain complete practice and file-opened explained answers', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 812 } });
   const page = await context.newPage();
   await page.goto(new URL('../dist/embeddings.html', import.meta.url).href);
@@ -215,16 +269,16 @@ test('chapter 4 interviews retain every source question and file-opened explaine
   await expect(page).toHaveURL(/#interview-questions$/);
   await expect(page.locator('#interview-questions')).toBeInViewport();
   await expect(page.locator('.on-this-page a[href="#interview-questions"]')).toContainText('Interview questions');
-  const questions = page.locator('[data-source-questions]');
+  const questions = page.locator('[data-interview-question]');
   await expect(questions).toHaveCount(21);
   const correspondences = await questions.evaluateAll(nodes =>
-    nodes.flatMap(node => node.dataset.sourceQuestions.split(' ')));
+    nodes.flatMap(node => node.dataset.interviewQuestion.split(' ')));
   const expected = [
     ...Array.from({ length: 10 }, (_, i) => `embedding-Q${i + 1}`),
     ...Array.from({ length: 12 }, (_, i) => `position-Q${i + 1}`)
   ];
   expect(correspondences.sort()).toEqual(expected.sort());
-  await expect(page.locator('[data-source-questions="position-Q1 position-Q12"]')).toContainText('combines source position Q1 and Q12');
+  await expect(page.locator('[data-interview-question="position-Q1 position-Q12"]')).toContainText('Why does ordinary full self-attention need an order mechanism?');
   for (const question of await questions.all()) {
     await expect(question.locator('h3[id]')).toHaveCount(1);
     await question.locator('summary').click();
@@ -237,7 +291,7 @@ test('chapter 4 interviews retain every source question and file-opened explaine
   await context.close();
 });
 
-test('chapter 5 integrates its complete coverage map and bidirectional navigation', async ({ page, request }) => {
+test('chapter 5 retains internally audited lessons and bidirectional navigation', async ({ page, request }) => {
   await page.goto(`${base}/embeddings.html`);
   await page.locator('.chapter-pagination a[href="neural-networks.html"]').click();
   await expect(page.locator('h1')).toHaveText('From Inputs to Predictions: How Neural Networks Learn');
@@ -245,27 +299,23 @@ test('chapter 5 integrates its complete coverage map and bidirectional navigatio
   await expect(page.locator('.chapter-meta')).toContainText('15 sections');
   await expect(page.locator('.on-this-page nav a')).toHaveCount(15);
   await expect(page.locator('main figure')).toHaveCount(6);
-  const guide = await (await request.get(`${base}/authoring.html`)).text();
   const html = await (await request.get(`${base}/neural-networks.html`)).text();
-  const coverage = guide.split('id="neural-networks-source-coverage"')[1].split('<h2')[0];
-  const anchors = [...coverage.matchAll(/<code>#([a-z0-9-]+)<\/code>/g)].map(match => match[1]);
+  const anchors = auditAnchors('Neural networks');
   expect(new Set(anchors).size).toBeGreaterThan(30);
   for (const anchor of new Set(anchors)) expect(html, anchor).toContain(`id="${anchor}"`);
   await page.locator('.chapter-pagination a[href="embeddings.html"]').click();
   await expect(page.locator('h1')).toContainText('From Tokens to Meaning');
 });
 
-test('chapter 6 connects navigation and every source topic/interview anchor', async ({ page, request }) => {
+test('chapter 6 connects navigation and internally audited lesson/interview anchors', async ({ page, request }) => {
   await page.goto(`${base}/neural-networks.html`);
   await page.locator('.chapter-pagination a[href="transformer.html"]').click();
   await expect(page.locator('h1')).toHaveText('Inside the Transformer: How Attention Builds Context');
   await expect(page.locator('h2')).toHaveCount(17);
   await expect(page.locator('.chapter-meta')).toContainText('17 sections');
   await expect(page.locator('main figure')).toHaveCount(7);
-  const guide = await (await request.get(`${base}/authoring.html`)).text();
   const html = await (await request.get(`${base}/transformer.html`)).text();
-  const coverage = guide.split('id="transformer-source-coverage"')[1].split('<h2')[0];
-  const anchors = [...coverage.matchAll(/<code>#([a-z0-9-]+)<\/code>/g)].map(match => match[1]);
+  const anchors = auditAnchors('Transformer');
   expect(new Set(anchors).size).toBeGreaterThan(40);
   for (const anchor of new Set(anchors)) expect(html, anchor).toContain(`id="${anchor}"`);
   await page.locator('.chapter-pagination a[href="neural-networks.html"]').click();
@@ -279,9 +329,9 @@ for (const width of [320, 1440]) {
     await page.goto(new URL('../dist/transformer.html', import.meta.url).href);
     await page.locator('main a[href="#interview-questions"]').first().click();
     await expect(page.locator('#interview-questions')).toBeInViewport();
-    const questions = page.locator('[data-source-questions]');
+    const questions = page.locator('[data-interview-question]');
     await expect(questions).toHaveCount(20);
-    expect(await questions.evaluateAll(nodes => nodes.map(node => node.dataset.sourceQuestions))).toEqual(
+    expect(await questions.evaluateAll(nodes => nodes.map(node => node.dataset.interviewQuestion))).toEqual(
       Array.from({ length: 20 }, (_, i) => `transformer-Q${i + 1}`));
     for (const details of await page.locator('main details').all()) {
       await details.locator('summary').click();
@@ -305,9 +355,9 @@ for (const width of [320, 1440]) {
     await page.goto(new URL('../dist/neural-networks.html', import.meta.url).href);
     await page.locator('main a[href="#interview-questions"]').click();
     await expect(page.locator('#interview-questions')).toBeInViewport();
-    const questions = page.locator('[data-source-questions]');
+    const questions = page.locator('[data-interview-question]');
     await expect(questions).toHaveCount(14);
-    expect(await questions.evaluateAll(nodes => nodes.map(node => node.dataset.sourceQuestions))).toEqual(
+    expect(await questions.evaluateAll(nodes => nodes.map(node => node.dataset.interviewQuestion))).toEqual(
       Array.from({ length: 14 }, (_, i) => `neural-Q${i + 1}`));
     for (const details of await page.locator('main details').all()) {
       await details.locator('summary').click();

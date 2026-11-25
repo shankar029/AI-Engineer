@@ -53,6 +53,14 @@ def audit(chapter):
                 prose.append(text)
         pages.append(page.extract_text(visitor_text=visitor))
     text = "\n".join(pages)
+    provenance = (
+        r"Understand Linear Algebra|Learn Calculus For LLMs|Start LLM Tokenizers Learning|"
+        r"Learn Embeddings|Chapter 4 Neural Networks|Transformer Architecture Deep Dive|"
+        r"supplied(?:\s+\w+){0,3}\s+PDF|conversation\s+PDF|Source basis|Source and scope|"
+        r"readable source|source(?:'s)?\s+(?:questions?|page\s+\d+|illustration)|"
+        r"the source(?:'s)?\s+(?:proposes|names|only|develops|introduces)|source\s+Q\d+"
+    )
+    check(not re.search(provenance, text, re.IGNORECASE), f"{path.name}: private-input provenance in reader text")
     footer = r"Becoming an AI Engineer / Chapter \d+\s+\d+ / \d+"
     searchable = normalized(re.sub(footer, "", text))
     prose_searchable = normalized(re.sub(footer, "", "".join(prose)))
@@ -68,6 +76,9 @@ def audit(chapter):
     document = pdfium.PdfDocument(path)
     output = REVIEW / path.stem
     output.mkdir(parents=True, exist_ok=True)
+    for stale in output.iterdir():
+        if re.fullmatch(r"(?:page-\d+|contact-\d+)\.png", stale.name):
+            stale.unlink()
     thumbs = []
     bounds = []
     for index, page in enumerate(document):

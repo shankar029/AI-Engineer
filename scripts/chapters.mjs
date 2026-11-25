@@ -6,5 +6,6 @@ export const chapters = [
   { file: 'tokenization.html', pdf: '03-from-text-to-tokens.pdf', title: 'From Text to Tokens: How LLMs Read Language', number: '03', subtitle: 'Segment & encode', type: 'chapter' },
   { file: 'embeddings.html', pdf: '04-from-tokens-to-meaning.pdf', title: 'From Tokens to Meaning: How Embeddings Represent Language', number: '04', subtitle: 'Represent & locate', type: 'chapter' },
   { file: 'neural-networks.html', pdf: '05-from-inputs-to-predictions.pdf', title: 'From Inputs to Predictions: How Neural Networks Learn', number: '05', subtitle: 'Predict & learn', type: 'chapter' },
-  { file: 'transformer.html', pdf: '06-inside-the-transformer.pdf', title: 'Inside the Transformer: How Attention Builds Context', number: '06', subtitle: 'Attend & contextualize', type: 'chapter' }
+  { file: 'transformer.html', pdf: '06-inside-the-transformer.pdf', title: 'Inside the Transformer: How Attention Builds Context', number: '06', subtitle: 'Attend & contextualize', type: 'chapter' },
+  { file: 'attention.html', pdf: '07-attention-in-action.pdf', title: 'Attention in Action: How Models Select and Combine Context', number: '07', subtitle: 'Select & combine', type: 'chapter' }
 ];

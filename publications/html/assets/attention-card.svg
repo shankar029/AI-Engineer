@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="220" viewBox="0 0 580 220">
+  <rect width="580" height="220" fill="#eaf1e9"/>
+  <g stroke="#dedfd5"><path d="M0 40H580M0 80H580M0 120H580M0 160H580M0 200H580M40 0V220M80 0V220M120 0V220M160 0V220M200 0V220M240 0V220M280 0V220M320 0V220M360 0V220M400 0V220M440 0V220M480 0V220M520 0V220M560 0V220"/></g>
+  <g stroke="#226b59" stroke-width="2" fill="#fffefa"><rect x="75" y="50" width="48" height="36" rx="4"/><rect x="75" y="94" width="48" height="36" rx="4"/><rect x="75" y="138" width="48" height="36" rx="4"/><path d="M123 68L255 110M123 112H255M123 156L255 110M325 110H455"/><rect x="455" y="83" width="60" height="54" rx="4"/></g>
+  <rect x="255" y="73" width="70" height="74" rx="5" fill="#f7e9dd" stroke="#ab4a2d" stroke-width="2"/>
+  <g fill="#226b59"><rect x="265" y="86" width="10" height="10"/><rect x="280" y="86" width="10" height="10"/><rect x="295" y="86" width="20" height="10"/><rect x="265" y="104" width="10" height="10"/><rect x="280" y="104" width="10" height="10"/><rect x="295" y="104" width="20" height="10"/><rect x="265" y="122" width="10" height="10"/><rect x="280" y="122" width="10" height="10"/><rect x="295" y="122" width="20" height="10"/></g>
+  <path d="M465 110H505M485 93V127" stroke="#ab4a2d" stroke-width="3"/>
+</svg>

@@ -1,6 +1,6 @@
 # Becoming an AI Engineer
 
-An illustrated, intuition-first journey toward building AI with understanding and intention. The first part starts with vectors and works toward a complete Transformer forward pass, with original diagrams, worked calculations, exercises, and explained interview answers.
+An illustrated, intuition-first journey toward building AI with understanding and intention. The first part starts with vectors, builds a complete Transformer forward pass, and audits attention in detail, with original diagrams, worked calculations, exercises, and explained interview answers.
 
 This edition is Part I: mathematical and model foundations. Practical systems are the wider direction of the book, not additional chapters already published.
 
@@ -8,7 +8,7 @@ This edition is Part I: mathematical and model foundations. Practical systems ar
 
 **[Read online](https://shankar029.github.io/AI-Engineer/)** - the illustrated reading website, with diagrams, worked examples, and interactive experiments.
 
-**Chapter 6:** read [Inside the Transformer: How Attention Builds Context online](https://shankar029.github.io/AI-Engineer/html/transformer.html), open its [portable HTML edition](publications/html/transformer.html) from the downloaded checkout, or use its PDF below. This reading edition contains six chapters.
+**Chapter 7:** read [Attention in Action: How Models Select and Combine Context online](https://shankar029.github.io/AI-Engineer/html/attention.html), open its [portable HTML edition](publications/html/attention.html) from the downloaded checkout, or use its PDF below. This reading edition contains seven chapters.
 
 **Read offline:** download or clone this repository and open [publications/html/index.html](publications/html/index.html). No setup, npm, or server is needed. Keep the whole `publications/` folder together for local fonts, diagrams, chapter links, and PDFs. GitHub's HTML file view shows source; open the downloaded file instead.
 
@@ -24,7 +24,8 @@ Every PDF includes the complete chapter and expanded exercise/interview answers.
 | 04 | [From Tokens to Meaning: How Embeddings Represent Language](publications/04-from-tokens-to-meaning.pdf) |
 | 05 | [From Inputs to Predictions: How Neural Networks Learn](publications/05-from-inputs-to-predictions.pdf) |
 | 06 | [Inside the Transformer: How Attention Builds Context](publications/06-inside-the-transformer.pdf) |
+| 07 | [Attention in Action: How Models Select and Combine Context](publications/07-attention-in-action.pdf) |
 
 The website includes interactive experiments; file-opened reading uses static examples and expandable solutions. PDFs are the checked print edition, not live experiments.
 
-For authors and maintainers: [source coverage, editorial standards, build, and publication workflow](AUTHORING.md). Editable `book/` files are source fragments, not reading pages.
+For authors and maintainers: [editorial standards, build, and publication workflow](AUTHORING.md). Editable `book/` files are HTML fragments, not reading pages.
