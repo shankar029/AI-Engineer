@@ -5,6 +5,87 @@ import { dot, cosine, softmax, descentStep } from '../book/assets/math.mjs';
 const near = (actual, expected, tolerance = 1e-8) => assert.ok(Math.abs(actual - expected) < tolerance, `${actual} != ${expected}`);
 const multiply = (a, b) => a.map(row => b[0].map((_, j) => dot(row, b.map(r => r[j]))));
 
+test('chapter 6: derived causal heads, cross-attention, and all block intermediates', () => {
+  const x = [[1, 0], [0, 1]];
+  const norm = (row, gamma = [1, 1], beta = [0, 0]) => {
+    const mean = row.reduce((sum, value) => sum + value, 0) / row.length;
+    const variance = row.reduce((sum, value) => sum + (value - mean) ** 2, 0) / row.length;
+    return row.map((value, j) => gamma[j] * (value - mean) / Math.sqrt(variance + 1e-5) + beta[j]);
+  };
+  const project = (rows, weights) => rows.map(row => dot(row, weights));
+  const head = (rows, wq, wk, wv) => {
+    const q = project(rows, wq), k = project(rows, wk), v = project(rows, wv);
+    return q.map((query, i) => dot(softmax(k.slice(0, i + 1).map(key => query * key)), v.slice(0, i + 1)));
+  };
+  const gamma = Math.sqrt(0.25001);
+  const normalized = x.map(row => norm(row, [gamma, gamma], [0.5, 0.5]));
+  normalized.forEach((row, i) => row.forEach((value, j) => near(value, x[i][j])));
+  const a = head(normalized, [1, 1], [0, Math.log(3)], [2, 4]);
+  const b = head(normalized, [1, -1], [Math.log(3), 0], [1, 5]);
+  a.forEach((value, i) => near(value, [2, 3.5][i]));
+  b.forEach((value, i) => near(value, [1, 4][i]));
+  const output = multiply(a.map((value, i) => [value, b[i]]), [[1, 1], [1, -1]]);
+  const residual = x.map((row, i) => row.map((value, j) => value + output[i][j]));
+  [[4, 1], [7.5, 0.5]].forEach((row, i) => row.forEach((value, j) => near(residual[i][j], value)));
+  const hidden = residual.map(row => norm(row));
+  const ffn = multiply(multiply(hidden, [[1, 0, 1], [0, 1, -1]]).map(row =>
+    row.map(value => Math.max(0, value))), [[1, 0], [0, 1], [0.5, 0.5]]);
+  const y = residual.map((row, i) => row.map((value, j) => value + ffn[i][j]));
+  [[5.999995556, 1.999997778], [9.499999184, 1.499999592]].forEach((row, i) =>
+    row.forEach((value, j) => near(y[i][j], value)));
+  const final = norm(y[1]);
+  near(final[0], 0.9999996875001146);
+  const logits = multiply([final], [[Math.log(2), 0, 0], [0, 0, Math.log(2)]])[0];
+  softmax(logits).forEach((value, i) => near(value, [0.5714285006992905, 0.2857143122377627, 0.14285718706294684][i]));
+  const source = [[1, 0], [0, 1], [1, 1]];
+  const keys = project(source, [0, Math.log(2)]);
+  const values = multiply(source, [[2, 0], [0, 3]]);
+  const cross = multiply([softmax(keys)], values)[0];
+  near(cross[0], 1.2); near(cross[1], 2.4);
+  const padded = multiply([softmax(keys.slice(0, 2))], values.slice(0, 2))[0];
+  near(padded[0], 2 / 3); near(padded[1], 2);
+});
+
+test('chapter 6: square-root scaling, norm variants, gate and router calculations', () => {
+  const weights = softmax([dot([2, 0], [1, 1]) / Math.sqrt(2), dot([2, 0], [0, 1]) / Math.sqrt(2)]);
+  near(weights[0], 0.8044296825069569);
+  const mixture = multiply([weights], [[1, 2], [3, 0]])[0];
+  near(mixture[0], 1.3911406349860862); near(mixture[1], 1.6088593650139138);
+  const rms = row => row.map(value => value / Math.sqrt(dot(row, row) / row.length + 1e-5));
+  rms([1, 3]).forEach((value, i) => near(value, [0.447213, 1.341639][i], 1e-6));
+  rms([11, 13]).forEach((value, i) => near(value, [0.913500, 1.079591][i], 1e-6));
+  assert.deepEqual(rms([0, 0]), [0, 0]);
+  const up = multiply([[1, 0]], [[2, 4], [0, 0]])[0];
+  const gate = multiply([[1, 0]], [[0, Math.log(3)], [0, 0]])[0].map(z => z / (1 + Math.exp(-z)));
+  const gated = multiply([up.map((value, i) => value * gate[i])], [[1, 0], [1, -1]])[0];
+  near(gated[0], 3 * Math.log(3)); near(gated[1], -3 * Math.log(3));
+  const router = softmax([Math.log(3), Math.log(2), 0]);
+  const retained = router.slice(0, 2);
+  const total = retained.reduce((sum, value) => sum + value);
+  const routed = multiply([retained.map(value => value / total)], [[1, 3], [4, 0]])[0];
+  near(routed[0], 2.2); near(routed[1], 1.8);
+});
+
+test('chapter 6: stable tiled attention matches direct attention across score orders', () => {
+  const streamed = (scores, values) => {
+    let maximum = scores[0], denominator = 0, numerator = 0;
+    for (let i = 0; i < scores.length; i++) {
+      const nextMaximum = Math.max(maximum, scores[i]);
+      const rescale = Math.exp(maximum - nextMaximum);
+      const weight = Math.exp(scores[i] - nextMaximum);
+      denominator = rescale * denominator + weight;
+      numerator = rescale * numerator + weight * values[i];
+      maximum = nextMaximum;
+    }
+    return numerator / denominator;
+  };
+  for (const scores of [[0, Math.log(3)], [Math.log(3), 0], [0, 0], [1000, 1001]]) {
+    near(streamed(scores, [2, 4]), dot(softmax(scores), [2, 4]));
+  }
+  near(streamed([0, Math.log(3)], [2, 4]), 3.5);
+  near(streamed([0, 0], [2, 4]), 3);
+});
+
 test('chapter 5: all nine backward derivatives match finite differences and the full update', () => {
   // Parameter order: W11, W12, W21, W22, b1, b2, v1, v2, c.
   const forward = (p, x = [2, 1]) => {

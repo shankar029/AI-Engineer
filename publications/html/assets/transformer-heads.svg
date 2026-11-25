@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="280" viewBox="0 0 760 280">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#226b59"/></marker></defs>
+  <rect width="760" height="280" rx="8" fill="#f8f6f0"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35" text-anchor="middle">
+    <text x="380" y="30" font-size="19" font-weight="600">Two independent heads, one output projection</text>
+    <g fill="#eaf1e9" stroke="#226b59"><rect x="20" y="107" width="125" height="63" rx="5"/><rect x="196" y="64" width="138" height="60" rx="5"/><rect x="196" y="172" width="138" height="60" rx="5"/><rect x="392" y="107" width="147" height="63" rx="5"/><rect x="594" y="97" width="146" height="83" rx="5"/></g>
+    <g font-size="16"><text x="82" y="130">Same X</text><text x="82" y="153">two token rows</text><text x="265" y="88">Head A</text><text x="265" y="111">[2, 3.5] column</text><text x="265" y="196">Head B</text><text x="265" y="219">[1, 4] column</text><text x="465" y="130">Join row-wise</text><text x="465" y="153">[2,1]; [3.5,4]</text><text x="667" y="120">Multiply WO</text><text x="667" y="144">[3,1]</text><text x="667" y="168">[7.5,−0.5]</text></g>
+    <text x="380" y="260" font-size="14" fill="#606963">Each head has its own Q/K/V weights. Head A is not an input to head B.</text>
+  </g>
+  <g stroke="#226b59" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M145 126L190 94"/><path d="M145 153L190 202"/><path d="M334 94L386 126"/><path d="M334 202L386 153"/><path d="M539 139H587"/></g>
+</svg>

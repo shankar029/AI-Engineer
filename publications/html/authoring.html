@@ -21,7 +21,7 @@
       <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The book cover</a>
       <a class="overview-link" href="foundations.html"><span aria-hidden="true">&#8594;</span> Part I / Foundations</a>
       <p class="nav-label">PART I <span>THE FOUNDATIONS</span></p>
-      <nav aria-label="Chapters"><a class="chapter-link" href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning<small>Represent & transform</small></span></a><a class="chapter-link" href="calculus.html"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization<small>Change & learn</small></span></a><a class="chapter-link" href="tokenization.html"><span>03</span><span>From Text to Tokens: How LLMs Read Language<small>Segment & encode</small></span></a><a class="chapter-link" href="embeddings.html"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language<small>Represent & locate</small></span></a><a class="chapter-link" href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn<small>Predict & learn</small></span></a></nav>
+      <nav aria-label="Chapters"><a class="chapter-link" href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning<small>Represent & transform</small></span></a><a class="chapter-link" href="calculus.html"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization<small>Change & learn</small></span></a><a class="chapter-link" href="tokenization.html"><span>03</span><span>From Text to Tokens: How LLMs Read Language<small>Segment & encode</small></span></a><a class="chapter-link" href="embeddings.html"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language<small>Represent & locate</small></span></a><a class="chapter-link" href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn<small>Predict & learn</small></span></a><a class="chapter-link" href="transformer.html"><span>06</span><span>Inside the Transformer: How Attention Builds Context<small>Attend & contextualize</small></span></a></nav>
       <div class="future-note"><span class="tiny-line"></span>Build intuition.<br>Then build systems.</div>
       <div class="sidebar-bottom"><a href="authoring.html">The authoring system <span aria-hidden="true">&#8599;</span></a><p>VOLUME 01 <span>MATHEMATICAL FOUNDATIONS</span></p></div>
     </div>
@@ -47,7 +47,7 @@
 <li><strong>Give agency.</strong> Include a small prediction, exercise, or interactive experiment. Ask the reader to predict before acting. Supply a solution or useful guidance.</li>
 <li><strong>Consolidate.</strong> A compact recap connects ideas, then a short bridge introduces the next question. End with a source note and previous/next navigation.</li>
 </ol>
-<p>Repeat the intuition-to-application sequence for <strong>every mathematical concept</strong>, not just derivatives or the first section. This is a universal requirement across all five chapters and every future chapter. A beginner-friendly introduction followed by compressed advanced formulas does not satisfy it. Assume no prior knowledge of a newly introduced mathematical concept, including trigonometry, probability, logarithms, pooling, positional rotations, or training objectives; prior-chapter links need concise prerequisite reminders at the point of use.</p>
+<p>Repeat the intuition-to-application sequence for <strong>every mathematical concept</strong>, not just derivatives or the first section. This is a universal requirement across all six chapters and every future chapter. A beginner-friendly introduction followed by compressed advanced formulas does not satisfy it. Assume no prior knowledge of a newly introduced mathematical concept, including trigonometry, probability, logarithms, pooling, positional rotations, or training objectives; prior-chapter links need concise prerequisite reminders at the point of use.</p>
 <p>For each concept, provide its definition, explain every new symbol and assumption, give an intuitive or geometric interpretation where helpful, show why the operation or rule makes sense, and walk through a numerical calculation with intermediate steps. Then connect it to engineering or an LLM where appropriate and give a prediction/check with an explained answer. Related concepts can share a worked example, but a name, keyword mention, analogy, or formula alone is not teaching coverage.</p>
 <p>Teach prerequisites before relying on them: entries and dimensions before matrix operations; sums and lengths before dot products; ordinary derivatives before partials; partials before gradients; the chain rule before backpropagation; and both before optimizer equations. Define operations such as exponentials, logarithms, normalization, averaging, and elementwise squaring before using them inside a model formula. Distinguish an operation's definition from a theorem or an implementation convention.</p>
 <p>It is not necessary to force a figure into every paragraph. An annotated value table or a fully written coordinate calculation can supply the visual explanation. Keep advanced side topics shorter than the main path, but still include definitions and worked calculations. If a topic is only a future pointer, label it as deferred instead of presenting it as taught. Do not imply that a short numerical illustration proves a general theorem.</p>
@@ -62,6 +62,7 @@
 <li>Chapter 03: <strong>From Text to Tokens: How LLMs Read Language</strong></li>
 <li>Chapter 04: <strong>From Tokens to Meaning: How Embeddings Represent Language</strong></li>
 <li>Chapter 05: <strong>From Inputs to Predictions: How Neural Networks Learn</strong></li>
+<li>Chapter 06: <strong>Inside the Transformer: How Attention Builds Context</strong></li>
 </ul>
 <p>&quot;Meaning&quot; in chapter 1 refers to useful learned representations and their limits. It must not imply that individual coordinates intrinsically correspond to human-interpretable concepts.</p>
 <p>Use stable descriptive anchors such as <code>#attention</code> or <code>#backpropagation</code>. In prose, &quot;chapter 1&quot; and &quot;chapter 2&quot; are acceptable compact references. Avoid renumbering anchors when a section moves.</p>
@@ -988,6 +989,242 @@
 <p>The source explicitly proposes future architecture-family, attention, multi-head and modern-block courses on pp. 48-49. Its RMSNorm, gated FFN and alternative placement references on p. 40 are brief architecture-variation pointers, not completed algorithms. They stay labeled deferred, while its developed FFN/residual/LayerNorm lessons receive numerical teaching here. No additional chapter, runnable source calculator, quiz code, authenticated API experiment, or linked download was attached. Repeated chat turns, headers, QR/app promotion, score/retry controls and roadmap numbering are export furniture, not missing scientific content.</p>
 <p><strong>Separate pedagogical review boundary.</strong> After the complete draft, a separate opening-to-recap pass reread every lesson and all 14 answers as a beginner's dependency sequence, rather than only searching for topic names. It traced pre-activation versus output, function application versus multiplication, feature versus token indices, row/column weight orientation, elementwise versus vector-coupled activations, probability domains, old-state derivative consistency, branch sums, parameter sharing versus occurrences, normalization axes and pre/post ordering. Concrete repairs expanded the negative-input sigmoid/tanh calculations, reciprocal-log reasoning, all four square-expansion terms before the derivative limit, the CDF gate's visible probability table and prerequisite link, the nonnegative-square-root definition, and sampling's uniform/endpoint/interval-length explanation. Sections 6 and 11 remain deliberate pencil-and-paper lessons, not skim-friendly introductions. Source/arithmetic/layout checks and editorial reasoning do not demonstrate learner comprehension or production model quality; no learner study is claimed.</p>
 <p><strong>Destination and print repairs.</strong> The actual file-opened book was exercised at 320, 375 and 1440 pixels with all 29 solutions/answers open and locally rendered math. Five long inline calculations initially caused 320px page overflow; they were reflowed into stepped display equations, not hidden or globally shrunk. The PDF pass renders every actual page and checks expanded prose against the generation manifest. Visual review moved two decoder-diagram labels off their arrows. This chapter's exercises, interview prompt/answer groups, calculation boxes, and short tables stay together in print where they fit a page; this prevents stranded captions and a backward-step explanation separating from all its equations. Longer surrounding lessons can still continue across pages. These are concrete layout improvements, not evidence that every beginner will understand the mathematics. The companion and manifest are generated by the existing local pipeline; all five named publication files remain available.</p>
+<h2 id="transformer-source-coverage">Transformer source coverage</h2>
+<p>Chapter 6, <strong>Inside the Transformer: How Attention Builds Context</strong>, uses the entire 54-page <em>Transformer Architecture Deep Dive</em> PDF. Its source numbering is Chapter 5, not our book numbering. Every page was extracted and read; all 54 pages were rendered and reviewed in five numbered contact sheets. All 13 embedded images were extracted and inspected, with full-size pages 4, 15, 20, 39, 41 and 52 checking arrows, normalization conventions, the malformed head picture, KV sharing, optional shared experts and the contradictory head-width answer. The PDF ends with a complete roadmap, not a truncated developed lesson. Private source/extraction/review artifacts are not redistributed.</p>
+<p>The visual inventory includes the 2017 paper header, original encoder-decoder topology, encoder-only and decoder-only paths, a small encoder-decoder overview, two decoder-stack pictures with different normalization placements, an attention interior, a malformed head-projection picture, MHA and GQA diagrams, a routed-plus-shared-expert diagram, and a tied-embedding Post-Norm whiteboard figure. Text/vector layouts additionally depict token context, embedding lookup, encoder/decoder stages, the causal triangle, residual fork/add, pre/post ordering, complete block/shape flow and generation. Seven original substantive SVGs and one decorative chapter card replace these roles without copying source illustrations or vendor logos.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Developed source topic, algorithm/example type or diagram</th>
+<th>Actual chapter destination</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pp. 1-4: sequence processing, recurrence, distant reference and attention as representation mixture</td>
+<td><code>#architecture-families</code></td>
+<td>Original recurrence with every step; direct versus chained dependency; diagram and limits of grammatical analogy</td>
+</tr>
+<tr>
+<td>pp. 4-8: encoder, decoder, causal target/cross source paths, original six-layer example, three model families and next-token objective</td>
+<td><code>#architecture-families</code>, <code>#cross-attention</code></td>
+<td>Original three-path overview; source/target lengths, structural repetition versus tied weights; useful tasks without claiming all models use one topology</td>
+</tr>
+<tr>
+<td>pp. 8-12: tokenizer/lookup, vocabulary and hidden widths, learned table and computed rows</td>
+<td><code>#tensor-contract</code>, <code>#input-and-position</code></td>
+<td>Explicit axis/index and row/column reminders; original three-row vocabulary, two lookups and componentwise additions</td>
+</tr>
+<tr>
+<td>pp. 12-13 and 40: position information, additive positions, query/key RoPE and relative rotation</td>
+<td><code>#input-and-position</code></td>
+<td>Prior-chapter reminder, original moved-token addition and quarter-turn dot calculations; causal connectivity distinguished from full-attention equivariance</td>
+</tr>
+<tr>
+<td>pp. 13-15 and 28-29: stacked same-width blocks and modern pre-normalized decoder flow</td>
+<td><code>#residual-and-order</code>, <code>#complete-block</code></td>
+<td>Focused original block and complete numerical forward trace; two distinct norm parameter sets, two derived heads and output projection</td>
+</tr>
+<tr>
+<td>pp. 15-18: Q/K/V roles and projections; dot scores, square-root scaling, row softmax and weighted values</td>
+<td><code>#attention-projections</code>, <code>#scaled-masked-attention</code>, <code>#scaling-reason</code></td>
+<td>All six original scalar projections, all four scores, nontrivial width-two divisor, stable shifted softmax, two-coordinate value mixture; stated scale assumptions and saturation sensitivity</td>
+</tr>
+<tr>
+<td>pp. 19-21: multiple learned perspectives, independent heads, equal widths, concatenation and output projection</td>
+<td><code>#multiple-heads</code></td>
+<td>Derive both heads rather than stipulate their results; every combined coordinate; explicit head reshaping/axis order; no permanent semantic-head labels</td>
+</tr>
+<tr>
+<td>pp. 21-23: lower triangle, additive zero/negative-infinity mask, no future-target leakage</td>
+<td><code>#scaled-masked-attention</code>, <code>#training-and-inference</code></td>
+<td>Access and weight tables, before-normalization exclusion, all-blocked caveat, padding distinction, current input versus next target</td>
+</tr>
+<tr>
+<td>pp. 23-25: FFN/MLP, expansion/contraction, nonlinearity, attention versus feature transformation; activation names</td>
+<td><code>#feed-forward</code>, <code>#gated-ffn</code></td>
+<td>Full two-to-three-to-two row products, ReLU and shared parameters; defined prior GELU gate reminder; bounded original SwiGLU recognition calculation, not a source-developed derivative course</td>
+</tr>
+<tr>
+<td>pp. 25-28: residuals, gradient route, LayerNorm statistics/scale/shift, pre/post placement and RMSNorm recognition</td>
+<td><code>#normalization</code>, <code>#rmsnorm</code>, <code>#residual-and-order</code></td>
+<td>Complete mean/deviation/square/variance/root/output ledgers; constant/shifted rows; RMS calculation; residual sensitivity/cancellation and numerical order counterexample</td>
+</tr>
+<tr>
+<td>pp. 29-32: final norm, LM head, logits, vocabulary softmax, greedy/sampling; filtering/temperature named</td>
+<td><code>#complete-block</code>, <code>#language-head</code></td>
+<td>End-to-end final normalization/projection and approximate probabilities with epsilon retained; sampling interval and stopping boundary; top-k/top-p/temperature explicitly deferred algorithm details</td>
+</tr>
+<tr>
+<td>pp. 32-34: known shifted targets, loss/backward/update, repeated inference and basic cache reuse</td>
+<td><code>#training-and-inference</code>, <code>#kv-cache</code></td>
+<td>Original label alignment, cross-entropy/one-hot/logit-gradient/bias update, mean reduction and separate fixed-weight generation; exact cached attention result</td>
+</tr>
+<tr>
+<td>pp. 35-38: batch/sequence/head/coordinate axes, square score table, joined/FFN/logit shapes</td>
+<td><code>#shapes-and-cache</code>, <code>#multiple-heads</code></td>
+<td>Original full shape ledger, scalar counts, valid causal pairs, quadratic versus linear growth; last-position generation versus all-position training</td>
+</tr>
+<tr>
+<td>pp. 38-40: MHA/GQA/MQA sharing and KV cache tradeoffs</td>
+<td><code>#grouped-queries</code></td>
+<td>Four distinct toy query outputs with two KV groups, original sharing SVG, complete 192/96/48-byte payload arithmetic with assumptions and exclusions</td>
+</tr>
+<tr>
+<td>pp. 40-42: MoE router/selected experts, capacity versus active work, shared-expert image variation, load/communication costs</td>
+<td><code>#mixture-of-experts</code></td>
+<td>Three router logits, top-two selection/renormalization and both output coordinates; simplified affine experts explicitly labeled; stored-versus-active counts and optional shared branch</td>
+</tr>
+<tr>
+<td>p. 42: FlashAttention, exact IO-aware tiling and memory traffic</td>
+<td><code>#flash-attention</code></td>
+<td>Define IO/tile/accumulators and show two-tile stable-normalizer arithmetic equal to earlier attention; source supplies the concept, not the added numerical algorithm bridge or a GPU kernel</td>
+</tr>
+<tr>
+<td>pp. 43-44: application/API and inference responsibilities, message/control/security boundaries</td>
+<td><code>#application-boundary</code></td>
+<td>Two-lane table, original token reservation arithmetic, explicit authorization/provenance boundary; no claimed provider implementation or benchmark</td>
+</tr>
+<tr>
+<td>pp. 44-46: whiteboard route and component recap</td>
+<td><code>#complete-block</code>, <code>#recap</code></td>
+<td>Original traced route and durable recap; no copy of tied-embedding Post-Norm source figure</td>
+</tr>
+<tr>
+<td>pp. 46-50: 20 numbered interviews</td>
+<td><code>#interview-questions</code> and table below</td>
+<td>All 20 adapted prompts have explained answers and prerequisite/lesson links; one-to-one, no consolidation</td>
+</tr>
+<tr>
+<td>pp. 50-52: six quiz intents and five architecture exercises</td>
+<td>Section-level exercises; <code>#practice-architecture</code></td>
+<td>Preserve attention, mask, concatenation, FFN, LM-head, GQA, head division, square growth and depth-not-quality intents with original reasoning, not a screenshot widget</td>
+</tr>
+<tr>
+<td>pp. 53-54: proposed future attention/training/inference chapters</td>
+<td><code>#application-boundary</code>, <code>#recap</code> and source note</td>
+<td>Roadmap, not invented full Transformer backward, data/pretraining, quantization, TTFT/ITL or GPU-serving lessons</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Interview correspondence: 20 source questions, 20 adapted questions.</strong> Every numbered prompt and supplied answer is readable. Q1, Q6, Q13 and Q19 cross page boundaries; those are continuations, not truncation. Similar components occur in different requested explanations, so none was collapsed into a synthesis question.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source question / pages</th>
+<th>Substantive intent in original wording here</th>
+<th>Adapted answer anchor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1 / pp. 46-47</td>
+<td>Define the attention-based sequence architecture</td>
+<td><code>#interview-transformer</code></td>
+</tr>
+<tr>
+<td>Q2 / p. 47</td>
+<td>Original components versus decoder-only components</td>
+<td><code>#interview-components</code></td>
+</tr>
+<tr>
+<td>Q3 / p. 47</td>
+<td>Training parallelism, dependency paths and scaling versus recurrence</td>
+<td><code>#interview-recurrence</code></td>
+</tr>
+<tr>
+<td>Q4 / p. 47</td>
+<td>Encoder-only/decoder-only/encoder-decoder</td>
+<td><code>#interview-families</code></td>
+</tr>
+<tr>
+<td>Q5 / p. 47</td>
+<td>Repeated block unit</td>
+<td><code>#interview-block</code></td>
+</tr>
+<tr>
+<td>Q6 / pp. 47-48</td>
+<td>Self-attention mechanism</td>
+<td><code>#interview-self-attention</code></td>
+</tr>
+<tr>
+<td>Q7 / p. 48</td>
+<td>Separate Q versus K/V sequence origins</td>
+<td><code>#interview-cross-attention</code></td>
+</tr>
+<tr>
+<td>Q8 / p. 48</td>
+<td>Head-specific comparisons and output combination</td>
+<td><code>#interview-heads</code></td>
+</tr>
+<tr>
+<td>Q9 / p. 48</td>
+<td>Square-root score scaling</td>
+<td><code>#interview-scaling</code></td>
+</tr>
+<tr>
+<td>Q10 / p. 48</td>
+<td>Causal restriction and next-token target</td>
+<td><code>#interview-causality</code></td>
+</tr>
+<tr>
+<td>Q11 / p. 48</td>
+<td>Residual addition and gradient route</td>
+<td><code>#interview-residual</code></td>
+</tr>
+<tr>
+<td>Q12 / p. 48</td>
+<td>Normalization purpose and feature axis</td>
+<td><code>#interview-normalization</code></td>
+</tr>
+<tr>
+<td>Q13 / pp. 48-49</td>
+<td>Pre/post placement</td>
+<td><code>#interview-norm-order</code></td>
+</tr>
+<tr>
+<td>Q14 / p. 49</td>
+<td>Position-wise FFN role</td>
+<td><code>#interview-ffn</code></td>
+</tr>
+<tr>
+<td>Q15 / p. 49</td>
+<td>Vocabulary projection after hidden states</td>
+<td><code>#interview-lm-head</code></td>
+</tr>
+<tr>
+<td>Q16 / p. 49</td>
+<td>Logits versus probabilities</td>
+<td><code>#interview-probabilities</code></td>
+</tr>
+<tr>
+<td>Q17 / p. 49</td>
+<td>Grouped queries, KV sharing and storage</td>
+<td><code>#interview-gqa</code></td>
+</tr>
+<tr>
+<td>Q18 / p. 49</td>
+<td>Router and selected expert networks</td>
+<td><code>#interview-moe</code></td>
+</tr>
+<tr>
+<td>Q19 / pp. 49-50</td>
+<td>Exact IO-aware tiled attention</td>
+<td><code>#interview-flash</code></td>
+</tr>
+<tr>
+<td>Q20 / p. 50</td>
+<td>Sequential next-token generation</td>
+<td><code>#interview-generation</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Source corrections and recovery limits.</strong> Page 52 incorrectly rejects the equal-head answer 1,024/32=32; the chapter explicitly corrects it. Page 20's illustration repeats head labels, mixes projection/head roles and suggests permanent semantic duties; its exact malformed labels are not claimed as an implementation specification. Surrounding pages 19-21 supply the readable independent-projection lesson. Pages 9, 13 and 44 show different norm placements, and p. 44 ties embeddings; these are variants, not one universal GPT architecture. Page 15 shows an attention interior including dropout, not the complete modern block described in the prose. The original diagrams do not specify universal additive-bias/mask placement. We use scale, then additive mask, then row softmax.</p>
+<p>Page 23's current-token prediction phrasing is corrected to row i predicting i+1 while allowing diagonal access. Page 12 overloads E for both the vocabulary table and selected rows; this chapter keeps E as the table and X as states. Page 30's flattened transpose is replaced by an explicit vocabulary-by-width U and row h U-transpose. The mean/root notation is confirmed from rendered source pages rather than copied from flattened extraction. Attention is not globally a fixed linear average: projected input-dependent softmax is nonlinear. Residual preservation and Pre-Norm stability are helpful mechanisms, not guarantees. The MoE image has a shared expert and a different illustrative expert count; neither is imposed as a mandatory rule. Vendor examples are kept as bounded architecture-family context, not assertions about unverified private model internals.</p>
+<p><strong>Editorial additions and deferred scope.</strong> Full numerical attention projections, both heads, cross-attention, residual/norm/FFN flow, final vocabulary output, RMSNorm, the bounded SwiGLU calculation, router output, cache counts and tiled normalizer are original first-principles scaffolding. The supplied source develops architecture and optimization concepts mostly without those intermediate computations. No fabricated performance measurement, actual attention-head interpretation, production cache/GPU code, full Transformer backward pass, normalization derivative course, gate-properties proof or detailed sampling-filter algorithm is attributed to it. Separate quizzes, repeated transitions, export furniture, QR/app promotion and source numbering are not additional lessons. No runnable source widgets or separately linked artifacts were attached.</p>
+<p><strong>Separate beginner-review boundary.</strong> After the complete draft, an opening-to-recap pass reread every section and all 20 explained interviews as a dependency sequence. It checked row/column layouts, token positions versus vocabulary IDs, attention-input normalization versus the skip, mask timing, score/value widths, shape rearrangement, learned scales versus input-dependent statistics, rounded epsilon results, shifted labels, cache validity, query versus KV axes, routed versus stored expert parameters and exact versus memory-efficient attention. Repairs replaced ambiguous plain-text exponential powers with rendered notation, defined affine/linear maps and score/weight symbols, taught independence/variance with four equally likely sums before the scaling argument, expanded the local softmax-sensitivity arithmetic, added a numerical head reshape, explicitly defined sampling probabilities/ID indices, added general stable-accumulator rules and showed the separate target-prefix input in the family diagram. Section 11's intentionally chosen LN1 scales are clearly a toy stipulation, not typical trained values. This editorial review, arithmetic checks and source correspondence do not prove human comprehension; no learner study or model benchmark is claimed.</p>
+<p><strong>Destination and print review.</strong> The actual portable home, foundations entry and Chapter 6 were opened from this checkout with file URLs and JavaScript disabled at 375 and 1440 pixels; relocated-publication tests additionally cover 320 pixels. The theme, local fonts, all seven figures, 25 rendered formula elements, native disclosures and parent-relative PDF download remain available without a server. All 36 exercise/interview answers are expanded in the 31-page PDF. All pages were reviewed in three rendered contact sheets, followed by full-size opening, dense arithmetic, normalization, block/shape/cache, variant, interview and concluding pages. The 18 mm white-canvas print margins and 174 mm bounds checks are retained; no missing content or side clipping was found in these local renders. Longer lessons and some answer continuations cross pages without hiding content. Chapter 5's changed concluding bridge was also inspected in its regenerated companion. This verifies this local edition, not remote deployment or every PDF viewer.</p>
 <h2 id="accessibility-and-responsive-behavior">Accessibility and responsive behavior</h2>
 <p>Provide a skip link, visible keyboard focus, semantic landmarks, clear link names, meaningful image alt text, native expandable solutions, and labeled range inputs. Use aria-live sparingly for changing results. Decorative card art has empty alt text; substantive figures have descriptions of the relationships and values.</p>
 <p>Keep the <code>no-js</code> class on the document until the application module initializes. Directly opening the built <code>dist/index.html</code> uses the no-JavaScript reading layout because browsers block local module imports; the theme, pre-rendered math, diagrams, and chapter navigation must still work, including on mobile. Source fragments under <code>book/</code> are not standalone reading pages.</p>
@@ -1025,7 +1262,7 @@ npm test
 <p><code>npm run html:check</code> rebuilds and compares the complete expected file inventory and contents without rewriting publication files. <code>npm test</code> includes this freshness check and relocated, file-opened publication checks. After changing sources or this guide, refresh with <code>npm run publish:html</code> before testing. The full <code>npm run pdf</code> workflow also refreshes the committed HTML after producing the companions; source/hash changes still require PDF regeneration and the inspection below.</p>
 <p><code>.github/workflows/pages.yml</code> checks HTML freshness and deploys committed <code>publications/</code> with the official GitHub Pages Actions on pushes to <code>main</code> or manual dispatch. The small <code>publications/index.html</code> landing page redirects to <code>html/index.html</code>; deploying the parent folder keeps PDF links valid under the repository's Pages subpath. No private source material, dependencies, caches, screenshots, or review output belong in this artifact. Pages must use the Actions build type in repository settings; verify its returned URL, successful deployment, and actual chapter/assets/PDF HTTP responses before claiming it is live. For other hosting, either deploy all of <code>publications/</code> or the independently portable <code>dist/</code> build.</p>
 <h2 id="mandatory-pdf-companions-and-review">Mandatory PDF companions and review</h2>
-<p>Every chapter delivery or substantive revision must include an <strong>up-to-date, generated and inspected PDF companion</strong>. This applies to all five current chapters and every future chapter. Keep the web reading edition and PDF substantively aligned, including every exercise and interview answer; collapsed <code>&lt;details&gt;</code> must not hide answers in the delivered PDF. Do not treat successful HTML rendering, a print button, or an aspirational checklist as evidence that the actual PDF is correct.</p>
+<p>Every chapter delivery or substantive revision must include an <strong>up-to-date, generated and inspected PDF companion</strong>. This applies to all six current chapters and every future chapter. Keep the web reading edition and PDF substantively aligned, including every exercise and interview answer; collapsed <code>&lt;details&gt;</code> must not hide answers in the delivered PDF. Do not treat successful HTML rendering, a print button, or an aspirational checklist as evidence that the actual PDF is correct.</p>
 <p>Use the existing local workflow:</p>
 <pre><code class="language-powershell">npx playwright install chromium
 python -m pip install -r requirements-pdf.txt
@@ -1033,6 +1270,7 @@ npm run pdf
 npm run pdf:check
 </code></pre>
 <p><code>scripts/chapters.mjs</code> is the shared source of chapter titles, HTML names and meaningful PDF names. Register a future chapter there, extend the home card/adjacent links, and follow the same pipeline. <code>npm run pdf</code> first builds the book, then uses local Chromium with <code>book/assets/print.css</code>, opens every solution, waits for local fonts and diagrams, and writes the A4 companions under <code>publications/</code>. No external conversion service is allowed. A shared Chapter PDF link is generated into each chapter's toolbar; <code>npm run build</code> copies the publication files into <code>dist/pdfs/</code> so downloads work in a portable, file-opened book.</p>
+<p>PDF generation is incremental: a chapter's printable main content, metadata, referenced diagrams, styles, generator and dependency lockfile determine its render digest. The generator preserves an existing companion only when that digest, its recorded PDF hash, and the current complete prose/answer/figure/formula audit agree. A global source digest still detects source changes for the checker. Changes to hidden book navigation or the guide alone do not require redrawing every unchanged companion. The one-time <code>node scripts/pdf.mjs --adopt-existing</code> migration records render digests only after existing PDFs have passed <code>npm run pdf:check</code>; it refuses missing companions, hash differences or changed printable audits. It does not regenerate or repair a stale PDF.</p>
 <p>Commit the fresh <code>publications/html/</code> edition, reasonable-sized publication PDFs, and <code>publications/manifest.json</code> beside source changes. The manifest records a source digest, each PDF's hash, expected substantive prose fragments, and answer/figure/formula counts for checks; counts are not evidence of instructional quality. <code>dist/</code>, raster page images, contact sheets and extracted audit text are reproducible, ignored output. Do not redistribute supplied source PDFs or private source-audit material. Regeneration is content/layout reproducibility, not a claim of byte identity across browser versions, fonts and metadata timestamps.</p>
 <p>The checker verifies the <strong>actual PDF files</strong>: source and output freshness, title/bookmarks, expected prose (including expanded answer text), A4 size, blank pages, raw TeX, and text bounding boxes inside safe paper margins. It renders every page locally at inspection resolution and creates numbered contact sheets under <code>dist/pdf-review/&lt;chapter-name&gt;/</code>. A passing checker is necessary but not sufficient:</p>
 <p>Print uses a white page canvas rather than a tinted body column ending abruptly at the printable edges. Horizontal margins are 18 mm, with unchanged body type size and individually reflowed equations where necessary. The generator checks the actual 174 mm A4 content width, including inline mathematical spans, tables, code and diagram bounds; the PDF checker verifies uncropped page boxes and glyph clearance against those side margins. The edge investigation of the preceding PDFs found roughly 15 mm physical clearance and did not reproduce missing side content. A viewer-specific cropping report still needs an example screenshot; do not claim the visual-edge repair diagnoses every viewer.</p>
@@ -1046,7 +1284,7 @@ npm run pdf:check
 <p>Ad-hoc HTTP printing temporarily expands solutions and restores their prior disclosure state afterward. File-opened readers can always use the prechecked companion download. Static PDF experiments show default/fallback explanations and results rather than promising live controls. A PDF delivery should name the actual generated files and summarize inspection findings, not claim that a test count proves readability.</p>
 <p>PDF links must not retain <code>file:</code> URLs into the author's checkout. The generator preserves same-chapter destinations and maps cross-chapter/guide links to the repository's published PDF companions and guide. Those cross-document links need Internet access; named-destination behavior varies by PDF viewer, so retain useful chapter bookmarks as a fallback. Update the canonical repository URL in <code>scripts/chapters.mjs</code> if the publication moves.</p>
 </main>
-      <aside class="on-this-page" aria-label="On this page"><p class="nav-label">IN THIS CHAPTER</p><nav><a href="#reader-and-promise"><span>01</span>Reader and promise</a><a href="#chapter-architecture"><span>02</span>Chapter architecture</a><a href="#editorial-titles-and-navigation"><span>03</span>Editorial titles and navigation</a><a href="#visual-identity"><span>04</span>Visual identity</a><a href="#reusable-components"><span>05</span>Reusable components</a><a href="#mathematical-conventions"><span>06</span>Mathematical conventions</a><a href="#diagrams-and-experiments"><span>07</span>Diagrams and experiments</a><a href="#source-material-and-provenance"><span>08</span>Source material and provenance</a><a href="#tokenization-source-coverage"><span>09</span>Tokenization source coverage</a><a href="#embeddings-source-coverage"><span>10</span>Embeddings source coverage</a><a href="#neural-networks-source-coverage"><span>11</span>Neural networks source coverage</a><a href="#accessibility-and-responsive-behavior"><span>12</span>Accessibility and responsive behavior</a><a href="#adding-a-chapter-and-reviewing-it"><span>13</span>Adding a chapter and reviewing it</a><a href="#committed-html-publication"><span>14</span>Committed HTML publication</a><a href="#mandatory-pdf-companions-and-review"><span>15</span>Mandatory PDF companions and review</a></nav><a class="back-top" href="#main">Back to top &#8593;</a></aside>
+      <aside class="on-this-page" aria-label="On this page"><p class="nav-label">IN THIS CHAPTER</p><nav><a href="#reader-and-promise"><span>01</span>Reader and promise</a><a href="#chapter-architecture"><span>02</span>Chapter architecture</a><a href="#editorial-titles-and-navigation"><span>03</span>Editorial titles and navigation</a><a href="#visual-identity"><span>04</span>Visual identity</a><a href="#reusable-components"><span>05</span>Reusable components</a><a href="#mathematical-conventions"><span>06</span>Mathematical conventions</a><a href="#diagrams-and-experiments"><span>07</span>Diagrams and experiments</a><a href="#source-material-and-provenance"><span>08</span>Source material and provenance</a><a href="#tokenization-source-coverage"><span>09</span>Tokenization source coverage</a><a href="#embeddings-source-coverage"><span>10</span>Embeddings source coverage</a><a href="#neural-networks-source-coverage"><span>11</span>Neural networks source coverage</a><a href="#transformer-source-coverage"><span>12</span>Transformer source coverage</a><a href="#accessibility-and-responsive-behavior"><span>13</span>Accessibility and responsive behavior</a><a href="#adding-a-chapter-and-reviewing-it"><span>14</span>Adding a chapter and reviewing it</a><a href="#committed-html-publication"><span>15</span>Committed HTML publication</a><a href="#mandatory-pdf-companions-and-review"><span>16</span>Mandatory PDF companions and review</a></nav><a class="back-top" href="#main">Back to top &#8593;</a></aside>
     </div>
     <footer class="site-footer"><span>Becoming an AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#source-material-and-provenance">Sources & editorial notes</a></footer>
   </div>

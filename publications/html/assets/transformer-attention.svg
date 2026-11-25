@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="370" viewBox="0 0 760 370">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#226b59"/></marker></defs>
+  <rect width="760" height="370" rx="8" fill="#f8f6f0"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35" text-anchor="middle">
+    <text x="380" y="30" font-size="19" font-weight="600">Head A: compare, exclude, normalize, mix</text>
+    <g fill="#eaf1e9" stroke="#226b59"><rect x="35" y="55" width="180" height="56" rx="5"/><rect x="290" y="55" width="180" height="56" rx="5"/><rect x="545" y="55" width="180" height="56" rx="5"/></g>
+    <g font-size="16"><text x="125" y="78">Q: [1, 1] column</text><text x="125" y="100">queries</text><text x="380" y="78">K: [0, ln 3] column</text><text x="380" y="100">keys</text><text x="635" y="78">V: [2, 4] column</text><text x="635" y="100">values</text></g>
+    <g font-size="15"><text x="145" y="151" font-weight="600">Scaled scores + mask</text><text x="397" y="151" font-weight="600">Row weights</text><text x="648" y="151" font-weight="600">Output</text></g>
+    <g fill="#fffefa" stroke="#dedfd5"><rect x="40" y="171" width="210" height="112" rx="4"/><rect x="295" y="171" width="205" height="112" rx="4"/><rect x="565" y="171" width="160" height="112" rx="4"/></g>
+    <g font-size="16"><text x="145" y="195">key 1       key 2</text><text x="397" y="195">key 1       key 2</text><text x="645" y="195">value mixture</text><text x="145" y="229">0          blocked</text><text x="145" y="263">0           ln 3</text><text x="397" y="229">1              0</text><text x="397" y="263">1/4          3/4</text><text x="645" y="229">2</text><text x="645" y="263">0.5 + 3 = 3.5</text></g>
+    <g font-size="13" fill="#606963"><text x="145" y="312">Rows: query positions 1, 2</text><text x="397" y="312">Each row sums to 1</text><text x="645" y="312">Two rows × one feature</text><text x="380" y="349">Here dk = 1, so the score divisor is 1. Masking precedes row softmax.</text></g>
+  </g>
+  <g stroke="#226b59" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M125 111V137"/><path d="M380 111L225 137"/><path d="M635 111V137"/><path d="M250 242H286"/><path d="M500 242H555"/></g>
+</svg>

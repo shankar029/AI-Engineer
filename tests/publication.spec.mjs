@@ -4,6 +4,11 @@ import { resolve, sep } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { chapters } from '../scripts/chapters.mjs';
 
+const formulaCounts = new Map(await Promise.all(chapters.map(async chapter => [
+  chapter.file, [...(await readFile(new URL(`../book/${chapter.file}`, import.meta.url), 'utf8'))
+    .matchAll(/<(?:span|div) class="(?:math|equation)">/g)].length
+])));
+
 for (const width of [320, 1440]) {
   test(`relocated committed publication reads offline at ${width}px`, async ({ page }, testInfo) => {
     const root = testInfo.outputPath('downloaded-book');
@@ -31,7 +36,7 @@ for (const width of [320, 1440]) {
       await expect(page.locator('html')).toHaveClass('no-js');
       await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(248, 246, 240)');
       await expect(page.locator('.print-button')).toBeHidden();
-      expect(await page.locator('math').count()).toBeGreaterThan(30);
+      await expect(page.locator('math')).toHaveCount(formulaCounts.get(chapter.file));
       await expect(page.locator('.katex-error')).toHaveCount(0);
       await page.evaluate(() => document.fonts.ready);
       expect(await page.evaluate(() => document.fonts.check('16px KaTeX_Main'))).toBe(true);

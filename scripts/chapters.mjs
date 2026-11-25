@@ -5,5 +5,6 @@ export const chapters = [
   { file: 'calculus.html', pdf: '02-how-llms-learn.pdf', title: 'How LLMs Learn: Derivatives, Gradients, and Optimization', number: '02', subtitle: 'Change & learn', type: 'chapter' },
   { file: 'tokenization.html', pdf: '03-from-text-to-tokens.pdf', title: 'From Text to Tokens: How LLMs Read Language', number: '03', subtitle: 'Segment & encode', type: 'chapter' },
   { file: 'embeddings.html', pdf: '04-from-tokens-to-meaning.pdf', title: 'From Tokens to Meaning: How Embeddings Represent Language', number: '04', subtitle: 'Represent & locate', type: 'chapter' },
-  { file: 'neural-networks.html', pdf: '05-from-inputs-to-predictions.pdf', title: 'From Inputs to Predictions: How Neural Networks Learn', number: '05', subtitle: 'Predict & learn', type: 'chapter' }
+  { file: 'neural-networks.html', pdf: '05-from-inputs-to-predictions.pdf', title: 'From Inputs to Predictions: How Neural Networks Learn', number: '05', subtitle: 'Predict & learn', type: 'chapter' },
+  { file: 'transformer.html', pdf: '06-inside-the-transformer.pdf', title: 'Inside the Transformer: How Attention Builds Context', number: '06', subtitle: 'Attend & contextualize', type: 'chapter' }
 ];

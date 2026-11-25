@@ -26,6 +26,13 @@ async function sourceDigest() {
 }
 
 await mkdir('publications', { recursive: true });
+let previous;
+try {
+  previous = JSON.parse(await readFile('publications/manifest.json', 'utf8'));
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+}
+const adoptExisting = process.argv.includes('--adopt-existing');
 const browser = await chromium.launch();
 const manifest = { sourceDigest: await sourceDigest(), paper: 'A4', chapters: [] };
 try {
@@ -90,6 +97,30 @@ try {
       };
     });
     const path = join('publications', chapter.pdf);
+    const printable = await page.evaluate(() => {
+      const main = document.querySelector('main').cloneNode(true);
+      main.querySelectorAll('.chapter-pagination').forEach(node => node.remove());
+      return main.outerHTML;
+    });
+    const dependencies = ['book/assets/style.css', 'book/assets/print.css', 'scripts/pdf.mjs', 'package-lock.json'];
+    const images = await page.locator('main img').evaluateAll(nodes => nodes.map(node => new URL(node.src).pathname.split('/assets/')[1]));
+    dependencies.push(...images.map(image => join('book', 'assets', decodeURIComponent(image))));
+    const renderHash = createHash('sha256').update(printable).update(JSON.stringify(chapter));
+    for (const dependency of [...new Set(dependencies)].sort()) renderHash.update(await readFile(dependency));
+    const renderDigest = renderHash.digest('hex');
+    const old = previous?.chapters.find(entry => entry.file === chapter.file);
+    if (adoptExisting || old?.renderDigest === renderDigest) {
+      if (!old) throw new Error(`No verified existing companion to adopt: ${chapter.file}`);
+      const bytes = await readFile(path);
+      if (hash(bytes) !== old.sha256 || JSON.stringify(audit) !== JSON.stringify({
+        text: old.text, answers: old.answers, interviews: old.interviews, figures: old.figures, formulas: old.formulas
+      })) throw new Error(`Existing PDF does not match the current printable chapter: ${chapter.file}`);
+      await cp(path, join('dist', 'pdfs', chapter.pdf));
+      manifest.chapters.push({ ...old, ...chapter, renderDigest });
+      await page.close();
+      console.log(`Preserved verified ${path}; printable content and dependencies unchanged.`);
+      continue;
+    }
     await page.pdf({
       path, format: 'A4', preferCSSPageSize: true, printBackground: true,
       displayHeaderFooter: true, headerTemplate: '<span></span>',
@@ -98,7 +129,7 @@ try {
     });
     const bytes = await readFile(path);
     await cp(path, join('dist', 'pdfs', chapter.pdf));
-    manifest.chapters.push({ ...chapter, sha256: hash(bytes), bytes: bytes.length, ...audit });
+    manifest.chapters.push({ ...chapter, renderDigest, sha256: hash(bytes), bytes: bytes.length, ...audit });
     await page.close();
     console.log(`Generated ${path}: ${(bytes.length / 1024 / 1024).toFixed(2)} MB; ${audit.answers} expanded answers.`);
   }

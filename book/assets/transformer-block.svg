@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="390" viewBox="0 0 760 390">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#226b59"/></marker></defs>
+  <rect width="760" height="390" rx="8" fill="#f8f6f0"/>
+  <g font-family="Segoe UI,Arial,sans-serif" fill="#213b35" text-anchor="middle">
+    <text x="380" y="30" font-size="19" font-weight="600">One explicit Pre-Norm decoder block</text>
+    <g fill="#eaf1e9" stroke="#226b59"><rect x="45" y="62" width="115" height="46" rx="4"/><rect x="212" y="62" width="110" height="46" rx="4"/><rect x="375" y="51" width="176" height="68" rx="4"/><rect x="610" y="62" width="105" height="46" rx="4"/><rect x="212" y="232" width="110" height="46" rx="4"/><rect x="375" y="221" width="176" height="68" rx="4"/><rect x="610" y="232" width="105" height="46" rx="4"/></g>
+    <g font-size="16"><text x="102" y="91">Input X</text><text x="267" y="91">LN1</text><text x="463" y="77">Causal attention</text><text x="463" y="102">heads + WO</text><text x="663" y="91">Add → R</text><text x="267" y="261">LN2</text><text x="463" y="248">Token-wise FFN</text><text x="463" y="273">expand / activate</text><text x="663" y="261">Add → Y</text></g>
+    <g font-size="14" fill="#ab4a2d"><text x="450" y="155">Unchanged X skips LN1 and attention</text><text x="430" y="327">Unchanged R skips LN2 and FFN</text></g>
+    <text x="380" y="368" font-size="14" fill="#606963">X, R and Y all have shape N × d. The two LN modules can use different parameters.</text>
+  </g>
+  <g fill="none" stroke="#226b59" stroke-width="2" marker-end="url(#arrow)"><path d="M160 85H205"/><path d="M322 85H368"/><path d="M551 85H603"/><path d="M102 108V165H663V115"/><path d="M663 108V190H130V255H205"/><path d="M322 255H368"/><path d="M551 255H603"/><path d="M130 255V338H663V285"/></g>
+</svg>

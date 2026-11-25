@@ -1,9 +1,14 @@
 import { test, expect } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
 import { chapters as chapterInventory } from '../scripts/chapters.mjs';
 
 const base = 'http://127.0.0.1:4175';
 const chapters = chapterInventory.map(chapter => chapter.file);
 const pages = ['index.html', 'foundations.html', ...chapters, 'authoring.html'];
+const formulaCounts = new Map(await Promise.all(chapters.map(async file => [
+  file, [...(await readFile(new URL(`../book/${file}`, import.meta.url), 'utf8'))
+    .matchAll(/<(?:span|div) class="(?:math|equation)">/g)].length
+])));
 
 test('chapter PDF companions are downloadable locally and served as PDFs', async ({ page, request }) => {
   for (const chapter of chapters) {
@@ -11,7 +16,7 @@ test('chapter PDF companions are downloadable locally and served as PDFs', async
     const link = page.getByRole('link', { name: 'Chapter PDF' });
     await expect(link).toBeVisible();
     const href = await link.getAttribute('href');
-    expect(href).toMatch(/^pdfs\/0[1-5]-.+\.pdf$/);
+    expect(href).toBe(`pdfs/${chapterInventory.find(entry => entry.file === chapter).pdf}`);
     const [download] = await Promise.all([page.waitForEvent('download'), link.click()]);
     expect(await download.failure()).toBeNull();
     const response = await request.get(`${base}/${href}`);
@@ -48,7 +53,7 @@ for (const width of [375, 1440]) {
       await page.locator(`.chapter-link[href="${file}"]`).click();
       await expect(page).toHaveURL(new URL(`../dist/${file}`, import.meta.url).href);
       await expect(page.locator('.chapter-link[aria-current=page]')).toBeVisible();
-      expect(await page.locator('math').count()).toBeGreaterThan(30);
+      await expect(page.locator('math')).toHaveCount(formulaCounts.get(file));
       await expect(page.locator('.katex-error')).toHaveCount(0);
       await expect(page.locator('.equation').first()).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
@@ -73,7 +78,7 @@ for (const file of pages) {
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('.katex-error')).toHaveCount(0);
     if (chapters.includes(file)) {
-      expect(await page.locator('math').count()).toBeGreaterThan(30);
+      await expect(page.locator('math')).toHaveCount(formulaCounts.get(file));
       await expect(page.locator('a[aria-current=page]')).toHaveCount(1);
       expect(await page.locator('.exercise details').count()).toBeGreaterThanOrEqual(5);
     }
@@ -249,6 +254,49 @@ test('chapter 5 integrates its complete coverage map and bidirectional navigatio
   await page.locator('.chapter-pagination a[href="embeddings.html"]').click();
   await expect(page.locator('h1')).toContainText('From Tokens to Meaning');
 });
+
+test('chapter 6 connects navigation and every source topic/interview anchor', async ({ page, request }) => {
+  await page.goto(`${base}/neural-networks.html`);
+  await page.locator('.chapter-pagination a[href="transformer.html"]').click();
+  await expect(page.locator('h1')).toHaveText('Inside the Transformer: How Attention Builds Context');
+  await expect(page.locator('h2')).toHaveCount(17);
+  await expect(page.locator('.chapter-meta')).toContainText('17 sections');
+  await expect(page.locator('main figure')).toHaveCount(7);
+  const guide = await (await request.get(`${base}/authoring.html`)).text();
+  const html = await (await request.get(`${base}/transformer.html`)).text();
+  const coverage = guide.split('id="transformer-source-coverage"')[1].split('<h2')[0];
+  const anchors = [...coverage.matchAll(/<code>#([a-z0-9-]+)<\/code>/g)].map(match => match[1]);
+  expect(new Set(anchors).size).toBeGreaterThan(40);
+  for (const anchor of new Set(anchors)) expect(html, anchor).toContain(`id="${anchor}"`);
+  await page.locator('.chapter-pagination a[href="neural-networks.html"]').click();
+  await expect(page.locator('h1')).toContainText('From Inputs to Predictions');
+});
+
+for (const width of [320, 1440]) {
+  test(`chapter 6 file-opened complete answers and diagrams at ${width}px`, async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width, height: 900 } });
+    const page = await context.newPage();
+    await page.goto(new URL('../dist/transformer.html', import.meta.url).href);
+    await page.locator('main a[href="#interview-questions"]').first().click();
+    await expect(page.locator('#interview-questions')).toBeInViewport();
+    const questions = page.locator('[data-source-questions]');
+    await expect(questions).toHaveCount(20);
+    expect(await questions.evaluateAll(nodes => nodes.map(node => node.dataset.sourceQuestions))).toEqual(
+      Array.from({ length: 20 }, (_, i) => `transformer-Q${i + 1}`));
+    for (const details of await page.locator('main details').all()) {
+      await details.locator('summary').click();
+      await expect(details.locator('p').first()).toBeVisible();
+    }
+    for (const question of await questions.all()) {
+      expect(await question.locator('details a[href^="#"]').count()).toBeGreaterThan(0);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+    expect(await page.locator('main img').evaluateAll(images =>
+      images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
+    await expect(page.locator('.katex-error')).toHaveCount(0);
+    await context.close();
+  });
+}
 
 for (const width of [320, 1440]) {
   test(`chapter 5 file-opened answers, figures, and calculations at ${width}px`, async ({ browser }) => {

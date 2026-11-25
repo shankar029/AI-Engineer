@@ -1,12 +1,14 @@
 # Becoming an AI Engineer
 
-An illustrated, intuition-first journey toward building AI with understanding and intention. The first part starts with vectors and works toward a complete neural-network learning step, with original diagrams, worked calculations, exercises, and explained interview answers.
+An illustrated, intuition-first journey toward building AI with understanding and intention. The first part starts with vectors and works toward a complete Transformer forward pass, with original diagrams, worked calculations, exercises, and explained interview answers.
 
 This edition is Part I: mathematical and model foundations. Practical systems are the wider direction of the book, not additional chapters already published.
 
 ## Read the book
 
-**[Read online](https://shankar029.github.io/AI-Engineer/)** - the complete five-chapter website, with diagrams, worked examples, and interactive experiments.
+**[Read online](https://shankar029.github.io/AI-Engineer/)** - the illustrated reading website, with diagrams, worked examples, and interactive experiments.
+
+**Chapter 6:** read [Inside the Transformer: How Attention Builds Context online](https://shankar029.github.io/AI-Engineer/html/transformer.html), open its [portable HTML edition](publications/html/transformer.html) from the downloaded checkout, or use its PDF below. This reading edition contains six chapters.
 
 **Read offline:** download or clone this repository and open [publications/html/index.html](publications/html/index.html). No setup, npm, or server is needed. Keep the whole `publications/` folder together for local fonts, diagrams, chapter links, and PDFs. GitHub's HTML file view shows source; open the downloaded file instead.
 
@@ -21,6 +23,7 @@ Every PDF includes the complete chapter and expanded exercise/interview answers.
 | 03 | [From Text to Tokens: How LLMs Read Language](publications/03-from-text-to-tokens.pdf) |
 | 04 | [From Tokens to Meaning: How Embeddings Represent Language](publications/04-from-tokens-to-meaning.pdf) |
 | 05 | [From Inputs to Predictions: How Neural Networks Learn](publications/05-from-inputs-to-predictions.pdf) |
+| 06 | [Inside the Transformer: How Attention Builds Context](publications/06-inside-the-transformer.pdf) |
 
 The website includes interactive experiments; file-opened reading uses static examples and expandable solutions. PDFs are the checked print edition, not live experiments.
 

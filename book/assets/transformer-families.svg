@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330">
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#226b59"/></marker></defs>
+  <rect width="760" height="330" rx="8" fill="#f8f6f0"/>
+  <g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle" fill="#213b35">
+    <g font-size="18" font-weight="600"><text x="130" y="32">Encoder-only</text><text x="380" y="32">Decoder-only</text><text x="630" y="32">Encoder-decoder</text></g>
+    <g fill="#eaf1e9" stroke="#226b59"><rect x="35" y="58" width="190" height="44" rx="5"/><rect x="35" y="140" width="190" height="65" rx="5"/><rect x="35" y="243" width="190" height="44" rx="5"/><rect x="285" y="58" width="190" height="44" rx="5"/><rect x="285" y="140" width="190" height="65" rx="5"/><rect x="285" y="243" width="190" height="44" rx="5"/><rect x="535" y="58" width="90" height="44" rx="5"/><rect x="635" y="58" width="90" height="44" rx="5"/><rect x="535" y="140" width="190" height="65" rx="5"/><rect x="535" y="243" width="190" height="44" rx="5"/></g>
+    <g font-size="16"><text x="130" y="85">Source tokens</text><text x="130" y="166">Full self-attention</text><text x="130" y="189">+ token-wise FFN</text><text x="130" y="270">Source states</text><text x="380" y="85">Prefix tokens</text><text x="380" y="166">Causal self-attention</text><text x="380" y="189">+ token-wise FFN</text><text x="380" y="270">Next-token scores</text><text x="630" y="165">Causal target decoder</text><text x="630" y="189">+ cross-attention</text><text x="630" y="270">Target-token scores</text></g>
+    <g font-size="14"><text x="580" y="76">Encoded</text><text x="580" y="94">source</text><text x="680" y="76">Target</text><text x="680" y="94">prefix</text></g>
+    <g font-size="13" fill="#606963"><text x="130" y="313">All permitted source positions</text><text x="380" y="313">Current + earlier positions</text><text x="630" y="313">Separate source and target</text></g>
+  </g>
+  <g stroke="#226b59" stroke-width="2" marker-end="url(#arrow)"><path d="M130 102V135"/><path d="M130 205V237"/><path d="M380 102V135"/><path d="M380 205V237"/><path d="M580 102V135"/><path d="M680 102V135"/><path d="M630 205V237"/></g>
+  <text x="590" y="125" font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#ab4a2d">source K/V</text>
+</svg>
