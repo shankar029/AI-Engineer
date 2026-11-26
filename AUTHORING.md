@@ -8,6 +8,20 @@ Write for a software engineer who is comfortable with arithmetic and code but **
 
 Voice: calm, direct, curious, and precise. Address the reader as "you." Use short paragraphs, concrete verbs, and one main idea per paragraph. Explain what a mathematical object does before naming its formal properties. Do not write conversational transcripts, congratulatory filler, or unexplained walls of formulas.
 
+### Plain language and small teaching steps
+
+Simple language must make the details easier to follow, not remove them. Keep the full reasoning, correct mathematics and explained answers. A short paragraph that assumes several unstated steps is not simpler teaching.
+
+For each new idea, use this order: **what problem it solves, what it means, how to calculate it, and what the result tells us**. Start with a concrete case before general notation. A familiar engineering comparison can help, but explain the actual operation and where the comparison stops.
+
+Prefer direct verbs: "use," "add," "save," and "calculate" rather than "utilize," "aggregate," "retain," or "evaluate" when the simpler word has the same meaning. Keep necessary technical terms, but define them in everyday language at first use. Say which variable, row, token or parameter you mean instead of relying on an ambiguous "it," "this" or "that." Read symbols aloud in prose before asking readers to manipulate them.
+
+Break an explanation when its purpose changes: intuition, definition, calculation and limitation usually need separate paragraphs. Break a long calculation into named steps or separate output coordinates. Show substitutions and intermediate results before the compact general formula when that makes the rule easier to see. Do not shorten a worked answer into a result with no reasoning.
+
+State the main rule first, then its assumptions and relevant limit nearby. Avoid stacking several unrelated cautions into an opening paragraph or repeating the same caution so often that it hides the lesson. Essential qualifications must remain; simpler wording must not turn a conditional result into a guarantee.
+
+After editing, read the whole chapter again in reading order, including captions, exercises and interview answers. At each transition ask: "Does the reader already know every operation used next? Can they explain why this step follows?" Repair missing links with a brief reminder and a precise earlier-chapter link. Readability scores, short sentences, and passing tests do not establish that the teaching is understandable.
+
 Each chapter begins with a real engineering question and ends with something the reader can now explain or calculate. Distinguish an operation's mathematical purpose from claims about intelligence or human-like understanding.
 
 ## Chapter architecture
