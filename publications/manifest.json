@@ -1,5 +1,5 @@
 {
-  "sourceDigest": "7a76e08c1f449fe46109613397272e348ad4ebc6de0e578eb09b4653c3ba1fd6",
+  "sourceDigest": "8b90ff6937c43721598b29c64275480c1b765433f2c1e9bd7a30715a4f700450",
   "paper": "A4",
   "chapters": [
     {
@@ -9,7 +9,7 @@
       "number": "01",
       "subtitle": "Represent & transform",
       "type": "chapter",
-      "renderDigest": "336904b5e01f13ba28248056e9107c309b28f213179e9ab60504ed70cd591c6d",
+      "renderDigest": "5c2b1756755942760e37a66d8963cb250b0b077fa13f3e9d889cfaa916fbf426",
       "sha256": "9bf759272b6bc972c5cdc522992b3a65ab42f9020e69babecd8663bcf70da38f",
       "bytes": 452347,
       "text": [
@@ -364,7 +364,13 @@
       "answers": 12,
       "interviews": 0,
       "figures": 4,
-      "formulas": 301
+      "formulas": 301,
+      "card": {
+        "asset": "algebra-card.svg",
+        "subject": "Linear algebra",
+        "description": "How vectors hold information, matrices transform it, and attention combines it.",
+        "topics": "Vectors · Matrices · Attention · Rank"
+      }
     },
     {
       "file": "calculus.html",
@@ -373,7 +379,7 @@
       "number": "02",
       "subtitle": "Change & learn",
       "type": "chapter",
-      "renderDigest": "8a1c10ba2c0384a190ec3c7cc7260db79d6914a3b10c761844279cb3c918946e",
+      "renderDigest": "633eadad99e0fb668d9ccf219ec3339525f93e8cb50685c4d25a62c43e80fdf0",
       "sha256": "2d491be6a2ed3a3eaaef8041ac47190ed658e9a321caa496f2294c7da05744a1",
       "bytes": 585464,
       "text": [
@@ -876,7 +882,13 @@
       "answers": 14,
       "interviews": 0,
       "figures": 5,
-      "formulas": 427
+      "formulas": 427,
+      "card": {
+        "asset": "calculus-card.svg",
+        "subject": "Calculus",
+        "description": "How small changes become gradients, and gradients become better predictions.",
+        "topics": "Derivatives · Backprop · Optimization"
+      }
     },
     {
       "file": "tokenization.html",
@@ -885,7 +897,7 @@
       "number": "03",
       "subtitle": "Segment & encode",
       "type": "chapter",
-      "renderDigest": "912c225213a569bf8bf0d86fbcd840a08bf5983d12177628e8a25fe299b4b4f7",
+      "renderDigest": "6ef9a6d79e8079f48774929ac6bfd6d4fbab4f78096ca4747ffc4e2af4a017aa",
       "sha256": "a63813e181117a4722900d6ce091972580fb3b068cf17a1ccb8a3713733c3cdc",
       "bytes": 701539,
       "text": [
@@ -1374,18 +1386,30 @@
       "answers": 20,
       "interviews": 0,
       "figures": 5,
-      "formulas": 81
+      "formulas": 81,
+      "card": {
+        "asset": "tokenization-card.svg",
+        "subject": "Tokenization",
+        "description": "How text becomes vocabulary IDs, and how those choices shape context, memory, and model compatibility.",
+        "topics": "BPE · WordPiece · Unigram · Budgets"
+      }
     },
     {
       "file": "embeddings.html",
       "pdf": "04-from-tokens-to-meaning.pdf",
       "title": "From Tokens to Meaning: How Embeddings Represent Language",
-      "number": "04",
       "subtitle": "Represent & locate",
+      "card": {
+        "asset": "embeddings-card.svg",
+        "subject": "Embeddings & position",
+        "description": "How token rows learn useful representations, and how similarity, context, and position shape their use.",
+        "topics": "Lookup · Learning · Retrieval · RoPE"
+      },
+      "number": "04",
       "type": "chapter",
-      "renderDigest": "0478d65434cc671b0755cd1af0d466ddce5abdddb402bb2de6a5efaeafd50472",
-      "sha256": "12d76645bf291e5d8399efe207e446538d2c63c5d0f91eadbd3e2f380879d978",
-      "bytes": 861515,
+      "renderDigest": "a70491202a89f4009d09470a02c54cd33dc36a51fcd83c5097ca9f6c7ccb62d0",
+      "sha256": "e23985b9d5c6745806c7ffafbd400062f72d939e9f0fe86d10efa24412e883ea",
+      "bytes": 875538,
       "text": [
         "Part I / From mathematics to models / 04",
         "From Tokens to Meaning: How Embeddings Represent Language",
@@ -2095,7 +2119,7 @@
       "number": "05",
       "subtitle": "Predict & learn",
       "type": "chapter",
-      "renderDigest": "87b2c7c1fe1300b5a42e9132a338c1eaa7f24f708d7126a948b7cc8f6789545b",
+      "renderDigest": "e2db799ff3d534a205cbc691ec5c42e50db0e57657b53c5c0a7a50dd42fab89a",
       "sha256": "4e95c962e4c5e6d344bc265ddb49e971cee212f2bd80ada6f93e7d7e21505513",
       "bytes": 628898,
       "text": [
@@ -2614,7 +2638,13 @@
       "answers": 29,
       "interviews": 14,
       "figures": 6,
-      "formulas": 207
+      "formulas": 207,
+      "card": {
+        "asset": "neural-networks-card.svg",
+        "subject": "Neural networks",
+        "description": "How a network predicts, computes sensitivities, updates parameters, and supplies the building blocks of a Transformer.",
+        "topics": "Activations · Learning · MLPs · Blocks"
+      }
     },
     {
       "file": "transformer.html",
@@ -2623,7 +2653,7 @@
       "number": "06",
       "subtitle": "Attend & contextualize",
       "type": "chapter",
-      "renderDigest": "baded589e8d65b0ed554272a57e3aa74f53184703f7dde76b8c8428f4752e265",
+      "renderDigest": "e214158480d9cf233c7d825b128b1668e445669b36295f01e08df8b4cb116a60",
       "sha256": "aea5cfbfc40560fe897fff4607d50996d6972a20281a1e865bfe2bc86d761636",
       "bytes": 607476,
       "text": [
@@ -3037,7 +3067,13 @@
       "answers": 36,
       "interviews": 20,
       "figures": 7,
-      "formulas": 26
+      "formulas": 26,
+      "card": {
+        "asset": "transformer-card.svg",
+        "subject": "Transformer architecture",
+        "description": "Follow projected attention, a complete decoder block, and next-token selection; distinguish architecture from execution optimizations.",
+        "topics": "Attention · Shapes · Blocks · Tradeoffs"
+      }
     },
     {
       "file": "attention.html",
@@ -3046,7 +3082,7 @@
       "number": "07",
       "subtitle": "Select & combine",
       "type": "chapter",
-      "renderDigest": "559dc0844230c010cf0cbff70f539ca32fbe7b5570ec387891787c148362948c",
+      "renderDigest": "5ce61c772b82169767d0d0a94fae116a5e4d40db34b2360d07b27f5cc6032c2a",
       "sha256": "0529c96a488186a1bf244b25d9a704fc6df740ca429e7b0d880998e64d334d73",
       "bytes": 588356,
       "text": [
@@ -3424,7 +3460,13 @@
       "answers": 24,
       "interviews": 10,
       "figures": 7,
-      "formulas": 14
+      "formulas": 14,
+      "card": {
+        "asset": "attention-card.svg",
+        "subject": "Attention mechanisms",
+        "description": "Audit every query's mixture, trace its gradients, and separate information access from cache storage and tiled execution.",
+        "topics": "Masks · Gradients · Cache · Tiling"
+      }
     }
   ]
 }

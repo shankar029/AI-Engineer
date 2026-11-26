@@ -1,0 +1,43 @@
+{
+  "title": "Becoming an AI Engineer",
+  "subtitle": "An intuition-first field guide",
+  "language": "en",
+  "identifier": "urn:github:shankar029:AI-Engineer:review",
+  "author": null,
+  "rights": null,
+  "edition": null,
+  "publisher": null,
+  "isbn": null,
+  "finalChapterList": false,
+  "printerRequirementsConfirmed": false,
+  "reviewLabel": "Review edition",
+  "print": { "widthInches": 6, "heightInches": 9, "color": true },
+  "frontMatter": [
+    { "file": "title-page.html", "title": "Title page", "kind": "title" },
+    { "file": "publication.html", "title": "About this edition", "kind": "publication" },
+    { "file": "contents.html", "title": "Contents", "kind": "contents" },
+    { "file": "preface.html", "title": "Preface", "kind": "source" },
+    { "file": "reading-guide.html", "title": "How to use this book", "kind": "source" }
+  ],
+  "parts": [
+    {
+      "file": "foundations.html",
+      "title": "Part I: Mathematical and model foundations",
+      "label": "Part I",
+      "chapters": [
+        { "file": "linear-algebra.html", "pdf": "01-the-language-of-llms.pdf", "title": "The Language of LLMs: Vectors, Matrices, and Meaning", "subtitle": "Represent & transform", "card": { "asset": "algebra-card.svg", "subject": "Linear algebra", "description": "How vectors hold information, matrices transform it, and attention combines it.", "topics": "Vectors · Matrices · Attention · Rank" } },
+        { "file": "calculus.html", "pdf": "02-how-llms-learn.pdf", "title": "How LLMs Learn: Derivatives, Gradients, and Optimization", "subtitle": "Change & learn", "card": { "asset": "calculus-card.svg", "subject": "Calculus", "description": "How small changes become gradients, and gradients become better predictions.", "topics": "Derivatives · Backprop · Optimization" } },
+        { "file": "tokenization.html", "pdf": "03-from-text-to-tokens.pdf", "title": "From Text to Tokens: How LLMs Read Language", "subtitle": "Segment & encode", "card": { "asset": "tokenization-card.svg", "subject": "Tokenization", "description": "How text becomes vocabulary IDs, and how those choices shape context, memory, and model compatibility.", "topics": "BPE · WordPiece · Unigram · Budgets" } },
+        { "file": "embeddings.html", "pdf": "04-from-tokens-to-meaning.pdf", "title": "From Tokens to Meaning: How Embeddings Represent Language", "subtitle": "Represent & locate", "card": { "asset": "embeddings-card.svg", "subject": "Embeddings & position", "description": "How token rows learn useful representations, and how similarity, context, and position shape their use.", "topics": "Lookup · Learning · Retrieval · RoPE" } },
+        { "file": "neural-networks.html", "pdf": "05-from-inputs-to-predictions.pdf", "title": "From Inputs to Predictions: How Neural Networks Learn", "subtitle": "Predict & learn", "card": { "asset": "neural-networks-card.svg", "subject": "Neural networks", "description": "How a network predicts, computes sensitivities, updates parameters, and supplies the building blocks of a Transformer.", "topics": "Activations · Learning · MLPs · Blocks" } },
+        { "file": "transformer.html", "pdf": "06-inside-the-transformer.pdf", "title": "Inside the Transformer: How Attention Builds Context", "subtitle": "Attend & contextualize", "card": { "asset": "transformer-card.svg", "subject": "Transformer architecture", "description": "Follow projected attention, a complete decoder block, and next-token selection; distinguish architecture from execution optimizations.", "topics": "Attention · Shapes · Blocks · Tradeoffs" } },
+        { "file": "attention.html", "pdf": "07-attention-in-action.pdf", "title": "Attention in Action: How Models Select and Combine Context", "subtitle": "Select & combine", "card": { "asset": "attention-card.svg", "subject": "Attention mechanisms", "description": "Audit every query's mixture, trace its gradients, and separate information access from cache storage and tiled execution.", "topics": "Masks · Gradients · Cache · Tiling" } }
+      ]
+    }
+  ],
+  "backMatter": [
+    { "file": "glossary.html", "title": "Glossary and notation", "kind": "source" },
+    { "file": "further-reading.html", "title": "Further reading", "kind": "source" },
+    { "file": "next-steps.html", "title": "From foundations to engineering practice", "kind": "source" }
+  ]
+}

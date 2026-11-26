@@ -12,6 +12,16 @@ This edition is Part I: mathematical and model foundations. Practical systems ar
 
 **Read offline:** download or clone this repository and open [publications/html/index.html](publications/html/index.html). No setup, npm, or server is needed. Keep the whole `publications/` folder together for local fonts, diagrams, chapter links, and PDFs. GitHub's HTML file view shows source; open the downloaded file instead.
 
+## Whole-book review editions
+
+The local publication now includes a title page, edition information, preface, reading guide, generated contents, glossary, further reading and closing guidance.
+
+- [Reflowable EPUB review edition](publications/becoming-an-ai-engineer-review.epub)
+- [Complete reading PDF](publications/becoming-an-ai-engineer-reading-review.pdf)
+- [Provisional 6-by-9-inch color print interior](publications/becoming-an-ai-engineer-6x9-print-review.pdf)
+
+These assemble the current seven chapters, not a finished final book. Author, rights and edition details remain undecided. The print layout is a review interior, not printer-approved artwork or a wraparound cover. New book pages and downloads are local until a later deployment.
+
 ## Download chapter PDFs
 
 Every PDF includes the complete chapter and expanded exercise/interview answers.

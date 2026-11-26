@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
-import { chapters as chapterInventory } from '../scripts/chapters.mjs';
+import { chapters as chapterInventory, readingPages, bookOrder, wholeBookFiles } from '../scripts/chapters.mjs';
 
 const base = 'http://127.0.0.1:4175';
 const chapters = chapterInventory.map(chapter => chapter.file);
-const pages = ['index.html', 'foundations.html', ...chapters, 'authoring.html'];
+const pages = readingPages.map(page => page.file);
 const formulaCounts = new Map(await Promise.all(chapters.map(async file => [
   file, [...(await readFile(new URL(`../book/${file}`, import.meta.url), 'utf8'))
     .matchAll(/<(?:span|div) class="(?:math|equation)">/g)].length
@@ -14,6 +14,23 @@ const auditAnchors = topic => {
   const coverage = audit.split(`## ${topic} source coverage`)[1].split('\n## ')[0];
   return [...coverage.matchAll(/`#([a-z0-9-]+)`/g)].map(match => match[1]);
 };
+
+test('review book pages use the ordered registry without fabricated release details', async ({ page, request }) => {
+  await page.goto(`${base}/publication.html`);
+  await expect(page.locator('main')).toContainText('Review edition');
+  await expect(page.locator('main')).toContainText('7 chapters');
+  expect(await page.locator('main').innerText()).not.toMatch(/ISBN:|Copyright|Author:|Publisher:|TBD|placeholder/i);
+  await page.goto(`${base}/contents.html`);
+  expect(await page.locator('.book-contents a').evaluateAll(nodes => nodes.map(node => node.getAttribute('href'))))
+    .toEqual(bookOrder.filter(page => !['title', 'publication', 'contents'].includes(page.kind)).map(page => page.file));
+  for (const file of Object.values(wholeBookFiles)) {
+    await expect(page.locator(`a[href="pdfs/${file}"]`)).toBeVisible();
+    expect((await request.get(`${base}/pdfs/${file}`)).status()).toBe(200);
+  }
+  await page.goto(`${base}/attention.html`);
+  await page.locator('.chapter-pagination a[href="glossary.html"]').click();
+  await expect(page.locator('h1')).toHaveText('Glossary and notation');
+});
 
 test('chapter 7 is navigable and retains its complete lesson and interview correspondence', async ({ page, request }) => {
   await page.goto(`${base}/transformer.html`);

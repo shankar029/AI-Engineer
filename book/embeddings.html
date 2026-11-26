@@ -44,9 +44,11 @@
 <p>A <strong>derivative</strong> measures a function's local change per small input change. A <strong>partial derivative</strong> changes one input while holding the others fixed. A <strong>gradient</strong> collects those partial derivatives in coordinate order. <strong>Backpropagation</strong> follows dependent operations backward to calculate them, multiplying local sensitivities along a path (the chain rule) and adding effects where paths meet. See <a href="calculus.html#chain-rule">chapter 2's complete chain-rule explanation</a>.</p>
 <p>We need the loss sensitivity to each stored coordinate. First give their sum a short name: <span class="math">s=a+b</span>. The probability is then exp(s) divided by exp(s)+1. To simplify its negative log, use the rule "log of a fraction = log of the top minus log of the bottom." Since <span class="math">\ln(\exp(s))=s</span>, the loss becomes <span class="math">L=-s+\ln(\exp(s)+1)</span>.</p>
 <p>Now follow the dependencies backward. Find how the loss changes with s. Then find how s changes with a or b. Adding 0.01 to either coordinate adds 0.01 to s, so both of those local sensitivities are 1.</p>
-<div class="equation">\frac{dL}{ds}=-1+\frac{\exp(s)}{\exp(s)+1}=p-1,\qquad
-\frac{\partial L}{\partial a}=(p-1)(1),\quad
-\frac{\partial L}{\partial b}=(p-1)(1)</div>
+<div class="equation">\begin{aligned}
+\frac{dL}{ds}&amp;=-1+\frac{\exp(s)}{\exp(s)+1}=p-1\\
+\frac{\partial L}{\partial a}&amp;=(p-1)(1)\\
+\frac{\partial L}{\partial b}&amp;=(p-1)(1)
+\end{aligned}</div>
 <p class="symbol-key"><span class="math">dL/ds</span> reads "loss sensitivity to s"; <span class="math">\partial L/\partial a</span> reads "loss sensitivity to a with b fixed." The local derivative of <span class="math">-s</span> is -1. The log rule divides the inside derivative by its inside value; the inside derivative of <span class="math">\exp(s)+1</span> is <span class="math">\exp(s)</span>. Finally <span class="math">ds/da=ds/db=1</span>, since adding 0.01 to either coordinate adds 0.01 to s. These elementary rules are derived in <a href="calculus.html#differentiation-rules">chapter 2</a>; here they explain the actual embedding update rather than leaving a gradient unexplained.</p>
 <div class="worked"><p class="label">Check / Measure the local slope with arithmetic</p><p>Hold b=0 and perturb only a. At a=0.001, calculate:</p><div class="equation">L=\ln(1+\exp(-0.001))\approx0.69264730556</div><p>At a=-0.001, calculate:</p><div class="equation">L=\ln(1+\exp(0.001))\approx0.69364730556</div><p>The difference in loss is -0.001, across an input difference <span class="math">0.001-(-0.001)=0.002</span>. Divide: <span class="math">-0.001/0.002=-0.5</span>. This two-sided slope check agrees with the derivative at zero. The alternative loss expression comes from factoring <span class="math">\exp(-s)</span>: <span class="math">1+\exp(-s)=\exp(-s)(1+\exp(s))</span>. Taking the log turns multiplication into addition, giving <span class="math">-s+\ln(1+\exp(s))</span>. A small finite-difference check is useful for debugging gradients; it is not a substitute for a general derivation.</p></div>
 <p><strong>Gradient descent</strong> subtracts a positive step size times the gradient. The step size, or <strong>learning rate</strong>, controls how far to move; it is not a probability. Subtracting a negative gradient increases a value because the loss locally falls in that direction.</p>
@@ -199,8 +201,12 @@ P_{p,2j+1}&amp;=\cos(p\omega_j)
 <p class="symbol-key">R(theta) is a two-by-two rotation matrix; x and y are the old coordinates; primes mark rotated coordinates. Theta is the counterclockwise angle in radians. Each output is a row-column product. This is cosine/sine geometric coordinate order; section 9's encoding pairs were sine/cosine signals, hence its different-looking sign placement.</p>
 <div class="worked"><p class="label">Worked example / A quarter turn with both coordinates nonzero</p><p>At <span class="math">\theta=\pi/2</span>, cosine is 0 and sine 1. Rotate <code>[2,1]</code>: <span class="math">x'=2(0)-1(1)=-1</span>, <span class="math">y'=2(1)+1(0)=2</span>. The output is <code>[-1,2]</code>. Both old and new squared lengths are 5: <span class="math">2^2+1^2=4+1</span> and <span class="math">(-1)^2+2^2=1+4</span>. Rotation changes direction without changing length.</p></div>
 <p>The length property holds generally, not just at a quarter turn. Abbreviate <span class="math">c=\cos\theta</span> and <span class="math">s=\sin\theta</span>. Squared output length is <span class="math">(xc-ys)^2+(xs+yc)^2</span>. Multiply each parenthesis by itself:</p>
-<div class="equation">x^2c^2-2xycs+y^2s^2+x^2s^2+2xysc+y^2c^2
-=x^2(c^2+s^2)+y^2(s^2+c^2)=x^2+y^2</div>
+<div class="equation">\begin{aligned}
+&amp;x^2c^2-2xycs+y^2s^2\\
+&amp;\quad+x^2s^2+2xysc+y^2c^2\\
+&amp;=x^2(c^2+s^2)+y^2(s^2+c^2)\\
+&amp;=x^2+y^2
+\end{aligned}</div>
 <p>The <strong>cross terms</strong> -2xycs and +2xysc cancel because multiplication order does not change their value. Grouping the remaining x-squared and y-squared terms factors out <span class="math">c^2+s^2=1</span>, section 8's unit-circle identity. Thus the squared length, and its positive square root, are unchanged. A rotation does not amplify a pair simply because its position index is larger.</p>
 <h3 id="rope-pairs">Positions choose angles; pairs choose rates</h3>
 <p>For a wider query or key, apply the two-coordinate rotation separately to each pair, once per pair. In our standard paired example, head width r is positive and even, so there are r/2 pairs. Pair index j runs from 0 through r/2-1. We pair adjacent coordinates: at width four, the pairs are coordinates 0-1 and 2-3.</p>

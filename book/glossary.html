@@ -1,0 +1,53 @@
+<header class="chapter-header"><p class="eyebrow">Return to the worked lesson when needed</p><h1>Glossary and notation</h1><p class="dek">Short reminders, not replacements for the calculations.</p></header>
+<h2 id="representations">Representations and shapes</h2>
+<dl>
+<dt>Scalar</dt><dd>One number. A <a href="linear-algebra.html#notation">vector</a> is an ordered list; a matrix is a table with rows and columns.</dd>
+<dt>Coordinate / dimension</dt><dd>A coordinate is one entry in a vector. Its dimension or width counts entries, not the number of concepts it understands.</dd>
+<dt>Tensor / axis / shape</dt><dd>A numerical array and its indexed directions. Shape lists the length of each axis. See <a href="linear-algebra.html#tensor-axes">named array axes</a>.</dd>
+<dt>Dot product</dt><dd>Multiply corresponding coordinates, then add. It gives one scalar and depends on vector length as well as direction. See <a href="linear-algebra.html#dot-products">dot products</a>.</dd>
+<dt>Transpose</dt><dd>Exchange a matrix's row and column indices. In <span class="math">K^\top</span>, the superscript means transpose, not a power.</dd>
+<dt>Linear combination / span / rank</dt><dd>A linear combination adds scaled vectors. Their span is everything those combinations can reach. Rank counts independent directions in a matrix. See <a href="linear-algebra.html#rank">rank and information loss</a>.</dd>
+<dt>Embedding</dt><dd>A learned numerical representation retrieved by an ID or computed for an item. A token's initial embedding is not its later contextual state. See <a href="embeddings.html">embeddings</a>.</dd>
+<dt>Cosine similarity</dt><dd>A direction comparison: divide a dot product by the product of the two nonzero vector lengths. It is undefined for a zero vector and does not establish factual relevance.</dd>
+<dt>Pooling</dt><dd>Combine several vectors into one, for example by averaging only the permitted token rows. See <a href="embeddings.html#retrieval">retrieval representations</a>.</dd>
+</dl>
+<h2 id="learning">Learning and probabilities</h2>
+<dl>
+<dt>Parameter / activation / hyperparameter</dt><dd>A parameter is a stored value training can adjust. An activation is computed for one input. A hyperparameter configures the model or training procedure.</dd>
+<dt>Derivative / partial derivative / gradient</dt><dd>A derivative describes local change. A partial derivative varies one independent input while holding others fixed. A gradient collects partial derivatives. See <a href="calculus.html">the calculus chapter</a>.</dd>
+<dt>Chain rule / backpropagation</dt><dd>Multiply local sensitivities along a path and add contributions from multiple paths. Backpropagation carries this calculation backward through saved operations.</dd>
+<dt>Loss / optimizer / learning rate</dt><dd>Loss measures the prediction error chosen by the training objective. An optimizer changes parameters using gradients. The learning rate controls update size.</dd>
+<dt>Probability / exponential / logarithm</dt><dd>A probability is a nonnegative share of a complete total of 1. The exponential <span class="math">e^x</span> is positive; <span class="math">\ln a</span> asks which power of e gives positive a.</dd>
+<dt>Logit / softmax / cross-entropy</dt><dd>A logit is a score before probability conversion. Softmax exponentiates scores and divides by their sum. For one observed target, cross-entropy is the negative logarithm of its probability.</dd>
+<dt>Batch / epoch</dt><dd>A batch groups examples for a calculation. An epoch is a pass through the training dataset. The update count depends on batching and the training procedure.</dd>
+<dt>Normalization</dt><dd>A specified rescaling or centering operation. Unit-vector normalization, attention normalization and layer normalization solve different problems; name the rule you mean.</dd>
+</dl>
+<h2 id="text-context">Text, models and context</h2>
+<dl>
+<dt>Token / vocabulary / token ID</dt><dd>A tokenizer selects text pieces from a configured vocabulary and returns their IDs. An ID is an address, not a meaning or embedding coordinate.</dd>
+<dt>BPE / WordPiece / Unigram</dt><dd>Different tokenization procedures. BPE learns merge rules; WordPiece encoding follows vocabulary prefix choices; Unigram compares complete segmentation paths. See <a href="tokenization.html">tokenization</a>.</dd>
+<dt>Expectation-maximization (EM)</dt><dd>For the Unigram toy calculation, distribute fractional credit across paths, count token uses and update probabilities. It is not the model's next-token generation algorithm.</dd>
+<dt>Query / key / value</dt><dd>Queries and keys determine matching scores. Values provide the coordinates combined by the normalized weights. They are calculated from learned projections.</dd>
+<dt>Attention head / cross-attention</dt><dd>A head performs a matching-and-mixing calculation. Self-attention derives roles from one sequence; cross-attention uses queries from one sequence and keys/values from another.</dd>
+<dt>Mask / causal attention</dt><dd>A mask determines which keys a query may use. A causal next-token query cannot read future input positions. Position encodings do not enforce that rule.</dd>
+<dt>Residual connection / feed-forward network (FFN)</dt><dd>A residual adds a branch output to its input. A Transformer FFN transforms each token row's features using shared parameters.</dd>
+<dt>Rotary position embedding (RoPE)</dt><dd>Rotate query/key coordinate pairs by position-dependent angles. Standard RoPE does not directly rotate values. See <a href="embeddings.html">the positional lessons</a>.</dd>
+<dt>Prefill / decode / KV cache</dt><dd>Prefill processes the known prompt. Decode processes new positions as generation proceeds. A KV cache stores compatible layer-specific keys and values for reuse.</dd>
+<dt>MHA / GQA / MQA</dt><dd>Multi-head, grouped-query and multi-query attention differ in how query heads share keys/values. Fewer KV heads do not remove query heads.</dd>
+<dt>FlashAttention / tile</dt><dd>A tile is a small processing block. Stable running sums let tiled attention avoid storing the full weight matrix without deleting permitted comparisons.</dd>
+<dt>Complexity / payload / latency</dt><dd>Complexity describes operation growth; payload counts stored data; latency measures elapsed time. A saving in one does not establish a saving in another.</dd>
+<dt>Retrieval-augmented generation (RAG)</dt><dd>An application obtains external information and supplies selected material to a model. It is not the attention operation itself and does not replace permission or trust checks.</dd>
+</dl>
+<h2 id="notation">Read the notation in context</h2>
+<div class="table-wrap"><table><caption>Common notation; nearby chapter definitions take precedence</caption><thead><tr><th>Notation</th><th>Read it as</th></tr></thead><tbody>
+<tr><td><span class="math">x_i</span></td><td>Entry i of x; the index is not multiplication.</td></tr>
+<tr><td><span class="math">\sum_i a_i</span></td><td>Add the indexed terms over the stated range.</td></tr>
+<tr><td><span class="math">\mathbf{x}, W, W^\top</span></td><td>A vector, a matrix, and its transpose.</td></tr>
+<tr><td><span class="math">N\times d</span></td><td>N rows and d columns, when naming a matrix shape.</td></tr>
+<tr><td><span class="math">\partial L/\partial w</span></td><td>Loss sensitivity to w, holding the other independent inputs fixed.</td></tr>
+<tr><td><span class="math">\nabla L,\eta</span></td><td>The gradient of L and a learning-rate symbol.</td></tr>
+<tr><td><span class="math">\Delta x,\epsilon</span></td><td>A change in x; epsilon is a small quantity whose role is defined locally.</td></tr>
+<tr><td><span class="math">\approx,\ln,\exp,\sqrt{x}</span></td><td>Approximately equal; natural logarithm; exponential; nonnegative square root.</td></tr>
+<tr><td><span class="math">B,N,d,H_q,H_{\mathrm{kv}}</span></td><td>Common batch, position, width and head counts. Check each lesson's axis convention.</td></tr>
+</tbody></table></div>
+<p>Mathematical positions usually start at 1 here; code arrays often start at 0. A prime can mean a derivative or an updated quantity, depending on the explicit definition. Do not treat a symbol's meaning as universal across examples.</p>

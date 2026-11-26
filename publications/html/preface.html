@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An intuition-first journey toward becoming an AI engineer. Begin with mathematical and model foundations through illustrated explanations, worked examples, and engineering connections.">
+  <meta name="theme-color" content="#183c35">
+  <title>Preface | Becoming an AI Engineer</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/cover.css">
+  <link rel="stylesheet" href="assets/print.css" media="print">
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body class="matter">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <aside class="sidebar" id="book-navigation" aria-label="Book navigation">
+    <a class="brand" href="index.html"><span class="brand-icon" aria-hidden="true">ae<span>.</span></span><span>Becoming an<br>AI Engineer<small>A FIELD GUIDE</small></span></a>
+    <div class="sidebar-body">
+      <a class="overview-link" href="index.html"><span aria-hidden="true">&#9638;</span> The book cover</a>
+      <a class="overview-link" href="foundations.html"><span aria-hidden="true">&#8594;</span> Part I: Mathematical and model foundations</a>
+      <nav aria-label="Book pages"><a class="overview-link" href="contents.html">Contents</a><a class="overview-link" href="preface.html">Preface</a><a class="overview-link" href="reading-guide.html">How to use this book</a><a class="overview-link" href="glossary.html">Glossary and notation</a><a class="overview-link" href="further-reading.html">Further reading</a><a class="overview-link" href="next-steps.html">From foundations to engineering practice</a></nav>
+      <nav aria-label="Chapters"><p class="nav-label">Part I<span>Mathematical and model foundations</span></p><a class="chapter-link" href="linear-algebra.html"><span>01</span><span>The Language of LLMs: Vectors, Matrices, and Meaning<small>Represent & transform</small></span></a><a class="chapter-link" href="calculus.html"><span>02</span><span>How LLMs Learn: Derivatives, Gradients, and Optimization<small>Change & learn</small></span></a><a class="chapter-link" href="tokenization.html"><span>03</span><span>From Text to Tokens: How LLMs Read Language<small>Segment & encode</small></span></a><a class="chapter-link" href="embeddings.html"><span>04</span><span>From Tokens to Meaning: How Embeddings Represent Language<small>Represent & locate</small></span></a><a class="chapter-link" href="neural-networks.html"><span>05</span><span>From Inputs to Predictions: How Neural Networks Learn<small>Predict & learn</small></span></a><a class="chapter-link" href="transformer.html"><span>06</span><span>Inside the Transformer: How Attention Builds Context<small>Attend & contextualize</small></span></a><a class="chapter-link" href="attention.html"><span>07</span><span>Attention in Action: How Models Select and Combine Context<small>Select & combine</small></span></a></nav>
+      <div class="future-note"><span class="tiny-line"></span>Build intuition.<br>Then build systems.</div>
+      <div class="sidebar-bottom"><a href="authoring.html">The authoring system <span aria-hidden="true">&#8599;</span></a><p>VOLUME 01 <span>MATHEMATICAL FOUNDATIONS</span></p></div>
+    </div>
+  </aside>
+  <div class="page">
+    <header class="topbar"><button class="menu-toggle" aria-controls="book-navigation" aria-expanded="false">Menu</button><div class="breadcrumb"><a href="index.html">Becoming an AI Engineer</a><span aria-hidden="true">/</span><span>Preface</span></div><div class="reading-actions"><button class="print-button" type="button">Print / save PDF <span aria-hidden="true">&#8599;</span></button></div></header>
+    <div class="reading-progress" aria-hidden="true"><div></div></div>
+    <div class="reading-layout">
+      <main id="main" tabindex="-1"><header class="chapter-header"><p class="eyebrow">Before the first chapter</p><h1>Preface</h1><p class="dek">Understand the operations. Then make better engineering decisions.</p></header>
+<h2 id="purpose">Why this book starts with foundations</h2>
+<p>Building an AI feature can look simple: send text to a model and display the result. The difficult questions appear soon afterward. What information did the model receive? Why did an input use so many tokens? What can a similarity score tell us? Which part of a memory estimate belongs to the model, and which part belongs to the application?</p>
+<p>This book builds the tools for answering those questions. It starts with numbers and representations, follows how learning changes parameters, and then traces how a Transformer combines context. Each chapter asks you to calculate something small enough to check, rather than memorize a component name.</p>
+<h2 id="engineering-purpose">A foundation for a wider engineering practice</h2>
+<p>AI engineering also involves data choices, evaluation, retrieval, application design, permissions, deployment and operational care. Understanding a model does not replace those responsibilities. It helps you separate what the model calculates from what the surrounding system must guarantee.</p>
+<p>These chapters develop mathematical and model foundations. Wider systems topics are connections and next steps, not additional lessons already taught here.</p>
+<h2 id="teaching-approach">Learn through a sequence you can reproduce</h2>
+<p>A definition is useful only when you can use it. We move from an intuitive question to a visible example, then name the operation and calculate its result. Symbols are explained where they enter the lesson. Exercises and interview questions include reasoning, not just an answer key.</p>
+<p>Small examples deliberately leave out much of a trained model. Their purpose is to expose the mechanics and the assumptions. A successful calculation is evidence that you followed the operation; it is not evidence that a real system is accurate, safe or ready for production.</p>
+<p>Use the book as a working notebook. Predict an output, write down the intermediate values, and compare your result with the explanation. A mistake in a tiny example is inexpensive and often reveals exactly which idea needs another pass.</p>
+<nav class="chapter-pagination" aria-label="Book navigation"><a href="contents.html"><small>Previous</small>&#8592; Contents</a><a href="reading-guide.html"><small>Next</small>How to use this book &#8594;</a></nav></main>
+      <aside class="on-this-page" aria-label="On this page"><p class="nav-label">IN THIS CHAPTER</p><nav><a href="#purpose"><span>01</span>Why this book starts with foundations</a><a href="#engineering-purpose"><span>02</span>A foundation for a wider engineering practice</a><a href="#teaching-approach"><span>03</span>Learn through a sequence you can reproduce</a></nav><a class="back-top" href="#main">Back to top &#8593;</a></aside>
+    </div>
+    <footer class="site-footer"><span>Becoming an AI Engineer <span class="footer-dot">/</span> An intuition-first field guide</span><a href="authoring.html#reader-facing-editorial-boundary">Teaching & editorial standards</a></footer>
+  </div>
+</body>
+</html>

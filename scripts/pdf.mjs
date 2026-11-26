@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, cp, readdir } from 'node:fs/promises';
 import { resolve, relative, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { chapters, repositoryUrl } from './chapters.mjs';
+import { chapters, repositoryUrl, readingPages } from './chapters.mjs';
 
 const hash = data => createHash('sha256').update(data).digest('hex');
 async function sourceDigest() {
@@ -43,7 +43,7 @@ try {
     await page.evaluate(() => {
       document.querySelectorAll('main details').forEach(node => { node.open = true; });
     });
-    await page.evaluate(({ chapters, repositoryUrl }) => {
+    await page.evaluate(({ chapters, repositoryUrl, readingPages }) => {
       for (const link of document.querySelectorAll('main a[href]')) {
         const url = new URL(link.href);
         if (url.protocol !== 'file:' || url.pathname === location.pathname) continue;
@@ -55,11 +55,13 @@ try {
           link.href = `${repositoryUrl}/blob/main/AUTHORING.md${url.hash}`;
         } else if (file === 'index.html' || file === 'foundations.html') {
           link.href = repositoryUrl;
+        } else if (readingPages.some(page => page.file === file)) {
+          link.href = `https://shankar029.github.io/AI-Engineer/html/${file}${url.hash}`;
         } else {
           throw new Error(`Unmapped local PDF link: ${link.getAttribute('href')}`);
         }
       }
-    }, { chapters, repositoryUrl });
+    }, { chapters, repositoryUrl, readingPages });
     await page.evaluate(() => document.fonts.ready);
     const audit = await page.evaluate(() => {
       const main = document.querySelector('main');

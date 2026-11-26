@@ -1,11 +1,24 @@
-export const repositoryUrl = 'https://github.com/shankar029/AI-Engineer';
+import publication from '../book/publication.json' with { type: 'json' };
 
-export const chapters = [
-  { file: 'linear-algebra.html', pdf: '01-the-language-of-llms.pdf', title: 'The Language of LLMs: Vectors, Matrices, and Meaning', number: '01', subtitle: 'Represent & transform', type: 'chapter' },
-  { file: 'calculus.html', pdf: '02-how-llms-learn.pdf', title: 'How LLMs Learn: Derivatives, Gradients, and Optimization', number: '02', subtitle: 'Change & learn', type: 'chapter' },
-  { file: 'tokenization.html', pdf: '03-from-text-to-tokens.pdf', title: 'From Text to Tokens: How LLMs Read Language', number: '03', subtitle: 'Segment & encode', type: 'chapter' },
-  { file: 'embeddings.html', pdf: '04-from-tokens-to-meaning.pdf', title: 'From Tokens to Meaning: How Embeddings Represent Language', number: '04', subtitle: 'Represent & locate', type: 'chapter' },
-  { file: 'neural-networks.html', pdf: '05-from-inputs-to-predictions.pdf', title: 'From Inputs to Predictions: How Neural Networks Learn', number: '05', subtitle: 'Predict & learn', type: 'chapter' },
-  { file: 'transformer.html', pdf: '06-inside-the-transformer.pdf', title: 'Inside the Transformer: How Attention Builds Context', number: '06', subtitle: 'Attend & contextualize', type: 'chapter' },
-  { file: 'attention.html', pdf: '07-attention-in-action.pdf', title: 'Attention in Action: How Models Select and Combine Context', number: '07', subtitle: 'Select & combine', type: 'chapter' }
+export const repositoryUrl = 'https://github.com/shankar029/AI-Engineer';
+export const metadata = publication;
+export const chapters = publication.parts.flatMap(part => part.chapters).map((chapter, index) => ({
+  ...chapter, number: String(index + 1).padStart(2, '0'), type: 'chapter'
+}));
+export const bookOrder = [
+  ...publication.frontMatter.map(page => ({ ...page, type: 'matter' })),
+  ...publication.parts.flatMap(part => [
+    { file: part.file, title: part.title, type: 'home' },
+    ...chapters.filter(chapter => part.chapters.some(entry => entry.file === chapter.file))
+  ]),
+  ...publication.backMatter.map(page => ({ ...page, type: 'matter' }))
 ];
+export const readingPages = [
+  { file: 'index.html', title: publication.title, type: 'cover' }, ...bookOrder,
+  { file: 'authoring.html', title: 'Authoring guide', type: 'guide' }
+];
+export const wholeBookFiles = {
+  epub: 'becoming-an-ai-engineer-review.epub',
+  digital: 'becoming-an-ai-engineer-reading-review.pdf',
+  print: 'becoming-an-ai-engineer-6x9-print-review.pdf'
+};

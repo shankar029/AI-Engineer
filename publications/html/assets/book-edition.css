@@ -1,0 +1,72 @@
+/* Fixed-page review editions. Website and chapter-PDF styles stay separate. */
+@page {
+  size: A4;
+  margin: 16mm 18mm 19mm;
+  @bottom-left { content: "Becoming an AI Engineer"; font: 8pt Arial; color: #606963; }
+  @bottom-right { content: counter(page); font: 8pt Arial; color: #606963; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; color: #213b35; font: 10.5pt/1.45 "Segoe UI", Arial, sans-serif; }
+.book-section { break-before: page; padding-inline: 1mm; }
+.book-section:first-child { break-before: auto; }
+h1 { font: 29pt/1.12 Georgia, serif; margin: 0 0 6mm; }
+h2 { font: 20pt/1.2 Georgia, serif; margin: 8mm 0 3mm; }
+[data-file="reading-guide.html"] h2 { margin-top: 5mm; }
+h3 { font-size: 12pt; margin: 5mm 0 2mm; }
+h1, h2, h3, dt, .label { break-after: avoid; }
+p, li, dd { orphans: 3; widows: 3; }
+p { margin: 3mm 0; }
+a { color: #226b59; text-decoration: none; }
+.eyebrow, .label { color: #226b59; font: bold 8pt/1.5 Arial; letter-spacing: .6pt; text-transform: uppercase; }
+.chapter-header { border-bottom: 1px solid #dedfd5; padding-bottom: 4mm; margin-bottom: 5mm; }
+.chapter-header .dek { font-size: 12pt; }
+.chapter-meta { font-size: 8pt; }
+.chapter-meta span { display: inline-block; margin-right: 3mm; }
+.title-page { padding-top: 25mm; }
+.book-author { font-size: 16pt; }
+.worked, .callout, .lab, .recap { padding: 3mm; margin: 4mm 0; border: 1px solid #dedfd5; border-radius: 2mm; box-decoration-break: clone; }
+.worked { background: #fffefa; }
+.callout, .lab, .recap { background: #eaf1e9; }
+.caution { background: #f7e9dd; }
+.exercise { border-top: 1px solid #dedfd5; padding: 3mm 0; }
+.answer { background: #eef0e7; padding: 2.5mm; box-decoration-break: clone; }
+.answer-label { font: bold 8pt Arial; color: #226b59; margin: 0 0 2mm; }
+.equation { background: #eeefe6; padding: 2.5mm 1mm; margin: 3mm 0; text-align: center; break-inside: avoid; }
+.katex { font-size: 1em; }
+.katex-display { margin: 0; }
+.katex-display > .katex { white-space: normal; }
+.math { white-space: normal; }
+.math .katex { white-space: normal; }
+.katex .base { margin: 0 1px; }
+figure { break-inside: avoid; margin: 4mm 0; }
+figure img { display: block; width: 100%; height: auto; border: 1px solid #dedfd5; }
+.figure-viewport { overflow: visible; }
+figcaption, .symbol-key { font: 8.5pt/1.4 Arial; color: #606963; margin: 2mm 0; }
+.table-wrap { margin: 3mm 0; }
+table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+thead { display: table-header-group; }
+th, td { padding: 1.5mm; border: 1px solid #dedfd5; vertical-align: top; overflow-wrap: anywhere; }
+th { background: #eaf0e6; }
+tr { break-inside: avoid; }
+pre { width: 100%; max-width: 100%; font: 8.5pt/1.45 Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; background: #edf1e8; padding: 2.5mm; }
+pre code { font: inherit; white-space: pre-wrap; overflow-wrap: anywhere; }
+.code-listing { margin: 3mm 0; }
+.code-listing pre { margin: 0; padding: 0 2.5mm; break-inside: avoid; }
+code { font-family: Consolas, monospace; overflow-wrap: anywhere; }
+ul, ol { padding-left: 6mm; }
+li { margin: 2mm 0; }
+dt { font-weight: bold; margin-top: 3mm; }
+dd { margin: 1mm 0 3mm 4mm; }
+.book-contents { list-style: none; padding: 0; }
+.book-contents li { break-inside: avoid; }
+.book-contents a { display: flex; justify-content: space-between; gap: 4mm; }
+.book-contents a::after { content: target-counter(attr(href), page); flex-shrink: 0; }
+.contents-chapter { margin-left: 5mm; }
+.contents-matter { font-weight: bold; }
+.book-downloads, .chapter-pagination, .diagram-hint, input, button, .lab label { display: none; }
+.book-cover h1 { font-size: 38pt; }
+.cover-journey { width: 100%; margin: 10mm 0; }
+.cover-actions, .cover-orientation { display: none; }
+.hero-grid { display: block; }
+.hero-art { width: 60%; display: block; margin: 6mm auto; }
+.hero-bottom, .intro-strip, .chapter-cards { display: none; }

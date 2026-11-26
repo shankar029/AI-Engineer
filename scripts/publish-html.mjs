@@ -1,6 +1,6 @@
 import { readdir, readFile, writeFile, mkdir, unlink } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
-import { chapters } from './chapters.mjs';
+import { chapters, readingPages, wholeBookFiles } from './chapters.mjs';
 
 const destination = join('publications', 'html');
 const checkOnly = process.argv.includes('--check');
@@ -19,13 +19,14 @@ async function files(directory, prefix = '') {
   return result.sort();
 }
 
-for (const file of ['index.html', 'foundations.html', ...chapters.map(chapter => chapter.file), 'authoring.html']) {
+for (const file of readingPages.map(page => page.file)) {
   let html = await readFile(join('dist', file), 'utf8');
   for (const chapter of chapters) {
     const pdf = await readFile(join('publications', chapter.pdf));
     if (pdf.subarray(0, 5).toString() !== '%PDF-') throw new Error(`Invalid companion: ${chapter.pdf}`);
     html = html.replaceAll(`href="pdfs/${chapter.pdf}"`, `href="../${chapter.pdf}"`);
   }
+  for (const output of Object.values(wholeBookFiles)) html = html.replaceAll(`href="pdfs/${output}"`, `href="../${output}"`);
   expected.set(file, Buffer.from(html));
 }
 for (const file of await files(join('book', 'assets'))) {

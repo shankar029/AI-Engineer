@@ -51,6 +51,10 @@ Retain substantive interview breadth in a visibly labeled **Interview questions*
 
 ## Editorial titles and navigation
 
+<!-- maintainer-only -->
+Whole-book assembly uses `book/publication.json` as its metadata and ordered-content registry. Keep reader pages and actual chapter content coherent as chapters are added. Do not invent author, rights, edition, publisher or ISBN details. Missing release decisions belong in maintainer checks, not placeholder legal prose. Generate review EPUB/reading PDF/print interior with `npm run book`; follow [the complete-book publishing workflow](PUBLISHING.md) before making a final-release claim. Keep whole-book print layout separate from chapter companions and inspect the assembled pages at their actual trim size.
+<!-- /maintainer-only -->
+
 The book is **Becoming an AI Engineer**. Its distinct opening cover is `book/index.html`, with original portable artwork in `book/assets/engineering-cover.svg`; the mathematics-focused introduction and chapter cards live separately in `book/foundations.html`. Mathematics is Part I of the engineering journey, not the entire book identity. Keep the broader systems direction aspirational until those chapters exist. Preserve the cover's `#foundations` bookmark and direct chapter routes.
 
 Use the full editorial title in the page title, chapter heading, home-page card, sidebar chapter link, and previous/next navigation. Subject labels may remain in kickers and editable HTML filenames.

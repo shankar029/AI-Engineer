@@ -28,7 +28,8 @@ for (const width of [320, 1440]) {
     const artwork = await page.locator('.cover-journey').boundingBox();
     expect(artwork.y).toBeGreaterThanOrEqual(subtitle.y + subtitle.height);
     await page.getByRole('link', { name: 'Start reading', exact: false }).click();
-    await expect(page).toHaveURL(pathToFileURL(resolve(root, 'html', 'foundations.html')).href);
+    await expect(page).toHaveURL(pathToFileURL(resolve(root, 'html', 'title-page.html')).href);
+    await page.locator('a[href="foundations.html"]').first().click();
     await expect(page.locator('.chapter-card')).toHaveCount(chapters.length);
     for (const chapter of chapters) {
       await page.locator(`.chapter-link[href="${chapter.file}"]`).click();
